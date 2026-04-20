@@ -1,0 +1,344 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NavBar from "../components/NavBar.astro";
+import SocialIcons from "../components/SocialIcons.astro";
+
+const timeline = [
+  { year: "1995", title: "Born", body: "In Rome, Italy." },
+  { year: "2016", title: "First steps into directing", body: "Claudio Di Biagio's course La regia e l'idea at Artithesi." },
+  { year: "2017", title: "Directorial debut", body: "Web series Love: Edit, produced by Artithesi and ImageHunters." },
+  { year: "2018", title: "SIAE SILLUMINA grant", body: "Directed CLARK — a short film, a turning point." },
+  { year: "2019 — 2023", title: "Trailer cutter", body: "Cut trailers for Cit Studio." },
+  { year: "2019 — 2021", title: "Assistant editor & AD", body: "Bentornato Presidente, Permette Alberto Sordi?, Il Cacciatore S3, Ai Confini del Male." },
+  { year: "2021 — 2023", title: "Assembly editor", body: "Altrimenti ci Arrabbiamo, The Bad Guy, Shake." },
+  { year: "2023 — 2024", title: "Lead editor", body: "Pesci Piccoli (Prime Video), Hanno Ucciso l'Uomo Ragno (Sky)." },
+  { year: "2024", title: "Combattere", body: "Latest directorial work, produced by PunxFilm, wrapped post-production in January." },
+  { year: "2025 — present", title: "Now", body: "Editing Pesci Piccoli S2 and the documentary Benetton Formula." },
+];
+
+const facts = [
+  { k: "Base", v: "Rome, IT" },
+  { k: "Languages", v: "Italian, English" },
+  { k: "Experience", v: "10+ years" },
+  { k: "Tools", v: "Avid · Premiere · DaVinci" },
+];
+---
+
+<BaseLayout title="Bio — Andrea Ricciotti">
+  <div class="page">
+    <NavBar active="bio" />
+
+    <section class="intro">
+      <div class="intro__meta mono">
+        <span>Something about me</span>
+        <span>—</span>
+        <span>Director & Editor · Rome</span>
+      </div>
+      <h1 class="intro__headline">
+        <span>Between</span>
+        <span><em>instinct</em></span>
+        <span>and</span>
+        <span><em>patience</em>.</span>
+      </h1>
+      <p class="intro__lede">
+        I cut stories for cinema and streaming, and I direct short-form work
+        about memory, rupture, and the quiet moments between.
+      </p>
+    </section>
+
+    <section class="split">
+      <aside class="split__side">
+        <div class="facts">
+          {facts.map((f) => (
+            <div class="facts__row">
+              <span class="mono facts__k">{f.k}</span>
+              <span class="facts__v">{f.v}</span>
+            </div>
+          ))}
+        </div>
+        <div class="downloads">
+          <a href="/assets/andrea-ricciotti-cv.pdf" class="mono dl">
+            <span>Curriculum Vitae</span>
+            <span class="dl__ext">PDF</span>
+          </a>
+          <a href="https://letterboxd.com/" target="_blank" rel="noopener" class="mono dl">
+            <span>Letterboxd</span>
+            <span class="dl__ext">↗</span>
+          </a>
+        </div>
+      </aside>
+
+      <div class="body">
+        <p class="body__p">
+          <span class="drop">B</span>orn in 1995, I took my first steps into directing with
+          Claudio Di Biagio's course <em>La regia e l'idea</em> at Artithesi in 2016.
+          My directorial debut came with the web series <em>Love: Edit</em>,
+          produced by Artithesi and ImageHunters.
+        </p>
+        <p class="body__p">
+          After a few years navigating videomaking and filmmaking, I won the
+          <em>SIAE SILLUMINA</em> grant in 2018, directing <em>CLARK</em> — a short film
+          that marked a turning point in my career.
+        </p>
+        <p class="body__p">
+          I sharpened my skills as an assistant editor
+          (<em>Bentornato Presidente</em>, <em>Permette, Alberto Sordi?</em>),
+          before stepping onto set as an assistant director
+          (<em>Il Cacciatore</em> Season 3, <em>Ai Confini del Male</em>).
+        </p>
+        <p class="body__p">
+          My path led me to assembly editing
+          (<em>Altrimenti ci Arrabbiamo</em>, <em>The Bad Guy</em>, <em>Shake</em>)
+          before finally taking the lead in the editing room, shaping
+          <em>Pesci Piccoli</em> (Prime Video) and
+          <em>Hanno Ucciso l'Uomo Ragno</em> (Sky, 2024).
+        </p>
+        <p class="body__p">
+          Between 2019 and 2023, I cut trailers for Cit Studio. My latest
+          directorial work, <em>COMBATTERE</em> — produced by PunxFilm — wrapped
+          post-production in January 2024. Most recently, I completed the
+          editing of <em>Pesci Piccoli</em> Season 2 and the documentary
+          <em>Benetton Formula</em>.
+        </p>
+      </div>
+    </section>
+
+    <section class="timeline">
+      <div class="timeline__label mono">Timeline</div>
+      <ol class="timeline__list">
+        {timeline.map((t, i) => (
+          <li class="t-row" style={`--i:${i}`}>
+            <div class="t-row__year mono">{t.year}</div>
+            <div class="t-row__rule"></div>
+            <div class="t-row__title">{t.title}</div>
+            <div class="t-row__body">{t.body}</div>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="closing">
+      <div class="closing__sep"></div>
+      <h2 class="closing__title">
+        Want to work together? <em>Get in touch.</em>
+      </h2>
+      <a href="/contact" class="cta mono">Contact →</a>
+      <div class="closing__social"><SocialIcons size={18} /></div>
+      <div class="closing__fine mono">© {new Date().getFullYear()} · Andrea Ricciotti · Rome, IT</div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page { padding: 0 var(--gutter); max-width: 1600px; margin: 0 auto; }
+
+  /* INTRO */
+  .intro {
+    padding: clamp(3rem, 10vh, 6rem) 0 clamp(2rem, 5vh, 3.5rem);
+    max-width: 1100px;
+  }
+  .intro__meta {
+    color: var(--brass);
+    margin-bottom: 2rem;
+    display: flex; gap: 0.75rem; flex-wrap: wrap;
+  }
+  .intro__headline {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 8vw, 6.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    font-weight: 400;
+    font-variation-settings: "opsz" 144;
+    color: var(--bone);
+  }
+  .intro__headline span { display: inline-block; margin-right: 0.25em; }
+  .intro__headline em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--brass);
+  }
+  .intro__lede {
+    margin-top: 1.5rem;
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: var(--bone-dim);
+    max-width: 58ch;
+    line-height: 1.55;
+  }
+
+  /* SPLIT */
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    padding: 2rem 0 5rem;
+    border-top: 1px solid var(--ink-700);
+    padding-top: clamp(2rem, 5vh, 4rem);
+  }
+  @media (max-width: 860px) {
+    .split { grid-template-columns: 1fr; }
+  }
+  .split__side {
+    position: sticky;
+    top: 6rem;
+    align-self: start;
+  }
+  @media (max-width: 860px) { .split__side { position: static; } }
+
+  .facts { margin-bottom: 2rem; }
+  .facts__row {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--ink-700);
+  }
+  .facts__k {
+    color: var(--bone-faint);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .facts__v {
+    font-family: var(--font-serif);
+    color: var(--bone);
+    font-size: 0.95rem;
+  }
+
+  .downloads { display: flex; flex-direction: column; gap: 0.5rem; }
+  .dl {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--ink-700);
+    color: var(--bone-dim);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: all var(--dur-fast) var(--ease);
+  }
+  .dl:hover {
+    border-color: var(--brass);
+    color: var(--brass);
+    transform: translateX(2px);
+  }
+  .dl__ext { color: var(--brass); font-size: 0.62rem; }
+
+  .body { font-family: var(--font-serif); }
+  .body__p {
+    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+    line-height: 1.7;
+    color: var(--bone);
+    margin-bottom: 1.5rem;
+    max-width: 62ch;
+  }
+  .body__p em { color: var(--brass); font-style: italic; }
+  .drop {
+    font-family: var(--font-display);
+    float: left;
+    font-size: 4.5em;
+    line-height: 0.85;
+    padding: 0.1em 0.08em 0 0;
+    color: var(--brass);
+    font-weight: 300;
+    font-variation-settings: "opsz" 144;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    padding: clamp(3rem, 8vh, 6rem) 0;
+    border-top: 1px solid var(--ink-700);
+  }
+  .timeline__label {
+    color: var(--brass);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+  }
+  .timeline__list { list-style: none; padding: 0; margin: 0; }
+  .t-row {
+    display: grid;
+    grid-template-columns: 10rem 1px 1fr;
+    grid-template-rows: auto auto;
+    gap: 0 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px dashed var(--ink-700);
+    align-items: baseline;
+  }
+  .t-row__year {
+    grid-row: 1 / span 2;
+    color: var(--brass);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+  }
+  .t-row__rule {
+    grid-row: 1 / span 2;
+    width: 1px;
+    background: var(--ink-700);
+    height: 100%;
+    min-height: 2rem;
+  }
+  .t-row__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 1.8vw, 1.55rem);
+    color: var(--bone);
+    font-variation-settings: "opsz" 48;
+  }
+  .t-row__body {
+    font-family: var(--font-serif);
+    color: var(--bone-dim);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-top: 0.3rem;
+  }
+  @media (max-width: 640px) {
+    .t-row {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+    .t-row__rule { display: none; }
+    .t-row__year { grid-row: auto; }
+  }
+
+  /* CLOSING */
+  .closing {
+    text-align: center;
+    padding: clamp(5rem, 12vh, 9rem) 0 4rem;
+    border-top: 1px solid var(--ink-700);
+  }
+  .closing__sep {
+    width: 1px; height: 60px;
+    background: var(--brass);
+    margin: 0 auto 2rem;
+  }
+  .closing__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--bone);
+    margin-bottom: 2rem;
+  }
+  .closing__title em { font-style: italic; color: var(--brass); }
+  .cta {
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    border: 1px solid var(--brass);
+    color: var(--brass);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    transition: all var(--dur-fast) var(--ease);
+  }
+  .cta:hover {
+    background: var(--brass);
+    color: var(--ink-900);
+  }
+  .closing__social { display: flex; justify-content: center; margin-bottom: 3rem; }
+  .closing__social :global(.social-icons) { justify-content: center; }
+  .closing__fine { color: var(--bone-faint); font-size: 0.62rem; letter-spacing: 0.14em; }
+</style>

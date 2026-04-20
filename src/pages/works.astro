@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SocialIcons from "../components/SocialIcons.astro";
+import NavBar from "../components/NavBar.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import { projects } from "../data/projects";
 
@@ -12,16 +13,7 @@ const writerCount = projects.filter((p) => p.roles.includes("Writer")).length;
 
 <BaseLayout title="Works — Andrea Ricciotti">
   <div class="page">
-    <!-- Header -->
-    <header class="topbar">
-      <a href="/" class="mark">AR</a>
-      <nav class="nav">
-        <a href="/" class="nav__link mono">Index</a>
-        <span class="nav__sep">/</span>
-        <a href="/works" class="nav__link mono is-active">Works</a>
-      </nav>
-      <div class="nav__social"><SocialIcons size={16} /></div>
-    </header>
+    <NavBar active="works" />
 
     <!-- Section title -->
     <section class="title-block">

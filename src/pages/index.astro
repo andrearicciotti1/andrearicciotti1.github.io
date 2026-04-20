@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SocialIcons from "../components/SocialIcons.astro";
+import NavBar from "../components/NavBar.astro";
 import { projects } from "../data/projects";
 
 const featured = projects.filter((p) => p.featured).slice(0, 6);
@@ -8,11 +9,7 @@ const featured = projects.filter((p) => p.featured).slice(0, 6);
 
 <BaseLayout title="Andrea Ricciotti — Director & Editor">
   <div class="page">
-    <!-- Top brand bar -->
-    <header class="topbar">
-      <div class="mark">AR</div>
-      <div class="loc mono">Rome · IT</div>
-    </header>
+    <NavBar active="index" />
 
     <!-- Hero: editorial typographic -->
     <section class="hero">

@@ -1,0 +1,98 @@
+---
+import SocialIcons from "./SocialIcons.astro";
+
+export interface Props {
+  active?: "index" | "works" | "more" | "bio" | "contact";
+}
+const { active = "index" } = Astro.props;
+
+const links = [
+  { key: "index", label: "Index", href: "/" },
+  { key: "works", label: "Works", href: "/works" },
+  { key: "more", label: "More", href: "/more" },
+  { key: "bio", label: "Bio", href: "/bio" },
+  { key: "contact", label: "Contact", href: "/contact" },
+];
+---
+
+<header class="nav">
+  <a href="/" class="nav__mark" aria-label="Home">AR</a>
+  <nav class="nav__links">
+    {links.map((l, i) => (
+      <>
+        <a
+          href={l.href}
+          class:list={["nav__link mono", { "is-active": active === l.key }]}
+        >
+          {l.label}
+        </a>
+        {i < links.length - 1 && <span class="nav__sep" aria-hidden="true">/</span>}
+      </>
+    ))}
+  </nav>
+  <div class="nav__social"><SocialIcons size={16} /></div>
+</header>
+
+<style>
+  .nav {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--ink-700);
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .nav__mark {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    color: var(--bone);
+    font-variation-settings: "opsz" 14;
+  }
+  .nav__links {
+    display: flex;
+    gap: 0.85rem;
+    align-items: center;
+    justify-self: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .nav__link {
+    color: var(--bone-faint);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    transition: color var(--dur-fast) var(--ease);
+    position: relative;
+  }
+  .nav__link:hover { color: var(--bone); }
+  .nav__link.is-active {
+    color: var(--brass);
+  }
+  .nav__link.is-active::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -6px;
+    height: 1px;
+    background: var(--brass);
+  }
+  .nav__sep {
+    color: var(--bone-faint);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    opacity: 0.4;
+  }
+  .nav__social { justify-self: end; }
+
+  @media (max-width: 640px) {
+    .nav { grid-template-columns: auto 1fr; row-gap: 1rem; }
+    .nav__links { grid-column: 1 / -1; justify-self: start; gap: 0.55rem; }
+    .nav__social { justify-self: end; }
+  }
+</style>

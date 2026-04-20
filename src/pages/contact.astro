@@ -1,0 +1,288 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NavBar from "../components/NavBar.astro";
+import SocialIcons from "../components/SocialIcons.astro";
+---
+
+<BaseLayout title="Contact — Andrea Ricciotti">
+  <div class="page">
+    <NavBar active="contact" />
+
+    <section class="intro">
+      <div class="intro__meta mono">
+        <span>Get in touch</span>
+        <span>—</span>
+        <span>Open to commissions & collaborations</span>
+      </div>
+      <h1 class="intro__headline">
+        <span>Let's</span>
+        <span><em>talk</em></span>
+        <span>about</span>
+        <span>the cut.</span>
+      </h1>
+      <p class="intro__lede">
+        Features, series, docs, trailers, music videos.
+        Drop a line with what you're working on — I'll get back within a couple of days.
+      </p>
+    </section>
+
+    <section class="split">
+      <form
+        class="form"
+        action="https://formsubmit.co/andrearicciotti1@gmail.com"
+        method="POST"
+      >
+        <input type="hidden" name="_subject" value="New message from portfolio" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" />
+
+        <div class="field">
+          <label class="mono label" for="name">Name <span>*</span></label>
+          <input id="name" name="name" required autocomplete="name" />
+        </div>
+
+        <div class="field">
+          <label class="mono label" for="email">Email <span>*</span></label>
+          <input id="email" type="email" name="email" required autocomplete="email" />
+        </div>
+
+        <div class="field">
+          <label class="mono label" for="project">Project type</label>
+          <select id="project" name="project">
+            <option>— Select —</option>
+            <option>Feature film</option>
+            <option>TV series</option>
+            <option>Documentary</option>
+            <option>Short film</option>
+            <option>Trailer</option>
+            <option>Music video</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label class="mono label" for="message">Message <span>*</span></label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+
+        <div class="field">
+          <label class="mono label" for="fav">Favourite movie <span class="optional">(optional)</span></label>
+          <input id="fav" name="favourite_movie" placeholder="A tiebreaker. Maybe." />
+        </div>
+
+        <button type="submit" class="submit">
+          <span>Send message</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+        </button>
+
+        <p class="mono fine">No tracking. No newsletter. Just a message.</p>
+      </form>
+
+      <aside class="aside">
+        <div class="aside__block">
+          <div class="mono aside__label">Direct</div>
+          <a class="aside__mail" href="mailto:andrearicciotti1@gmail.com">
+            andrearicciotti1@gmail.com
+          </a>
+        </div>
+        <div class="aside__block">
+          <div class="mono aside__label">Based in</div>
+          <p class="aside__text">
+            Rome, IT — <span class="brass">available worldwide</span> for
+            remote cuts and travel-friendly productions.
+          </p>
+        </div>
+        <div class="aside__block">
+          <div class="mono aside__label">Response time</div>
+          <p class="aside__text">Usually within 48 hours.</p>
+        </div>
+        <div class="aside__block">
+          <div class="mono aside__label">Representation</div>
+          <p class="aside__text">Self-represented.</p>
+        </div>
+        <div class="aside__block">
+          <div class="mono aside__label">Elsewhere</div>
+          <SocialIcons size={18} />
+        </div>
+      </aside>
+    </section>
+
+    <section class="closing">
+      <div class="closing__fine mono">© {new Date().getFullYear()} · Andrea Ricciotti · Rome, IT</div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page { padding: 0 var(--gutter); max-width: 1600px; margin: 0 auto; }
+
+  .intro {
+    padding: clamp(3rem, 10vh, 6rem) 0 clamp(2rem, 5vh, 3.5rem);
+    max-width: 1100px;
+  }
+  .intro__meta {
+    color: var(--brass);
+    margin-bottom: 2rem;
+    display: flex; gap: 0.75rem; flex-wrap: wrap;
+  }
+  .intro__headline {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 8vw, 6.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    font-weight: 400;
+    font-variation-settings: "opsz" 144;
+    color: var(--bone);
+  }
+  .intro__headline span { display: inline-block; margin-right: 0.25em; }
+  .intro__headline em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--brass);
+  }
+  .intro__lede {
+    margin-top: 1.5rem;
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: var(--bone-dim);
+    max-width: 58ch;
+    line-height: 1.55;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: clamp(2rem, 5vw, 5rem);
+    padding: clamp(2rem, 5vh, 4rem) 0 5rem;
+    border-top: 1px solid var(--ink-700);
+  }
+  @media (max-width: 860px) {
+    .split { grid-template-columns: 1fr; }
+  }
+
+  /* FORM */
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .field { display: flex; flex-direction: column; gap: 0.55rem; }
+  .label {
+    color: var(--bone-faint);
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .label span { color: var(--brass); }
+  .label .optional { color: var(--bone-faint); letter-spacing: 0.1em; }
+
+  .form input,
+  .form select,
+  .form textarea {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--ink-700);
+    padding: 0.75rem 0;
+    color: var(--bone);
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    transition: border-color var(--dur-fast) var(--ease);
+  }
+  .form textarea {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.55;
+  }
+  .form input:focus,
+  .form select:focus,
+  .form textarea:focus {
+    outline: none;
+    border-color: var(--brass);
+  }
+  .form select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%23c9a572' stroke-width='1.5'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    padding-right: 1.5rem;
+  }
+  .form select option { background: var(--ink-900); }
+
+  .hp { position: absolute; left: -9999px; opacity: 0; }
+
+  .submit {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.75rem;
+    background: transparent;
+    border: 1px solid var(--brass);
+    color: var(--brass);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all var(--dur-fast) var(--ease);
+    margin-top: 0.5rem;
+  }
+  .submit:hover {
+    background: var(--brass);
+    color: var(--ink-900);
+  }
+  .submit svg { transition: transform var(--dur-fast) var(--ease); }
+  .submit:hover svg { transform: translateX(4px); }
+
+  .fine {
+    color: var(--bone-faint);
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+  }
+
+  /* ASIDE */
+  .aside {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-left: clamp(0rem, 3vw, 2rem);
+    border-left: 1px solid var(--ink-700);
+  }
+  @media (max-width: 860px) {
+    .aside { border-left: 0; padding-left: 0; border-top: 1px solid var(--ink-700); padding-top: 2rem; }
+  }
+  .aside__block { display: flex; flex-direction: column; gap: 0.55rem; }
+  .aside__label {
+    color: var(--bone-faint);
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .aside__mail {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: var(--bone);
+    border-bottom: 1px solid var(--bone-ghost);
+    padding-bottom: 4px;
+    align-self: flex-start;
+    transition: all var(--dur-fast) var(--ease);
+  }
+  .aside__mail:hover { color: var(--brass); border-color: var(--brass); }
+  .aside__text {
+    font-family: var(--font-serif);
+    color: var(--bone-dim);
+    line-height: 1.55;
+    font-size: 0.95rem;
+  }
+  .brass { color: var(--brass); }
+
+  .closing {
+    text-align: center;
+    padding: 3rem 0 4rem;
+    border-top: 1px solid var(--ink-700);
+  }
+  .closing__fine { color: var(--bone-faint); font-size: 0.62rem; letter-spacing: 0.14em; }
+</style>
