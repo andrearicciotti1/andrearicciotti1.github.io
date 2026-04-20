@@ -1,0 +1,173 @@
+---
+import type { Project } from "../data/projects";
+
+export interface Props {
+  project: Project;
+  index?: number;
+}
+const { project, index = 0 } = Astro.props;
+const n = String(project.n).padStart(2, "0");
+---
+
+<article
+  class="card reveal"
+  data-roles={project.roles.join(",")}
+  style={`--i:${index}`}
+>
+  <div class="card__frame">
+    <img
+      src={project.cover}
+      alt={project.title}
+      loading="lazy"
+    />
+    <div class="card__scrim"></div>
+    <div class="card__num mono">N°{n}</div>
+    <div class="card__marker mono">
+      {project.roles.map((r) => <span class="chip">{r}</span>)}
+    </div>
+  </div>
+  <div class="card__meta">
+    <div class="card__row">
+      <div class="card__line"></div>
+      <span class="mono card__cat">{project.category}{project.platform ? ` · ${project.platform}` : ""}</span>
+    </div>
+    <h2 class="card__title">
+      <span>{project.title}</span>
+    </h2>
+    <p class="mono card__credit">{project.credit}</p>
+  </div>
+</article>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .card.is-filtering-in {
+    animation: fade-in 500ms var(--ease) both;
+  }
+  .card.is-filtering-out {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 200ms var(--ease), transform 200ms var(--ease);
+  }
+
+  .card__frame {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    background: var(--ink-800);
+    border: 1px solid var(--ink-700);
+    transition: border-color var(--dur-med) var(--ease);
+  }
+  .card:hover .card__frame {
+    border-color: var(--brass-dim);
+  }
+
+  .card__frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.35) contrast(1.02) brightness(0.88);
+    transition: filter var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
+  }
+  .card:hover .card__frame img {
+    filter: grayscale(0) contrast(1.06) brightness(1);
+    transform: scale(1.04);
+  }
+
+  .card__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,10,10,0) 40%, rgba(10,10,10,0.5) 100%);
+    pointer-events: none;
+  }
+
+  .card__num {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    background: rgba(10, 10, 10, 0.78);
+    color: var(--brass);
+    padding: 0.25rem 0.55rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(201, 165, 114, 0.22);
+  }
+
+  .card__marker {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    display: flex;
+    gap: 0.3rem;
+  }
+  .chip {
+    background: rgba(10, 10, 10, 0.78);
+    color: var(--bone);
+    padding: 0.2rem 0.5rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid var(--bone-ghost);
+    transition: all var(--dur-fast) var(--ease);
+  }
+  .card:hover .chip {
+    background: rgba(201, 165, 114, 0.92);
+    color: var(--ink-900);
+    border-color: var(--brass);
+  }
+
+  /* META */
+  .card__meta {
+    padding: 1.1rem 0 0;
+  }
+  .card__row {
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .card__line {
+    width: 28px; height: 1px;
+    background: var(--brass);
+  }
+  .card__cat {
+    color: var(--brass);
+    font-size: 0.62rem;
+  }
+
+  .card__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.3rem, 2vw, 1.9rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    font-variation-settings: "opsz" 48;
+    color: var(--bone);
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+  }
+  .card__title span {
+    display: inline-block;
+    transition: transform var(--dur-med) var(--ease), color var(--dur-med) var(--ease);
+  }
+  .card:hover .card__title span {
+    color: var(--brass);
+    transform: translateX(4px);
+  }
+
+  .card__credit {
+    color: var(--bone-dim);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

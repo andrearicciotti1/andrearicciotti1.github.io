@@ -1,0 +1,167 @@
+export type Role = "Director" | "Editor" | "Writer" | "Creative Director";
+
+export interface Project {
+  n: number;
+  title: string;
+  roles: Role[];
+  credit: string;
+  category: string;
+  platform?: string;
+  cover: string;
+  featured?: boolean;
+}
+
+export const projects: Project[] = [
+  {
+    n: 1,
+    title: "The Nameless Ballad",
+    roles: ["Editor"],
+    credit: "Editor",
+    category: "Feature Film",
+    cover: "/assets/projects/nameless-ballad.png",
+    featured: true,
+  },
+  {
+    n: 2,
+    title: "Benetton Formula",
+    roles: ["Editor"],
+    credit: "Editor",
+    category: "Documentary",
+    platform: "Sky",
+    cover: "/assets/projects/benetton-formula.jpg",
+    featured: true,
+  },
+  {
+    n: 3,
+    title: "Pesci Piccoli 2",
+    roles: ["Editor"],
+    credit: "Editor — Episodes 1, 2, 4, 6, 8",
+    category: "TV Series",
+    platform: "Prime Video",
+    cover: "/assets/projects/pesci-piccoli-2.jpg",
+    featured: true,
+  },
+  {
+    n: 4,
+    title: "Hanno Ucciso L'Uomo Ragno",
+    roles: ["Editor"],
+    credit: "Editor — Episodes 5, 7, 8",
+    category: "TV Series",
+    platform: "Sky",
+    cover: "/assets/projects/uomo-ragno.jpg",
+    featured: true,
+  },
+  {
+    n: 5,
+    title: "Love is Blind: Italy",
+    roles: ["Editor"],
+    credit: "Trailer Author",
+    category: "Reality",
+    platform: "Netflix",
+    cover: "/assets/projects/love-is-blind.jpeg",
+  },
+  {
+    n: 6,
+    title: "Pesci Piccoli",
+    roles: ["Editor"],
+    credit: "Editor",
+    category: "TV Series",
+    platform: "Prime Video",
+    cover: "/assets/projects/pesci-piccoli.jpg",
+  },
+  {
+    n: 7,
+    title: "Combattere",
+    roles: ["Director", "Editor", "Writer"],
+    credit: "Director · Editor · Writer",
+    category: "Short Film",
+    cover: "/assets/projects/combattere.jpeg",
+    featured: true,
+  },
+  {
+    n: 8,
+    title: "Clark",
+    roles: ["Director"],
+    credit: "Director",
+    category: "Short Film",
+    cover: "/assets/projects/clark.png",
+    featured: true,
+  },
+  {
+    n: 9,
+    title: "Showu — Kuni",
+    roles: ["Director", "Editor"],
+    credit: "Director · Editor",
+    category: "Music Video",
+    cover: "/assets/projects/showu-kuni.jpg",
+    featured: true,
+  },
+  {
+    n: 10,
+    title: "Shake",
+    roles: ["Editor"],
+    credit: "Co-Editor",
+    category: "TV Series",
+    platform: "Rai Play",
+    cover: "/assets/projects/shake.png",
+  },
+  {
+    n: 11,
+    title: "The Bad Guy",
+    roles: ["Editor"],
+    credit: "Pre-Editor",
+    category: "TV Series",
+    platform: "Prime Video",
+    cover: "/assets/projects/bad-guy.jpg",
+  },
+  {
+    n: 12,
+    title: "Altrimenti Ci Arrabbiamo",
+    roles: ["Editor"],
+    credit: "Trailer Editor",
+    category: "Feature Film",
+    cover: "/assets/projects/altrimenti.jpg",
+  },
+  {
+    n: 13,
+    title: "L'Arminuta",
+    roles: ["Editor"],
+    credit: "Trailer Editor",
+    category: "Feature Film",
+    cover: "/assets/projects/arminuta.jpg",
+  },
+  {
+    n: 14,
+    title: "Anni da Cane",
+    roles: ["Editor"],
+    credit: "Trailer Editor",
+    category: "Feature Film",
+    cover: "/assets/projects/anni-da-cane.jpg",
+  },
+  {
+    n: 15,
+    title: "Il Cinema È Morto",
+    roles: ["Creative Director"],
+    credit: "Creative Director · Host",
+    category: "Podcast",
+    cover: "/assets/projects/cinema-morto.jpg",
+  },
+  {
+    n: 16,
+    title: "La TV dei Ragazzi",
+    roles: ["Editor"],
+    credit: "Editor",
+    category: "Documentary",
+    platform: "YouTube",
+    cover: "/assets/projects/tv-ragazzi.jpg",
+  },
+  {
+    n: 17,
+    title: "Il Codice Puccini",
+    roles: ["Editor"],
+    credit: "Editing Supervisor",
+    category: "TV Movie",
+    platform: "Rai Play",
+    cover: "/assets/projects/puccini.jpg",
+  },
+];

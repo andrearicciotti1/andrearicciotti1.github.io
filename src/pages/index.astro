@@ -1,0 +1,421 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SocialIcons from "../components/SocialIcons.astro";
+import { projects } from "../data/projects";
+
+const featured = projects.filter((p) => p.featured).slice(0, 6);
+---
+
+<BaseLayout title="Andrea Ricciotti — Director & Editor">
+  <div class="page">
+    <!-- Top brand bar -->
+    <header class="topbar">
+      <div class="mark">AR</div>
+      <div class="loc mono">Rome · IT</div>
+    </header>
+
+    <!-- Hero: editorial typographic -->
+    <section class="hero">
+      <div class="hero__marker mono">
+        <span class="dot"></span>
+        Portfolio 2019 — present
+      </div>
+
+      <h1 class="hero__title">
+        <span class="line"><em>Andrea</em></span>
+        <span class="line">Ricciotti</span>
+      </h1>
+
+      <div class="hero__tag">
+        <span class="tag-line"></span>
+        <span class="mono">Director <em>&amp;</em> Editor</span>
+        <span class="tag-line"></span>
+      </div>
+
+      <p class="hero__bio">
+        I shape narrative rhythm across cinema, television, and long-form storytelling —
+        editing series for <em>Netflix</em>, <em>Prime&nbsp;Video</em>, and <em>Sky</em>,
+        and directing short-form work that explores memory, rupture, and the quiet
+        moments between.
+      </p>
+
+      <div class="hero__actions">
+        <a href="/works" class="cta">
+          <span>Selected Works</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M5 12h14M13 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="mailto:andrearicciotti1@gmail.com" class="cta-ghost mono">Get in touch</a>
+      </div>
+    </section>
+
+    <!-- Featured reel — horizontal scrolling film strip -->
+    <section class="reel">
+      <div class="reel__header">
+        <div class="reel__label mono">Featured / 2019 — 2025</div>
+        <a href="/works" class="reel__all mono">View all (17) →</a>
+      </div>
+      <div class="reel__track">
+        {featured.map((p) => (
+          <a href="/works" class="reel__item">
+            <div class="reel__frame">
+              <img src={p.cover} alt={p.title} />
+              <div class="reel__num mono">N°{String(p.n).padStart(2, "0")}</div>
+            </div>
+            <div class="reel__meta">
+              <div class="reel__title">{p.title}</div>
+              <div class="mono reel__credit">{p.credit}</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Manifesto block -->
+    <section class="manifesto">
+      <p class="manifesto__copy">
+        <span class="drop">T</span>he edit is where the film becomes itself —
+        where rhythm meets silence, and the director's instinct meets the cutter's
+        patience. I work both sides of that room.
+      </p>
+      <div class="manifesto__sig mono">— A.R.</div>
+    </section>
+
+    <!-- Footer: social + contact -->
+    <footer class="footer">
+      <div class="footer__col">
+        <div class="mono footer__label">Elsewhere</div>
+        <SocialIcons size={18} />
+      </div>
+      <div class="footer__col footer__col--mid">
+        <div class="mono footer__label">Contact</div>
+        <a class="footer__mail" href="mailto:andrearicciotti1@gmail.com">andrearicciotti1@gmail.com</a>
+      </div>
+      <div class="footer__col footer__col--end">
+        <div class="mono footer__label">Credits</div>
+        <div class="mono footer__fine">© {new Date().getFullYear()} Andrea Ricciotti. All rights reserved.</div>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>
+
+<style>
+  .page {
+    padding: 0 var(--gutter);
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  /* TOPBAR */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--ink-700);
+  }
+  .mark {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    font-variation-settings: "opsz" 14;
+  }
+  .loc { color: var(--bone-dim); }
+
+  /* HERO */
+  .hero {
+    padding: clamp(3rem, 10vh, 7rem) 0 clamp(3rem, 8vh, 6rem);
+    max-width: 1200px;
+    position: relative;
+  }
+
+  .hero__marker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--brass);
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: rise 900ms var(--ease) forwards;
+  }
+  .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--brass);
+    box-shadow: 0 0 12px var(--brass);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 14vw, 11rem);
+    font-weight: 400;
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+    color: var(--bone);
+  }
+  .hero__title .line {
+    display: block;
+    opacity: 0;
+    animation: rise 1200ms var(--ease) forwards;
+  }
+  .hero__title .line:nth-child(1) { animation-delay: 150ms; }
+  .hero__title .line:nth-child(2) {
+    animation-delay: 350ms;
+    padding-left: clamp(2rem, 8vw, 6rem);
+  }
+  .hero__title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--brass);
+  }
+
+  .hero__tag {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: clamp(2rem, 4vw, 3rem) 0 clamp(1.5rem, 3vw, 2.5rem);
+    color: var(--bone-dim);
+    opacity: 0;
+    animation: rise 1200ms var(--ease) 550ms forwards;
+  }
+  .hero__tag em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.9rem;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--brass);
+    margin: 0 0.15rem;
+  }
+  .tag-line {
+    flex: 0 0 clamp(1.5rem, 6vw, 4rem);
+    height: 1px;
+    background: var(--bone-ghost);
+  }
+  .tag-line:last-child { flex: 1 1 auto; max-width: 200px; }
+
+  .hero__bio {
+    font-family: var(--font-serif);
+    font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+    line-height: 1.5;
+    font-weight: 400;
+    color: var(--bone);
+    max-width: 44ch;
+    font-variation-settings: "opsz" 24;
+    opacity: 0;
+    animation: rise 1200ms var(--ease) 750ms forwards;
+  }
+  .hero__bio em {
+    font-style: italic;
+    color: var(--bone-dim);
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-top: clamp(2rem, 4vw, 3rem);
+    opacity: 0;
+    animation: rise 1200ms var(--ease) 950ms forwards;
+  }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.8rem;
+    background: var(--bone);
+    color: var(--ink-900);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all var(--dur-med) var(--ease);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta svg { transition: transform var(--dur-med) var(--ease); }
+  .cta:hover {
+    background: var(--brass);
+  }
+  .cta:hover svg { transform: translateX(6px); }
+
+  .cta-ghost {
+    color: var(--bone-dim);
+    border-bottom: 1px solid var(--bone-ghost);
+    padding-bottom: 4px;
+    transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+  }
+  .cta-ghost:hover {
+    color: var(--brass);
+    border-color: var(--brass);
+  }
+
+  /* REEL — horizontal featured strip */
+  .reel {
+    padding: clamp(3rem, 6vh, 5rem) 0 clamp(3rem, 8vh, 6rem);
+    border-top: 1px solid var(--ink-700);
+  }
+  .reel__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2rem;
+  }
+  .reel__label { color: var(--brass); }
+  .reel__all {
+    color: var(--bone-dim);
+    transition: color var(--dur-fast) var(--ease);
+  }
+  .reel__all:hover { color: var(--bone); }
+
+  .reel__track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: clamp(260px, 30vw, 420px);
+    gap: 1.25rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ink-600) transparent;
+  }
+  .reel__track::-webkit-scrollbar { height: 4px; }
+  .reel__track::-webkit-scrollbar-track { background: transparent; }
+  .reel__track::-webkit-scrollbar-thumb { background: var(--ink-600); }
+
+  .reel__item {
+    scroll-snap-align: start;
+    display: block;
+    position: relative;
+  }
+  .reel__frame {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background: var(--ink-800);
+  }
+  .reel__frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.3) contrast(1.05);
+    transition: filter var(--dur-med) var(--ease), transform var(--dur-slow) var(--ease);
+  }
+  .reel__item:hover .reel__frame img {
+    filter: grayscale(0) contrast(1.1);
+    transform: scale(1.03);
+  }
+  .reel__num {
+    position: absolute;
+    top: 0.8rem; left: 0.8rem;
+    color: var(--bone);
+    background: rgba(10,10,10,0.7);
+    padding: 0.2rem 0.5rem;
+    backdrop-filter: blur(6px);
+    font-size: 0.62rem;
+  }
+  .reel__meta { padding: 0.9rem 0 0; }
+  .reel__title {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 36;
+    line-height: 1.1;
+    margin-bottom: 0.3rem;
+  }
+  .reel__credit { color: var(--bone-dim); font-size: 0.68rem; }
+
+  /* MANIFESTO */
+  .manifesto {
+    padding: clamp(4rem, 10vh, 8rem) 0;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    border-top: 1px solid var(--ink-700);
+    border-bottom: 1px solid var(--ink-700);
+    position: relative;
+  }
+  .manifesto__copy {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
+    line-height: 1.35;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--bone);
+    font-variation-settings: "opsz" 72;
+    padding: 0 1rem;
+  }
+  .drop {
+    font-size: 1.3em;
+    font-weight: 500;
+    font-style: normal;
+    color: var(--brass);
+    line-height: 0.8;
+    float: left;
+    padding-right: 0.1em;
+    margin-top: 0.08em;
+    font-variation-settings: "opsz" 144;
+  }
+  .manifesto__sig {
+    margin-top: 2.5rem;
+    color: var(--bone-faint);
+    letter-spacing: 0.2em;
+  }
+
+  /* FOOTER */
+  .footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    padding: 3rem 0 2.5rem;
+    align-items: start;
+  }
+  .footer__col { display: flex; flex-direction: column; gap: 0.8rem; }
+  .footer__col--mid { text-align: center; }
+  .footer__col--mid :global(.social-icons) { justify-content: center; }
+  .footer__col--end { text-align: right; }
+  .footer__col--end :global(.social-icons) { justify-content: flex-end; }
+  .footer__label {
+    color: var(--bone-faint);
+    font-size: 0.62rem;
+  }
+  .footer__mail {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--bone);
+    border-bottom: 1px solid var(--bone-ghost);
+    transition: color var(--dur-fast) var(--ease);
+    align-self: center;
+  }
+  .footer__mail:hover { color: var(--brass); }
+  .footer__fine { color: var(--bone-faint); font-size: 0.62rem; line-height: 1.6; }
+
+  /* Animations */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.4); }
+  }
+
+  /* Responsive */
+  @media (max-width: 720px) {
+    .hero__title .line:nth-child(2) { padding-left: 1.5rem; }
+    .hero__actions { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .footer {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: left;
+    }
+    .footer__col--mid,
+    .footer__col--end { text-align: left; }
+    .footer__col--mid :global(.social-icons),
+    .footer__col--end :global(.social-icons) { justify-content: flex-start; }
+  }
+</style>
