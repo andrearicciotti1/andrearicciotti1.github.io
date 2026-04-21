@@ -4,10 +4,10 @@ import NavBar from "../components/NavBar.astro";
 import Marquee from "../components/Marquee.astro";
 
 const scenes = [
-  { title: "Between cuts",       tag: "Reel",       year: "2024",        note: "Editing reel — 90 seconds of rhythm, silence, and recut.", poster: "/assets/projects/nameless-ballad.png" },
-  { title: "Directing reel",     tag: "Reel",       year: "2024",        note: "Selected frames from Clark, Combattere, Showu — Kuni.",   poster: "/assets/projects/combattere.jpeg" },
-  { title: "Trailer studies",    tag: "Collection", year: "2019 — 2023", note: "Three years at Cit Studio. A selection of cuts.",          poster: "/assets/projects/altrimenti.jpg" },
-  { title: "B-roll & behind",    tag: "Photo",      year: "ongoing",     note: "On-set polaroids. Avid timelines. Notes from the bay.",     poster: "/assets/projects/pesci-piccoli-2.jpg" },
+  { title: "Editing reel",       tag: "Reel",       year: "2024",        note: "90 seconds of rhythm, silence, and recut.",                 poster: "/assets/projects/nameless-ballad.png", href: "/works" },
+  { title: "Directing reel",     tag: "Reel",       year: "2024",        note: "Selected frames from Clark, Combattere, Showu — Kuni.",      poster: "/assets/projects/combattere.jpeg",   href: "/works?role=Director", status: "watch" },
+  { title: "Trailer studies",    tag: "Collection", year: "2019 — 2023", note: "Three years at Cit Studio. A selection of cuts.",           poster: "/assets/projects/altrimenti.jpg",    href: "/works",                status: "watch" },
+  { title: "B-roll & behind",    tag: "Photo",      year: "ongoing",     note: "On-set polaroids. Avid timelines. Notes from the bay.",      poster: "/assets/projects/pesci-piccoli-2.jpg", href: "https://www.instagram.com/andrea_ricciotti1/", external: true, status: "open" },
 ];
 
 const writing = [
@@ -53,7 +53,13 @@ const elsewhere = [
 
     <div class="scenes__grid">
       {scenes.map((s, i) => (
-        <article class="scene" style={`--i:${i}`}>
+        <a
+          class="scene"
+          style={`--i:${i}`}
+          href={s.href}
+          target={s.external ? "_blank" : undefined}
+          rel={s.external ? "noopener" : undefined}
+        >
           <div class="scene__frame">
             <img src={s.poster} alt={s.title} loading="lazy" />
             <div class="scene__play" aria-hidden="true">
@@ -67,8 +73,11 @@ const elsewhere = [
           <div class="scene__foot">
             <h3 class="scene__title display">{s.title}</h3>
             <p class="scene__note">{s.note}</p>
+            <span class="scene__cta mono">
+              {s.external ? "Open ↗" : "View →"}
+            </span>
           </div>
-        </article>
+        </a>
       ))}
     </div>
   </section>
@@ -182,7 +191,22 @@ const elsewhere = [
     flex-direction: column;
     padding: 2rem 0;
     border-bottom: 1px solid var(--rule-soft);
+    color: var(--ink);
+    cursor: pointer;
+    transition: background var(--dur-fast) var(--ease);
   }
+  .scene:hover { background: var(--paper-dim); }
+  .scene:hover .scene__title { color: var(--hot); }
+  .scene__cta {
+    display: inline-block;
+    margin-top: 0.75rem;
+    color: var(--hot);
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: transform var(--dur-fast) var(--ease);
+  }
+  .scene:hover .scene__cta { transform: translateX(4px); }
   .scene:nth-child(odd)  { padding-right: clamp(0.5rem, 2vw, 1.5rem); border-right: 1px solid var(--rule-soft); padding-left: 0.25rem; }
   .scene:nth-child(even) { padding-left: clamp(0.5rem, 2vw, 1.5rem); padding-right: 0.25rem; }
   @media (max-width: 700px) {
