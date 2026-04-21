@@ -1,187 +1,210 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import NavBar from "../components/NavBar.astro";
-import SocialIcons from "../components/SocialIcons.astro";
+import Marquee from "../components/Marquee.astro";
 
 const scenes = [
-  { title: "Between cuts", tag: "Reel", year: "2024", note: "Editing reel — 90 seconds of rhythm, silence, and recut.", poster: "/assets/projects/nameless-ballad.jpg" },
-  { title: "Directing reel", tag: "Reel", year: "2024", note: "Selected frames from Clark, Combattere, and Showu - Kuni.", poster: "/assets/projects/combattere.jpg" },
-  { title: "Trailer studies", tag: "Collection", year: "2019 — 2023", note: "Three years at Cit Studio. A selection of trailer cuts.", poster: "/assets/projects/altrimenti.jpg" },
-  { title: "B-roll & behind", tag: "Photo", year: "ongoing", note: "On-set polaroids. Avid timelines. Notes from the cutting room.", poster: "/assets/projects/pesci-piccoli-2.jpg" },
+  { title: "Between cuts",       tag: "Reel",       year: "2024",        note: "Editing reel — 90 seconds of rhythm, silence, and recut.", poster: "/assets/projects/nameless-ballad.png" },
+  { title: "Directing reel",     tag: "Reel",       year: "2024",        note: "Selected frames from Clark, Combattere, Showu — Kuni.",   poster: "/assets/projects/combattere.jpeg" },
+  { title: "Trailer studies",    tag: "Collection", year: "2019 — 2023", note: "Three years at Cit Studio. A selection of cuts.",          poster: "/assets/projects/altrimenti.jpg" },
+  { title: "B-roll & behind",    tag: "Photo",      year: "ongoing",     note: "On-set polaroids. Avid timelines. Notes from the bay.",     poster: "/assets/projects/pesci-piccoli-2.jpg" },
 ];
 
 const writing = [
-  { title: "On assembly editing", excerpt: "What a first cut owes the director — and what it doesn't." },
-  { title: "The cut as writing", excerpt: "How rhythm becomes narrative, one frame at a time." },
+  { title: "On assembly editing",   excerpt: "What a first cut owes the director — and what it doesn't." },
+  { title: "The cut as writing",    excerpt: "How rhythm becomes narrative, one frame at a time." },
   { title: "Notes from Combattere", excerpt: "Directing a short about inheritance, silence, and footwork." },
+];
+
+const elsewhere = [
+  { k: "Letterboxd", v: "What I'm watching — diary, lists, ratings.", href: "https://letterboxd.com/" },
+  { k: "Spotify",    v: "Cutting-room playlists and soundtrack studies.", href: "https://open.spotify.com/user/1171026149" },
+  { k: "IMDb",       v: "Official filmography and credits.",               href: "https://www.imdb.com/it/name/nm10527696/" },
 ];
 ---
 
 <BaseLayout title="More — Andrea Ricciotti">
-  <div class="page">
-    <NavBar active="more" />
+  <NavBar active="more" />
 
-    <section class="intro">
-      <div class="intro__meta mono">
-        <span>More</span>
-        <span>—</span>
-        <span>Scenes, cuts, and other things</span>
-      </div>
-      <h1 class="intro__headline">
-        <span>Scenes</span>
-        <span>and</span>
-        <span>other things</span>
-        <span><em>I've edited</em>.</span>
-      </h1>
-      <p class="intro__lede">
-        Reels, side projects, fragments, notes from the cutting room —
-        work that doesn't fit the main filmography, but still matters.
-      </p>
-    </section>
+  <!-- HEAD -->
+  <section class="head">
+    <div class="head__top">
+      <span class="mono">§ 02 — Annexes</span>
+      <span class="mono">Scenes, reels, marginalia</span>
+    </div>
+    <h1 class="head__title display">
+      <span>Scenes</span>
+      <span>and</span>
+      <span>other things</span>
+      <span class="serif-italic hot">I've edited.</span>
+    </h1>
+    <p class="head__lede">
+      Reels, side projects, fragments, notes from the cutting room —
+      work that doesn't fit the main filmography but still matters.
+    </p>
+  </section>
 
-    <section class="scenes">
-      <div class="scenes__label mono">Reels & collections</div>
-      <div class="scenes__grid">
-        {scenes.map((s, i) => (
-          <article class="scene" style={`--i:${i}`}>
-            <div class="scene__frame">
-              <img src={s.poster} alt={s.title} loading="lazy" />
-              <div class="scene__play" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              </div>
-              <div class="scene__tag mono">{s.tag}</div>
+  <!-- SCENES -->
+  <section class="scenes">
+    <header class="sec__head">
+      <span class="mono">§ 02.1 — Reels & collections</span>
+      <h2 class="display sec__title">Reels.</h2>
+    </header>
+
+    <div class="scenes__grid">
+      {scenes.map((s, i) => (
+        <article class="scene" style={`--i:${i}`}>
+          <div class="scene__frame">
+            <img src={s.poster} alt={s.title} loading="lazy" />
+            <div class="scene__play" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M7 5v14l12-7z"/></svg>
             </div>
-            <div class="scene__meta">
-              <div class="mono scene__year">{s.year}</div>
-              <h3 class="scene__title">{s.title}</h3>
-              <p class="scene__note">{s.note}</p>
+            <div class="scene__tag mono">{s.tag}</div>
+            <div class="scene__sticker">
+              <span class="mono scene__sticker-y">{s.year}</span>
             </div>
-          </article>
-        ))}
-      </div>
-    </section>
+          </div>
+          <div class="scene__foot">
+            <h3 class="scene__title display">{s.title}</h3>
+            <p class="scene__note">{s.note}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
 
-    <section class="notes">
-      <div class="notes__header">
-        <div class="mono notes__label">Cutting room notes</div>
-        <p class="notes__lede">
-          Short pieces on craft — drafts from the margin of the timeline.
-        </p>
-      </div>
-      <ol class="notes__list">
-        {writing.map((w, i) => (
-          <li class="note">
-            <div class="mono note__n">{String(i + 1).padStart(2, "0")}</div>
-            <div class="note__body">
-              <h3 class="note__title">{w.title}</h3>
-              <p class="note__excerpt">{w.excerpt}</p>
-            </div>
-            <div class="mono note__status">Soon</div>
-          </li>
-        ))}
-      </ol>
-    </section>
+  <Marquee
+    items={["Pull quote", "B-roll", "Timecode", "Fades", "Cross-dissolve", "Hard cut", "Freeze"]}
+    speed={48}
+    invert={true}
+    separator="●"
+  />
 
-    <section class="etc">
-      <div class="etc__grid">
-        <a class="etc__card" href="https://letterboxd.com/" target="_blank" rel="noopener">
-          <div class="mono etc__k">Letterboxd</div>
-          <div class="etc__v">What I'm watching — diary, lists, ratings.</div>
-          <div class="etc__arrow">↗</div>
-        </a>
-        <a class="etc__card" href="https://open.spotify.com/user/1171026149" target="_blank" rel="noopener">
-          <div class="mono etc__k">Spotify</div>
-          <div class="etc__v">Cutting-room playlists and soundtrack studies.</div>
-          <div class="etc__arrow">↗</div>
-        </a>
-        <a class="etc__card" href="https://www.imdb.com/it/name/nm10527696/" target="_blank" rel="noopener">
-          <div class="mono etc__k">IMDb</div>
-          <div class="etc__v">Official filmography and credits.</div>
-          <div class="etc__arrow">↗</div>
-        </a>
-      </div>
-    </section>
+  <!-- NOTES -->
+  <section class="notes">
+    <header class="sec__head">
+      <span class="mono">§ 02.2 — Cutting-room notes</span>
+      <h2 class="display sec__title">Writing.</h2>
+    </header>
 
-    <section class="closing">
-      <div class="closing__sep"></div>
-      <h2 class="closing__title">
-        Looking for the filmography? <em><a href="/works">Head to Works.</a></em>
-      </h2>
-      <div class="closing__social"><SocialIcons size={18} /></div>
-      <div class="closing__fine mono">© {new Date().getFullYear()} · Andrea Ricciotti · Rome, IT</div>
-    </section>
-  </div>
+    <ol class="notes__list">
+      {writing.map((w, i) => (
+        <li class="note">
+          <div class="mono note__n">{String(i + 1).padStart(2, "0")}</div>
+          <div class="note__body">
+            <h3 class="note__title display">{w.title}</h3>
+            <p class="note__excerpt">{w.excerpt}</p>
+          </div>
+          <div class="mono note__status">Soon</div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- ELSEWHERE -->
+  <section class="etc">
+    <header class="sec__head">
+      <span class="mono">§ 02.3 — Elsewhere</span>
+      <h2 class="display sec__title">Off-cuts.</h2>
+    </header>
+
+    <div class="etc__grid">
+      {elsewhere.map((e) => (
+        <a href={e.href} target="_blank" rel="noopener" class="etc__card">
+          <span class="mono etc__k">{e.k}</span>
+          <span class="etc__v">{e.v}</span>
+          <span class="etc__arrow display">↗</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- CLOSE -->
+  <section class="close">
+    <h2 class="close__title display">
+      Looking for filmography? <span class="serif-italic hot"><a href="/works">Head to Works.</a></span>
+    </h2>
+    <div class="close__fine mono">© {new Date().getFullYear()} · Andrea Ricciotti · Rome, IT</div>
+  </section>
 </BaseLayout>
 
 <style>
-  .page { padding: 0 var(--gutter); max-width: 1600px; margin: 0 auto; }
-
-  .intro {
-    padding: clamp(3rem, 10vh, 6rem) 0 clamp(2rem, 5vh, 3.5rem);
-    max-width: 1100px;
+  /* HEAD */
+  .head {
+    padding: clamp(2rem, 4vw, 3rem) var(--gutter) clamp(1.5rem, 3vw, 2.5rem);
+    border-bottom: var(--rule-w) solid var(--rule);
   }
-  .intro__meta {
-    color: var(--brass);
-    margin-bottom: 2rem;
-    display: flex; gap: 0.75rem; flex-wrap: wrap;
+  .head__top {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px dashed var(--rule-soft);
+    margin-bottom: 1.5rem;
   }
-  .intro__headline {
-    font-family: var(--font-display);
-    font-size: clamp(2.4rem, 8vw, 6.5rem);
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-    font-weight: 400;
-    font-variation-settings: "opsz" 144;
-    color: var(--bone);
+  .head__title {
+    font-size: clamp(2.4rem, 7vw, 7rem);
+    line-height: 0.88;
+    color: var(--ink);
   }
-  .intro__headline span { display: inline-block; margin-right: 0.25em; }
-  .intro__headline em { font-style: italic; font-weight: 300; color: var(--brass); }
-  .intro__lede {
+  .head__title span { display: inline-block; margin-right: 0.22em; }
+  .head__title .serif-italic { text-transform: none; color: var(--hot); }
+  .head__lede {
     margin-top: 1.5rem;
-    font-family: var(--font-serif);
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
-    color: var(--bone-dim);
     max-width: 58ch;
-    line-height: 1.55;
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.5;
+    color: var(--ink-mute);
+  }
+
+  /* SECTION COMMON */
+  .sec__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: clamp(2.5rem, 5vw, 4rem) var(--gutter) 1rem;
+    border-bottom: 1px dashed var(--rule-soft);
+  }
+  .sec__title {
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    color: var(--ink);
+    line-height: 0.9;
   }
 
   /* SCENES */
-  .scenes {
-    padding: clamp(2rem, 5vh, 4rem) 0;
-    border-top: 1px solid var(--ink-700);
-  }
-  .scenes__label {
-    color: var(--brass);
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
-  }
   .scenes__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: clamp(1.5rem, 2.5vw, 2.5rem);
+    gap: 0;
+    padding: 0 var(--gutter) clamp(3rem, 5vw, 4rem);
   }
   @media (max-width: 700px) { .scenes__grid { grid-template-columns: 1fr; } }
-
-  .scene { display: flex; flex-direction: column; }
+  .scene {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .scene:nth-child(odd)  { padding-right: clamp(0.5rem, 2vw, 1.5rem); border-right: 1px solid var(--rule-soft); padding-left: 0.25rem; }
+  .scene:nth-child(even) { padding-left: clamp(0.5rem, 2vw, 1.5rem); padding-right: 0.25rem; }
+  @media (max-width: 700px) {
+    .scene:nth-child(odd) { border-right: 0; padding-right: 0; }
+    .scene:nth-child(even) { padding-left: 0; }
+  }
   .scene__frame {
     position: relative;
     aspect-ratio: 16 / 10;
+    border: var(--rule-w) solid var(--ink);
     overflow: hidden;
-    background: var(--ink-800);
-    border: 1px solid var(--ink-700);
-    transition: border-color var(--dur-med) var(--ease);
+    background: var(--ink);
+    margin-bottom: 1rem;
   }
-  .scene:hover .scene__frame { border-color: var(--brass-dim); }
   .scene__frame img {
     width: 100%; height: 100%;
     object-fit: cover;
-    filter: grayscale(0.35) contrast(1.02) brightness(0.82);
-    transition: filter var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
+    filter: grayscale(0.4) contrast(1.04);
+    transition: filter var(--dur-med) var(--ease), transform var(--dur-med) var(--ease);
   }
   .scene:hover .scene__frame img {
-    filter: grayscale(0) contrast(1.06) brightness(0.95);
+    filter: grayscale(0) contrast(1.08);
     transform: scale(1.04);
   }
   .scene__play {
@@ -189,193 +212,143 @@ const writing = [
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     width: 64px; height: 64px;
-    border: 1px solid var(--bone);
-    border-radius: 50%;
+    border: var(--rule-w) solid var(--paper);
+    background: rgba(10,10,10,0.55);
+    color: var(--paper);
     display: flex; align-items: center; justify-content: center;
-    color: var(--bone);
-    background: rgba(10,10,10,0.4);
-    backdrop-filter: blur(4px);
-    transition: all var(--dur-med) var(--ease);
+    transition: all var(--dur-fast) var(--ease);
   }
-  .scene:hover .scene__play {
-    border-color: var(--brass);
-    color: var(--brass);
-    transform: translate(-50%, -50%) scale(1.1);
-  }
-  .scene__play svg { margin-left: 2px; }
+  .scene:hover .scene__play { background: var(--hot); color: var(--ink); border-color: var(--ink); }
   .scene__tag {
     position: absolute;
-    top: 0.75rem; left: 0.75rem;
-    background: rgba(10,10,10,0.78);
-    color: var(--brass);
-    padding: 0.25rem 0.6rem;
+    top: 0.6rem; left: 0.6rem;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 0.22rem 0.55rem;
+    border: 1px solid var(--ink);
     font-size: 0.58rem;
-    letter-spacing: 0.18em;
-    border: 1px solid rgba(201,165,114,0.22);
-    backdrop-filter: blur(6px);
   }
-  .scene__meta { padding: 1.1rem 0 0; }
-  .scene__year {
-    color: var(--brass);
-    font-size: 0.62rem;
-    letter-spacing: 0.16em;
-    margin-bottom: 0.5rem;
+  .scene__sticker {
+    position: absolute;
+    top: 0.6rem; right: 0.6rem;
+    background: var(--hot);
+    color: var(--ink);
+    padding: 0.22rem 0.55rem;
+    border: 1px solid var(--ink);
   }
+  .scene__sticker-y { color: var(--ink); font-size: 0.58rem; }
+
   .scene__title {
-    font-family: var(--font-display);
-    font-size: clamp(1.2rem, 1.8vw, 1.6rem);
-    font-weight: 400;
-    line-height: 1.1;
-    color: var(--bone);
-    margin-bottom: 0.5rem;
-    font-variation-settings: "opsz" 48;
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+    color: var(--ink);
+    line-height: 1;
   }
   .scene__note {
-    font-family: var(--font-serif);
-    color: var(--bone-dim);
+    color: var(--ink-mute);
+    margin-top: 0.5rem;
     font-size: 0.95rem;
     line-height: 1.55;
+    max-width: 54ch;
   }
 
   /* NOTES */
-  .notes {
-    padding: clamp(3rem, 8vh, 6rem) 0;
-    border-top: 1px solid var(--ink-700);
+  .notes__list {
+    list-style: none;
+    padding: 0 var(--gutter) clamp(3rem, 5vw, 4rem);
+    margin: 0;
   }
-  .notes__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-  }
-  .notes__label {
-    color: var(--brass);
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-  .notes__lede {
-    font-family: var(--font-serif);
-    color: var(--bone-dim);
-    font-size: 0.95rem;
-    max-width: 40ch;
-    font-style: italic;
-  }
-  .notes__list { list-style: none; padding: 0; margin: 0; }
   .note {
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 2rem;
+    grid-template-columns: 3rem 1fr auto;
+    gap: 1.5rem;
     align-items: baseline;
-    padding: 1.5rem 0;
-    border-top: 1px solid var(--ink-700);
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--rule-soft);
     transition: background var(--dur-fast) var(--ease);
+    padding-left: 0.25rem; padding-right: 0.25rem;
   }
-  .note:last-child { border-bottom: 1px solid var(--ink-700); }
-  .note__n {
-    color: var(--brass);
-    font-size: 0.7rem;
-    letter-spacing: 0.16em;
-  }
+  .note:hover { background: var(--paper-dim); }
+  .note__n { color: var(--hot); }
   .note__title {
-    font-family: var(--font-display);
-    font-size: clamp(1.1rem, 1.6vw, 1.4rem);
-    font-weight: 400;
-    color: var(--bone);
-    margin-bottom: 0.3rem;
-    font-variation-settings: "opsz" 48;
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+    color: var(--ink);
+    line-height: 1.05;
   }
   .note__excerpt {
-    font-family: var(--font-serif);
-    color: var(--bone-dim);
+    color: var(--ink-mute);
     font-size: 0.95rem;
     line-height: 1.55;
+    margin-top: 0.3rem;
+    font-family: var(--font-serif);
     font-style: italic;
   }
   .note__status {
-    color: var(--bone-faint);
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
+    border: 1px solid var(--ink);
+    padding: 0.25rem 0.55rem;
+    color: var(--ink-faint);
+    font-size: 0.58rem;
     text-transform: uppercase;
-    border: 1px solid var(--ink-700);
-    padding: 0.3rem 0.6rem;
   }
   @media (max-width: 640px) {
-    .note { grid-template-columns: auto 1fr; }
-    .note__status { grid-column: 2; justify-self: start; margin-top: 0.5rem; }
+    .note { grid-template-columns: 2.5rem 1fr; }
+    .note__status { grid-column: 2; justify-self: start; }
   }
 
   /* ETC */
-  .etc {
-    padding: clamp(3rem, 8vh, 5rem) 0;
-    border-top: 1px solid var(--ink-700);
-  }
   .etc__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    border-top: 0;
+    border-bottom: var(--rule-w) solid var(--rule);
   }
-  @media (max-width: 700px) { .etc__grid { grid-template-columns: 1fr; } }
+  @media (max-width: 860px) { .etc__grid { grid-template-columns: 1fr; } }
   .etc__card {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1.75rem;
-    border: 1px solid var(--ink-700);
-    background: var(--ink-800);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 1rem;
+    padding: 2rem var(--gutter);
+    border-right: var(--rule-w) solid var(--rule);
+    border-top: var(--rule-w) solid var(--rule);
+    color: var(--ink);
     position: relative;
-    transition: all var(--dur-med) var(--ease);
+    min-height: 180px;
+    transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
   }
-  .etc__card:hover {
-    border-color: var(--brass);
-    transform: translateY(-3px);
+  .etc__card:last-child { border-right: 0; }
+  @media (max-width: 860px) {
+    .etc__card { border-right: 0; }
   }
-  .etc__k {
-    color: var(--brass);
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
+  .etc__card:hover { background: var(--ink); color: var(--paper); }
+  .etc__card:hover .etc__k { color: var(--hot); }
+  .etc__card:hover .etc__arrow { color: var(--hot); transform: translateX(4px) translateY(-4px); }
+  .etc__k { color: var(--hot); font-size: 0.65rem; }
   .etc__v {
-    font-family: var(--font-serif);
-    color: var(--bone);
-    font-size: 1rem;
-    line-height: 1.5;
+    font-family: var(--font-display);
+    font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+    text-transform: uppercase;
+    letter-spacing: -0.005em;
+    line-height: 1.05;
   }
   .etc__arrow {
-    position: absolute;
-    top: 1.25rem; right: 1.25rem;
-    color: var(--bone-faint);
-    font-family: var(--font-mono);
-    transition: color var(--dur-fast) var(--ease);
+    font-size: 2rem;
+    justify-self: end;
+    color: var(--ink);
+    transition: color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
   }
-  .etc__card:hover .etc__arrow { color: var(--brass); }
 
-  /* CLOSING */
-  .closing {
+  /* CLOSE */
+  .close {
+    padding: clamp(4rem, 8vw, 7rem) var(--gutter);
     text-align: center;
-    padding: clamp(5rem, 12vh, 9rem) 0 4rem;
-    border-top: 1px solid var(--ink-700);
   }
-  .closing__sep {
-    width: 1px; height: 60px;
-    background: var(--brass);
-    margin: 0 auto 2rem;
-  }
-  .closing__title {
-    font-family: var(--font-display);
-    font-size: clamp(1.6rem, 3.5vw, 2.6rem);
-    font-weight: 400;
-    line-height: 1.25;
-    letter-spacing: -0.02em;
-    color: var(--bone);
+  .close__title {
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    line-height: 1.1;
+    color: var(--ink);
     margin-bottom: 2rem;
   }
-  .closing__title em { font-style: italic; color: var(--brass); }
-  .closing__title a { color: inherit; border-bottom: 1px solid currentColor; }
-  .closing__social { display: flex; justify-content: center; margin-bottom: 3rem; }
-  .closing__social :global(.social-icons) { justify-content: center; }
-  .closing__fine { color: var(--bone-faint); font-size: 0.62rem; letter-spacing: 0.14em; }
+  .close__title .serif-italic { text-transform: none; }
+  .close__title a { border-bottom: 2px solid currentColor; }
+  .close__title a:hover { color: var(--ink); background: var(--hot); }
+  .close__fine { color: var(--ink-faint); font-size: 0.6rem; }
 </style>

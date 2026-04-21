@@ -1,0 +1,67 @@
+---
+export interface Props {
+  items: string[];
+  speed?: number;     // seconds per loop
+  invert?: boolean;   // light on dark
+  hot?: boolean;      // red-orange background
+  separator?: string; // glyph between items
+}
+const {
+  items,
+  speed = 40,
+  invert = false,
+  hot = false,
+  separator = "✦",
+} = Astro.props;
+
+const doubled = [...items, ...items];
+---
+
+<div class:list={["marquee", { "marquee--invert": invert, "marquee--hot": hot }]}>
+  <div class="marquee__track" style={`animation-duration:${speed}s`}>
+    {doubled.map((it) => (
+      <span class="marquee__item">
+        <span>{it}</span>
+        <span class="marquee__sep" aria-hidden="true">{separator}</span>
+      </span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .marquee {
+    overflow: hidden;
+    border-top: var(--rule-w) solid var(--rule);
+    border-bottom: var(--rule-w) solid var(--rule);
+    background: var(--paper);
+    padding: 0.85rem 0;
+  }
+  .marquee--invert { background: var(--ink); color: var(--paper); }
+  .marquee--hot    { background: var(--hot); color: var(--ink); border-color: var(--ink); }
+
+  .marquee__track {
+    display: inline-flex;
+    white-space: nowrap;
+    animation: marquee-x linear infinite;
+    will-change: transform;
+  }
+  .marquee__item {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    display: inline-flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding-right: 1.2rem;
+  }
+  .marquee__sep {
+    display: inline-block;
+    transform: translateY(-2px);
+    opacity: 0.6;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.7em;
+  }
+</style>

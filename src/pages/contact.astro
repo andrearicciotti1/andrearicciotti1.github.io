@@ -1,288 +1,330 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import NavBar from "../components/NavBar.astro";
-import SocialIcons from "../components/SocialIcons.astro";
+import Marquee from "../components/Marquee.astro";
 ---
 
 <BaseLayout title="Contact — Andrea Ricciotti">
-  <div class="page">
-    <NavBar active="contact" />
+  <NavBar active="contact" />
 
-    <section class="intro">
-      <div class="intro__meta mono">
-        <span>Get in touch</span>
-        <span>—</span>
-        <span>Open to commissions & collaborations</span>
+  <!-- HEAD -->
+  <section class="head">
+    <div class="head__top">
+      <span class="mono">§ 04 — Transmit</span>
+      <span class="mono"><span class="nav__pulse"></span> Accepting briefs</span>
+    </div>
+    <h1 class="head__title display">
+      <span>Send</span>
+      <span class="hot">the</span>
+      <span class="serif-italic">signal.</span>
+    </h1>
+    <p class="head__lede">
+      Features, series, docs, trailers, music videos. Drop a line with what
+      you're working on — I reply within 48 hours.
+    </p>
+  </section>
+
+  <!-- FORM + ASIDE -->
+  <section class="split">
+    <!-- FORM -->
+    <form
+      class="form"
+      action="https://formsubmit.co/andrearicciotti1@gmail.com"
+      method="POST"
+    >
+      <input type="hidden" name="_subject" value="New message from portfolio" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" />
+
+      <div class="form__row">
+        <label class="field">
+          <span class="mono field__k">01 / Name ✱</span>
+          <input name="name" required autocomplete="name" placeholder="Your name" />
+        </label>
+        <label class="field">
+          <span class="mono field__k">02 / Email ✱</span>
+          <input type="email" name="email" required autocomplete="email" placeholder="you@studio.com" />
+        </label>
       </div>
-      <h1 class="intro__headline">
-        <span>Let's</span>
-        <span><em>talk</em></span>
-        <span>about</span>
-        <span>the cut.</span>
-      </h1>
-      <p class="intro__lede">
-        Features, series, docs, trailers, music videos.
-        Drop a line with what you're working on — I'll get back within a couple of days.
-      </p>
-    </section>
 
-    <section class="split">
-      <form
-        class="form"
-        action="https://formsubmit.co/andrearicciotti1@gmail.com"
-        method="POST"
-      >
-        <input type="hidden" name="_subject" value="New message from portfolio" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" />
+      <label class="field">
+        <span class="mono field__k">03 / Project type</span>
+        <select name="project">
+          <option value="">— select —</option>
+          <option>Feature film</option>
+          <option>TV series</option>
+          <option>Documentary</option>
+          <option>Short film</option>
+          <option>Trailer</option>
+          <option>Music video</option>
+          <option>Other</option>
+        </select>
+      </label>
 
-        <div class="field">
-          <label class="mono label" for="name">Name <span>*</span></label>
-          <input id="name" name="name" required autocomplete="name" />
-        </div>
+      <label class="field">
+        <span class="mono field__k">04 / Message ✱</span>
+        <textarea name="message" rows="7" required placeholder="Scope, timeline, delivery format."></textarea>
+      </label>
 
-        <div class="field">
-          <label class="mono label" for="email">Email <span>*</span></label>
-          <input id="email" type="email" name="email" required autocomplete="email" />
-        </div>
+      <label class="field">
+        <span class="mono field__k">05 / Favourite movie <span class="opt">(tiebreaker)</span></span>
+        <input name="favourite_movie" placeholder="Optional — a tiebreaker." />
+      </label>
 
-        <div class="field">
-          <label class="mono label" for="project">Project type</label>
-          <select id="project" name="project">
-            <option>— Select —</option>
-            <option>Feature film</option>
-            <option>TV series</option>
-            <option>Documentary</option>
-            <option>Short film</option>
-            <option>Trailer</option>
-            <option>Music video</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label class="mono label" for="message">Message <span>*</span></label>
-          <textarea id="message" name="message" rows="6" required></textarea>
-        </div>
-
-        <div class="field">
-          <label class="mono label" for="fav">Favourite movie <span class="optional">(optional)</span></label>
-          <input id="fav" name="favourite_movie" placeholder="A tiebreaker. Maybe." />
-        </div>
-
-        <button type="submit" class="submit">
-          <span>Send message</span>
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M5 12h14M13 5l7 7-7 7"/>
-          </svg>
+      <div class="form__bottom">
+        <button type="submit" class="send">
+          <span class="display">Send</span>
+          <span class="send__arrow">→</span>
         </button>
+        <p class="mono form__fine">No tracking · No newsletter · Just a message.</p>
+      </div>
+    </form>
 
-        <p class="mono fine">No tracking. No newsletter. Just a message.</p>
-      </form>
+    <!-- ASIDE -->
+    <aside class="aside">
+      <div class="aside__block">
+        <div class="mono aside__k">§ — Direct</div>
+        <a class="aside__mail display" href="mailto:andrearicciotti1@gmail.com">
+          andrearicciotti1<span class="hot">@</span>gmail.com
+        </a>
+      </div>
 
-      <aside class="aside">
-        <div class="aside__block">
-          <div class="mono aside__label">Direct</div>
-          <a class="aside__mail" href="mailto:andrearicciotti1@gmail.com">
-            andrearicciotti1@gmail.com
-          </a>
-        </div>
-        <div class="aside__block">
-          <div class="mono aside__label">Based in</div>
-          <p class="aside__text">
-            Rome, IT — <span class="brass">available worldwide</span> for
-            remote cuts and travel-friendly productions.
-          </p>
-        </div>
-        <div class="aside__block">
-          <div class="mono aside__label">Response time</div>
-          <p class="aside__text">Usually within 48 hours.</p>
-        </div>
-        <div class="aside__block">
-          <div class="mono aside__label">Representation</div>
-          <p class="aside__text">Self-represented.</p>
-        </div>
-        <div class="aside__block">
-          <div class="mono aside__label">Elsewhere</div>
-          <SocialIcons size={18} />
-        </div>
-      </aside>
-    </section>
+      <div class="aside__block">
+        <div class="mono aside__k">§ — Based in</div>
+        <div class="aside__v display">Rome, <span class="serif-italic hot">IT.</span></div>
+        <div class="aside__note">Available worldwide for remote cuts and travel-friendly productions.</div>
+      </div>
 
-    <section class="closing">
-      <div class="closing__fine mono">© {new Date().getFullYear()} · Andrea Ricciotti · Rome, IT</div>
-    </section>
-  </div>
+      <div class="aside__block">
+        <div class="mono aside__k">§ — Reply within</div>
+        <div class="aside__v display">48 h<span class="hot">.</span></div>
+      </div>
+
+      <div class="aside__block">
+        <div class="mono aside__k">§ — Elsewhere</div>
+        <ul class="aside__list">
+          <li><a href="https://www.imdb.com/it/name/nm10527696/" target="_blank" rel="noopener">IMDb <span>↗</span></a></li>
+          <li><a href="https://www.linkedin.com/in/andrea-ricciotti-3a351b159/" target="_blank" rel="noopener">LinkedIn <span>↗</span></a></li>
+          <li><a href="https://www.instagram.com/andrea_ricciotti1/" target="_blank" rel="noopener">Instagram <span>↗</span></a></li>
+          <li><a href="https://open.spotify.com/user/1171026149" target="_blank" rel="noopener">Spotify <span>↗</span></a></li>
+        </ul>
+      </div>
+    </aside>
+  </section>
+
+  <Marquee
+    items={["Let's talk", "Send a brief", "Rome · IT", "andrearicciotti1@gmail.com", "Open 2026"]}
+    speed={38}
+    hot={true}
+    separator="●"
+  />
+
+  <footer class="foot mono">
+    © {new Date().getFullYear()} · Andrea Ricciotti · Rome, IT
+  </footer>
 </BaseLayout>
 
 <style>
-  .page { padding: 0 var(--gutter); max-width: 1600px; margin: 0 auto; }
-
-  .intro {
-    padding: clamp(3rem, 10vh, 6rem) 0 clamp(2rem, 5vh, 3.5rem);
-    max-width: 1100px;
+  /* HEAD */
+  .head {
+    padding: clamp(2rem, 4vw, 3rem) var(--gutter) clamp(1.5rem, 3vw, 2.5rem);
+    border-bottom: var(--rule-w) solid var(--rule);
   }
-  .intro__meta {
-    color: var(--brass);
-    margin-bottom: 2rem;
-    display: flex; gap: 0.75rem; flex-wrap: wrap;
+  .head__top {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px dashed var(--rule-soft);
+    margin-bottom: 1.5rem;
   }
-  .intro__headline {
-    font-family: var(--font-display);
-    font-size: clamp(2.4rem, 8vw, 6.5rem);
-    line-height: 0.95;
-    letter-spacing: -0.03em;
-    font-weight: 400;
-    font-variation-settings: "opsz" 144;
-    color: var(--bone);
+  .nav__pulse {
+    display: inline-block;
+    width: 7px; height: 7px;
+    background: var(--hot);
+    border-radius: 50%;
+    margin-right: 0.4rem;
+    vertical-align: 1px;
   }
-  .intro__headline span { display: inline-block; margin-right: 0.25em; }
-  .intro__headline em {
-    font-style: italic;
-    font-weight: 300;
-    color: var(--brass);
+  .head__title {
+    font-size: clamp(3rem, 10vw, 9rem);
+    line-height: 0.88;
+    color: var(--ink);
   }
-  .intro__lede {
+  .head__title span { display: inline-block; margin-right: 0.2em; }
+  .head__title .hot { color: var(--hot); }
+  .head__title .serif-italic { text-transform: none; }
+  .head__lede {
     margin-top: 1.5rem;
-    font-family: var(--font-serif);
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
-    color: var(--bone-dim);
     max-width: 58ch;
-    line-height: 1.55;
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.5;
+    color: var(--ink-mute);
   }
 
+  /* SPLIT */
   .split {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: clamp(2rem, 5vw, 5rem);
-    padding: clamp(2rem, 5vh, 4rem) 0 5rem;
-    border-top: 1px solid var(--ink-700);
+    grid-template-columns: 2fr 1fr;
+    border-bottom: var(--rule-w) solid var(--rule);
   }
-  @media (max-width: 860px) {
-    .split { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
 
   /* FORM */
   .form {
+    padding: clamp(2rem, 4vw, 3rem) var(--gutter);
+    border-right: var(--rule-w) solid var(--rule);
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.3rem;
   }
-  .field { display: flex; flex-direction: column; gap: 0.55rem; }
-  .label {
-    color: var(--bone-faint);
-    font-size: 0.62rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+  @media (max-width: 900px) { .form { border-right: 0; border-bottom: var(--rule-w) solid var(--rule); } }
+
+  .form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.3rem;
   }
-  .label span { color: var(--brass); }
-  .label .optional { color: var(--bone-faint); letter-spacing: 0.1em; }
+  @media (max-width: 560px) { .form__row { grid-template-columns: 1fr; } }
+
+  .field { display: flex; flex-direction: column; gap: 0.35rem; }
+  .field__k {
+    color: var(--ink-faint);
+    font-size: 0.6rem;
+  }
+  .field__k .opt { color: var(--ink-faint); opacity: 0.6; }
 
   .form input,
   .form select,
   .form textarea {
     background: transparent;
     border: 0;
-    border-bottom: 1px solid var(--ink-700);
-    padding: 0.75rem 0;
-    color: var(--bone);
-    font-family: var(--font-serif);
+    border-bottom: var(--rule-w) solid var(--ink);
+    padding: 0.65rem 0;
+    font-family: var(--font-body);
     font-size: 1.05rem;
-    transition: border-color var(--dur-fast) var(--ease);
+    color: var(--ink);
+    transition: border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+  }
+  .form input::placeholder,
+  .form textarea::placeholder {
+    color: var(--ink-faint);
+    font-family: var(--font-serif);
+    font-style: italic;
   }
   .form textarea {
     resize: vertical;
-    min-height: 140px;
-    line-height: 1.55;
+    line-height: 1.5;
+    min-height: 160px;
+    border: var(--rule-w) solid var(--ink);
+    padding: 0.85rem 1rem;
   }
   .form input:focus,
-  .form select:focus,
-  .form textarea:focus {
+  .form textarea:focus,
+  .form select:focus {
     outline: none;
-    border-color: var(--brass);
+    border-color: var(--hot);
+    background: var(--paper-dim);
   }
   .form select {
     appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%23c9a572' stroke-width='1.5'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8' fill='none' stroke='%23ff3b00' stroke-width='1.8'><path d='M1 1l6 6 6-6'/></svg>");
     background-repeat: no-repeat;
-    background-position: right 0.5rem center;
-    padding-right: 1.5rem;
+    background-position: right 0.3rem center;
+    padding-right: 1.6rem;
+    cursor: pointer;
   }
-  .form select option { background: var(--ink-900); }
+  .form select option { background: var(--paper); color: var(--ink); }
 
   .hp { position: absolute; left: -9999px; opacity: 0; }
 
-  .submit {
-    align-self: flex-start;
+  .form__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .send {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 1rem 1.75rem;
-    background: transparent;
-    border: 1px solid var(--brass);
-    color: var(--brass);
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.18em;
+    padding: 0.9rem 1.75rem;
+    background: var(--hot);
+    color: var(--ink);
+    border: var(--rule-w) solid var(--ink);
+    font-size: 1.1rem;
     text-transform: uppercase;
     cursor: pointer;
     transition: all var(--dur-fast) var(--ease);
-    margin-top: 0.5rem;
   }
-  .submit:hover {
-    background: var(--brass);
-    color: var(--ink-900);
-  }
-  .submit svg { transition: transform var(--dur-fast) var(--ease); }
-  .submit:hover svg { transform: translateX(4px); }
-
-  .fine {
-    color: var(--bone-faint);
-    font-size: 0.6rem;
-    letter-spacing: 0.14em;
-  }
+  .send:hover { background: var(--ink); color: var(--hot); }
+  .send__arrow { transition: transform var(--dur-fast) var(--ease); }
+  .send:hover .send__arrow { transform: translateX(4px); }
+  .form__fine { color: var(--ink-faint); font-size: 0.58rem; }
 
   /* ASIDE */
   .aside {
+    padding: clamp(2rem, 4vw, 3rem) var(--gutter);
+    background: var(--paper-dim);
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    padding-left: clamp(0rem, 3vw, 2rem);
-    border-left: 1px solid var(--ink-700);
   }
-  @media (max-width: 860px) {
-    .aside { border-left: 0; padding-left: 0; border-top: 1px solid var(--ink-700); padding-top: 2rem; }
-  }
-  .aside__block { display: flex; flex-direction: column; gap: 0.55rem; }
-  .aside__label {
-    color: var(--bone-faint);
-    font-size: 0.6rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-  }
+  .aside__block { display: flex; flex-direction: column; gap: 0.5rem; padding-bottom: 1.3rem; border-bottom: 1px dashed var(--rule-soft); }
+  .aside__block:last-child { border-bottom: 0; padding-bottom: 0; }
+  .aside__k { color: var(--hot); font-size: 0.6rem; }
   .aside__mail {
-    font-family: var(--font-serif);
-    font-size: 1.2rem;
-    color: var(--bone);
-    border-bottom: 1px solid var(--bone-ghost);
-    padding-bottom: 4px;
-    align-self: flex-start;
-    transition: all var(--dur-fast) var(--ease);
+    font-size: clamp(1.4rem, 2.6vw, 2rem);
+    color: var(--ink);
+    line-height: 1;
+    transition: color var(--dur-fast) var(--ease);
+    letter-spacing: -0.01em;
   }
-  .aside__mail:hover { color: var(--brass); border-color: var(--brass); }
-  .aside__text {
-    font-family: var(--font-serif);
-    color: var(--bone-dim);
-    line-height: 1.55;
-    font-size: 0.95rem;
+  .aside__mail:hover { color: var(--hot); }
+  .aside__mail .hot { color: var(--hot); }
+  .aside__v {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    line-height: 1;
+    color: var(--ink);
   }
-  .brass { color: var(--brass); }
+  .aside__v .hot { color: var(--hot); }
+  .aside__v .serif-italic { text-transform: none; }
+  .aside__note {
+    color: var(--ink-mute);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    max-width: 28ch;
+  }
+  .aside__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .aside__list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--rule-soft);
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    transition: color var(--dur-fast) var(--ease), padding var(--dur-fast) var(--ease);
+  }
+  .aside__list a:hover { color: var(--hot); padding-left: 0.4rem; }
+  .aside__list span {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--ink-faint);
+  }
 
-  .closing {
+  /* FOOT */
+  .foot {
     text-align: center;
-    padding: 3rem 0 4rem;
-    border-top: 1px solid var(--ink-700);
+    padding: 2.5rem var(--gutter);
+    color: var(--ink-faint);
+    font-size: 0.6rem;
   }
-  .closing__fine { color: var(--bone-faint); font-size: 0.62rem; letter-spacing: 0.14em; }
 </style>
