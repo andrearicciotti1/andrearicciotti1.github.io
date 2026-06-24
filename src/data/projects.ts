@@ -9,6 +9,7 @@ export interface Project {
   platform?: string;
   cover: string;
   featured?: boolean;
+  link?: string;
 }
 
 export const projects: Project[] = [
@@ -163,5 +164,16 @@ export const projects: Project[] = [
     category: "TV Movie",
     platform: "Rai Play",
     cover: "/assets/projects/puccini.jpg",
+  },
+  {
+    n: 18,
+    title: "Kuni — She",
+    roles: ["Director", "Editor"],
+    credit: "Director · Editor",
+    category: "Music Video",
+    platform: "YouTube",
+    cover: "/assets/projects/kuni-she.jpg",
+    featured: true,
+    link: "https://www.youtube.com/watch?v=0OCUOAB6hCo",
   },
 ];
