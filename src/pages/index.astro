@@ -36,23 +36,6 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
           <span class="serif-italic role-ital">&amp;</span>
           Editor
         </h2>
-      </div>
-
-      <div class="hero__copy">
-        <p class="hero__lede">
-          I cut stories for cinema and streaming, and direct short-form work
-          about memory, rupture, and the quiet moments between.
-        </p>
-        <p class="hero__lede hero__lede--dim">
-          <span class="serif-italic">Selected credits —</span>
-          Pesci Piccoli (Prime Video), Hanno Ucciso l'Uomo Ragno (Sky),
-          Benetton Formula (Sky), Combattere, Clark.
-        </p>
-        <p class="hero__lede hero__lede--dim">
-          <span class="serif-italic">Now shooting —</span>
-          <span class="hot">Il Primo della Classe</span>, for One More Pictures
-          and Rai Cinema, winner of "La Realtà che Non Esiste" Vol. 8.
-        </p>
         <div class="hero__cta">
           <a href="/works" class="btn btn--hot">
             <span>View the index</span>
@@ -60,6 +43,11 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
           </a>
           <a href="/contact" class="btn btn--ghost">Send a brief</a>
         </div>
+      </div>
+
+      <div class="hero__photo">
+        <img src="/assets/ar-set-1.jpg" alt="Andrea Ricciotti on set" />
+        <div class="hero__photo-caption mono">On set · Il Primo della Classe · 2026</div>
       </div>
     </div>
   </section>
@@ -96,53 +84,6 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
     </div>
   </section>
 
-  <!-- FEATURED REEL: asymmetric slab layout -->
-  <section class="reel">
-    <header class="reel__header">
-      <div class="reel__label">
-        <span class="mono">§ 02 —</span>
-        <h3 class="display">Selected Reel</h3>
-      </div>
-      <a href="/works" class="reel__all">All works ({projects.length}) →</a>
-    </header>
-
-    <div class="reel__grid">
-      {featured.map((p, i) => (
-        <a href="/works" class="slate" style={`--i:${i}`} data-idx={String(i+1).padStart(2,"0")}>
-          <div class="slate__frame">
-            <img src={p.cover} alt={p.title} loading="lazy" />
-            <div class="slate__ticker mono">
-              <span>◉ REC</span>
-              <span class="blink">●</span>
-              <span>{String(p.n).padStart(3,"0")}</span>
-            </div>
-          </div>
-          <div class="slate__foot">
-            <div class="slate__row">
-              <span class="mono">{p.category}{p.platform ? " / " + p.platform : ""}</span>
-              <span class="mono">N°{String(p.n).padStart(2,"0")}</span>
-            </div>
-            <h4 class="slate__title display">{p.title}</h4>
-            <div class="slate__credit mono">{p.credit}</div>
-          </div>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <!-- MANIFESTO: oversized type -->
-  <section class="manifesto">
-    <div class="mono manifesto__label">§ 03 — Manifesto</div>
-    <blockquote class="manifesto__q">
-      <span class="hot">"</span>The edit is where the film becomes
-      <span class="serif-italic">itself</span> — where rhythm meets silence,
-      and the director's <span class="serif-italic">instinct</span> meets
-      the cutter's <span class="serif-italic">patience</span>. I work both
-      sides of that room.<span class="hot">"</span>
-    </blockquote>
-    <div class="manifesto__sig mono">— A.R. / Rome / Cutting Room 04</div>
-  </section>
-
   <!-- MARQUEE 2 -->
   <Marquee
     items={["Netflix", "Prime Video", "Sky", "Rai Play", "Cinema", "Punx Film", "Cit Studio"]}
@@ -175,7 +116,6 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
         <div class="mono foot__label">§ — Nav</div>
         <ul class="foot__list">
           <li><a href="/works">Works →</a></li>
-          <li><a href="/more">More →</a></li>
           <li><a href="/bio">Bio →</a></li>
           <li><a href="/contact">Contact →</a></li>
         </ul>
@@ -188,6 +128,8 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
     </div>
 
     <div class="foot__mega display" aria-hidden="true">A/R — 2026</div>
+    <!-- RICC88 -->
+    <div class="ricc88" aria-hidden="true" title="RICC88">RICC88</div>
   </footer>
 </BaseLayout>
 
@@ -244,19 +186,36 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
     margin-right: 0.1em;
   }
 
-  .hero__copy { max-width: 62ch; }
-  .hero__lede {
-    font-size: clamp(1.15rem, 1.6vw, 1.4rem);
-    line-height: 1.5;
-    color: var(--ink);
-    margin-bottom: 1rem;
-  }
-  .hero__lede--dim { color: var(--ink-mute); font-size: 1rem; }
   .hero__cta {
     display: flex;
     gap: 0.75rem;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     flex-wrap: wrap;
+  }
+  .hero__photo {
+    position: relative;
+    border: var(--rule-w) solid var(--ink);
+    overflow: hidden;
+    align-self: stretch;
+    min-height: 340px;
+  }
+  .hero__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+    filter: grayscale(0.15) contrast(1.05);
+  }
+  .hero__photo-caption {
+    position: absolute;
+    bottom: 0.6rem;
+    left: 0.6rem;
+    font-size: 0.58rem;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 0.22rem 0.55rem;
+    border: 1px solid var(--ink);
   }
   .btn {
     display: inline-flex;
@@ -470,5 +429,18 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
     margin: 1.5rem -0.03em -0.12em;
     white-space: nowrap;
     letter-spacing: -0.03em;
+  }
+
+  /* easter egg */
+  .ricc88 {
+    position: absolute;
+    bottom: 1.2rem;
+    right: var(--gutter);
+    font-family: var(--font-mono);
+    font-size: 0.5rem;
+    letter-spacing: 0.15em;
+    color: rgba(236, 230, 216, 0.06);
+    pointer-events: none;
+    user-select: none;
   }
 </style>
