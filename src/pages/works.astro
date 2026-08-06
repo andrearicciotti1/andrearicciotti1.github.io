@@ -20,7 +20,7 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
       <span class="mono">{totalCount} entries · 2019 — 2026</span>
     </div>
     <h1 class="head__title display">
-      <span>Works /</span>
+      <span>Works</span>
       <span class="serif-italic head__it">the index.</span>
     </h1>
     <p class="head__lede">
@@ -54,9 +54,9 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
     <div class="index__cols mono" aria-hidden="true">
       <span>N°</span>
       <span>Title</span>
-      <span>Format</span>
-      <span>Platform</span>
       <span>Credit</span>
+      <span>Platform</span>
+      <span>Format</span>
       <span class="ta-r">View</span>
     </div>
 
@@ -69,11 +69,10 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
           <div class="row__cell row__n mono">{String(p.n).padStart(2,"0")}</div>
           <div class="row__cell row__title">
             <span class="row__t display">{p.title}</span>
-            <span class="row__roles mono">{p.roles.join(" · ")}</span>
           </div>
-          <div class="row__cell row__cat mono">{p.category}</div>
+          <div class="row__cell row__credit">{p.credit}</div>
           <div class="row__cell row__plat mono">{p.platform || "—"}</div>
-          <div class="row__cell row__credit mono">{p.credit}</div>
+          <div class="row__cell row__cat mono">{p.category}</div>
           <div class="row__cell row__view mono">{p.link ? "↗" : "→"}</div>
           <div class="row__preview" aria-hidden="true">
             <img src={p.cover} alt="" loading="lazy" />
@@ -184,7 +183,7 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
   }
   .index__cols {
     display: grid;
-    grid-template-columns: 3rem 2.4fr 1.2fr 1fr 1.4fr 2rem;
+    grid-template-columns: 3rem 2.4fr 1.6fr 1fr 1.2fr 2rem;
     gap: 1rem;
     padding: 0.7rem var(--gutter);
     color: var(--ink-faint);
@@ -198,7 +197,7 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
 
   .row {
     display: grid;
-    grid-template-columns: 3rem 2.4fr 1.2fr 1fr 1.4fr 2rem;
+    grid-template-columns: 3rem 2.4fr 1.6fr 1fr 1.2fr 2rem;
     gap: 1rem;
     align-items: center;
     padding: 1rem var(--gutter);
@@ -225,8 +224,16 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
     color: var(--ink);
     transition: color var(--dur-fast) var(--ease);
   }
-  .row__roles { color: var(--hot); font-size: 0.6rem; }
-  .row__cat, .row__plat, .row__credit { color: var(--ink-mute); }
+  .row__credit {
+    font-family: var(--font-display);
+    font-size: clamp(0.85rem, 1.2vw, 1.1rem);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .row:hover .row__credit { color: var(--paper); opacity: 1; }
+  .row__cat, .row__plat { color: var(--ink-mute); }
   .row__view {
     text-align: right;
     font-family: var(--font-display);
@@ -262,13 +269,17 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
       grid-template-columns: 3rem 1fr 2rem;
       row-gap: 0.3rem;
     }
-    .row__cat, .row__plat, .row__credit {
+    .row__credit {
+      grid-column: 2 / 3;
+      font-size: 0.75rem;
+      order: 2;
+    }
+    .row__cat, .row__plat {
       grid-column: 2 / 3;
       font-size: 0.6rem;
     }
-    .row__cat { order: 2; }
+    .row__cat { order: 4; }
     .row__plat { order: 3; }
-    .row__credit { order: 4; }
   }
 
   /* CLOSE */
