@@ -19,7 +19,7 @@ export const projects: Project[] = [
     roles: ["Editor"],
     credit: "Editor",
     category: "Feature Film",
-    cover: "/assets/projects/nameless-ballad.webp",
+    cover: "/assets/projects/nameless-ballad.jpg",
     featured: true,
   },
   {
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     roles: ["Director"],
     credit: "Director",
     category: "Short Film",
-    cover: "/assets/projects/clark.png",
+    cover: "/assets/projects/clark.jpg",
     featured: true,
   },
   {
@@ -190,7 +190,7 @@ export const projects: Project[] = [
     roles: ["Director"],
     credit: "Director",
     category: "Commercial",
-    cover: "/assets/projects/clark.png",
+    cover: "/assets/projects/clark.jpg",
     link: "https://jadehosting.app/",
   },
   {
