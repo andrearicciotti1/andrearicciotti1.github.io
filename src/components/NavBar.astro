@@ -1,15 +1,14 @@
 ---
 export interface Props {
-  active?: "index" | "works" | "more" | "bio" | "contact";
+  active?: "index" | "works" | "bio" | "contact";
 }
 const { active = "index" } = Astro.props;
 
 const links = [
   { key: "index",   label: "Index",   href: "/",        n: "00" },
   { key: "works",   label: "Works",   href: "/works",   n: "01" },
-  { key: "more",    label: "More",    href: "/more",    n: "02" },
-  { key: "bio",     label: "Bio",     href: "/bio",     n: "03" },
-  { key: "contact", label: "Contact", href: "/contact", n: "04" },
+  { key: "bio",     label: "Bio",     href: "/bio",     n: "02" },
+  { key: "contact", label: "Contact", href: "/contact", n: "03" },
 ];
 ---
 
