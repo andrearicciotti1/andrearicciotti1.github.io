@@ -225,7 +225,7 @@ export const projects: Project[] = [
   {
     n: 20,
     slug: "jade-spot",
-    title: "Jade — Spot",
+    title: "Jade",
     roles: ["Director"],
     credit: "Director",
     category: "Commercial",
