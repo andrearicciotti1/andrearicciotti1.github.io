@@ -250,7 +250,7 @@ export const projects: Project[] = [
     roles: ["Editor"],
     credit: "Trailer Editor",
     category: "Short Film",
-    cover: "/assets/projects/combattere.jpeg",
+    cover: "/assets/projects/lbc2.jpg",
     video: "https://vimeo.com/1019853117",
   },
   {
@@ -261,7 +261,7 @@ export const projects: Project[] = [
     credit: "Trailer Editor",
     category: "Short Film",
     platform: "Rai Play",
-    cover: "/assets/projects/clark.jpg",
+    cover: "/assets/projects/nostos-2.jpeg",
     video: "https://www.youtube.com/watch?v=iVdX6LQLC1I",
   },
   {
