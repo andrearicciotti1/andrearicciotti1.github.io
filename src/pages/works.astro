@@ -63,9 +63,7 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
     <ul class="index__list">
       {projects.map((p) => (
         <li class="row" data-roles={p.roles.join(",")}>
-          {p.link ? (
-            <a class="row__link" href={p.link} target="_blank" rel="noopener" aria-label={`Open ${p.title}`}></a>
-          ) : null}
+          <a class="row__link" href={`/works/${p.slug}`} aria-label={p.title}></a>
           <div class="row__cell row__n mono">{String(p.n).padStart(2,"0")}</div>
           <div class="row__cell row__title">
             <span class="row__t display">{p.title}</span>
@@ -73,7 +71,7 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
           <div class="row__cell row__credit">{p.credit}</div>
           <div class="row__cell row__plat mono">{p.platform || "—"}</div>
           <div class="row__cell row__cat mono">{p.category}</div>
-          <div class="row__cell row__view mono">{p.link ? "↗" : "→"}</div>
+          <div class="row__cell row__view mono">→</div>
           <div class="row__preview" aria-hidden="true">
             <img src={p.cover} alt="" loading="lazy" />
           </div>
