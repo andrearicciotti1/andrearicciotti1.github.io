@@ -1,4 +1,0 @@
-# Workflow disabled — GitHub Pages now served statically from gh-pages branch
-name: Disabled
-on: []
-jobs: {}
