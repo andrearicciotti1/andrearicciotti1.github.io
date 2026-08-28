@@ -8,20 +8,20 @@ const timeline = [
   { year: "2016", title: "First steps into directing", body: "Claudio Di Biagio's course La regia e l'idea at Artithesi." },
   { year: "2017", title: "Directorial debut",        body: "Web series Love: Edit, produced by Artithesi and ImageHunters." },
   { year: "2018", title: "SIAE SILLUMINA grant",     body: "Directed CLARK — a short film; a turning point." },
-  { year: "2019 — 2023", title: "Trailer cutter",    body: "Cut trailers for Cit Studio." },
+  { year: "2019 — 2023", title: "Trailer",             body: "Cut trailers for Cit Studio." },
   { year: "2019 — 2021", title: "Assistant editor & AD", body: "Bentornato Presidente, Permette Alberto Sordi?, Il Cacciatore S3, Ai Confini del Male." },
   { year: "2021 — 2023", title: "Assembly editor",   body: "Altrimenti ci Arrabbiamo, The Bad Guy, Shake." },
   { year: "2023 — 2024", title: "Lead editor",       body: "Pesci Piccoli (Prime Video), Hanno Ucciso l'Uomo Ragno (Sky)." },
   { year: "2024", title: "Combattere",               body: "Latest directorial work, produced by PunxFilm. Wrapped post in January." },
-  { year: "2025 — now",  title: "Current",           body: "Editing Pesci Piccoli S2 and the documentary Benetton Formula." },
-  { year: "2026", title: "Il Primo della Classe",    body: "Won the 8th edition of \"La Realtà che Non Esiste\" — now in production with One More Pictures and Rai Cinema. Written and directed, starring Samuele Carrin." },
+  { year: "2025 — now",  title: "Current",           body: "Editing Pesci Piccoli S2 and the documentary Benetton Formula. Edited Francesco Zampaglion's latest film, including its premiere in London." },
+  { year: "2026", title: "Il Primo della Classe",    body: "Won the 8th edition of \"La Realtà che Non Esiste\" — in production with One More Pictures and Rai Cinema. Written and directed, starring Samuele Carrin. Selected for Venice." },
 ];
 
 const facts = [
   { k: "Based in",  v: "Rome, IT" },
   { k: "Languages", v: "Italian · English" },
   { k: "Experience",v: "10+ years" },
-  { k: "Tools",     v: "Avid · Premiere · DaVinci" },
+  { k: "Tools",     v: "Avid · Premiere · DaVinci · After Effects · Photoshop · Lightroom · Affinity · Mnemonica · Frame.io · Notion · Miro" },
   { k: "Rep.",      v: "Self-represented" },
   { k: "Status",    v: "Open to commissions" },
 ];
@@ -116,17 +116,17 @@ const facts = [
         produced by PunxFilm — wrapped post-production in January 2024.
         Most recently, I completed <span class="serif-italic">Pesci Piccoli S2</span>
         and the documentary <span class="serif-italic">Benetton Formula</span>.
+        I also edited Francesco Zampaglion's latest feature film, which premiered in London.
+        In 2026, I won the 8th edition of <span class="serif-italic">La Realtà che Non Esiste</span>
+        with <span class="serif-italic">Il Primo della Classe</span> — now in production
+        with One More Pictures and Rai Cinema, and selected for Venice.
       </p>
     </div>
   </section>
 
   <!-- PHOTOS -->
   <section class="photos">
-    <div class="photos__grid">
-      <div class="photos__item photos__item--wide">
-        <img src="/assets/ar-set-1.jpg" alt="Andrea Ricciotti on set" loading="lazy" />
-        <div class="photos__cap mono">On set · Il Primo della Classe · 2026</div>
-      </div>
+    <div class="photos__grid photos__grid--two">
       <div class="photos__item">
         <img src="/assets/ar-02405.jpg" alt="Andrea Ricciotti" loading="lazy" />
       </div>
@@ -366,9 +366,11 @@ const facts = [
     grid-template-columns: 2fr 1fr 1fr;
     gap: 0;
   }
+  .photos__grid--two {
+    grid-template-columns: 1fr 1fr;
+  }
   @media (max-width: 700px) {
     .photos__grid { grid-template-columns: 1fr 1fr; }
-    .photos__item--wide { grid-column: 1 / -1; }
   }
   .photos__item {
     position: relative;
@@ -377,7 +379,6 @@ const facts = [
     border-right: var(--rule-w) solid var(--rule);
     background: var(--ink);
   }
-  .photos__item--wide { aspect-ratio: 16 / 10; }
   .photos__item:last-child { border-right: 0; }
   .photos__item img {
     width: 100%; height: 100%;
