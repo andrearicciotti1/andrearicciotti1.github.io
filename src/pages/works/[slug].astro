@@ -1,0 +1,282 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import NavBar from "../../components/NavBar.astro";
+import { projects, type Project } from "../../data/projects";
+
+export function getStaticPaths() {
+  return projects.map((p) => ({
+    params: { slug: p.slug },
+    props: { project: p },
+  }));
+}
+
+interface Props { project: Project }
+const { project: p } = Astro.props;
+
+function getEmbedUrl(url: string): string | null {
+  const yt = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+  if (yt) return `https://www.youtube-nocookie.com/embed/${yt[1]}?rel=0&modestbranding=1`;
+  const vm = url.match(/vimeo\.com\/(\d+)/);
+  if (vm) return `https://player.vimeo.com/video/${vm[1]}?dnt=1`;
+  return null;
+}
+
+const embedUrl = p.video ? getEmbedUrl(p.video) : null;
+const n = String(p.n).padStart(2, "0");
+const prev = projects[p.n - 2] ?? null;
+const next = projects[p.n] ?? null;
+---
+
+<BaseLayout title={`${p.title} — Andrea Ricciotti`}>
+  <NavBar active="works" />
+
+  <!-- HEAD -->
+  <section class="head">
+    <div class="head__top">
+      <a href="/works" class="mono back">← Works</a>
+      <span class="mono head__n">N° {n}</span>
+    </div>
+    <h1 class="head__title display">{p.title}</h1>
+    <p class="head__credit">{p.credit}</p>
+    <div class="head__meta mono">
+      <span>{p.category}</span>
+      {p.platform && <span>· {p.platform}</span>}
+      {p.roles.map((r) => <span class="role">{r}</span>)}
+    </div>
+  </section>
+
+  <!-- PLAYER / COVER -->
+  {embedUrl ? (
+    <section class="player">
+      <div class="player__wrap">
+        <iframe
+          src={embedUrl}
+          title={p.title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+    </section>
+  ) : (
+    <section class="cover">
+      <div class="cover__wrap">
+        <img src={p.cover} alt={p.title} />
+        {!p.video && !p.link && (
+          <div class="cover__soon mono">Coming soon</div>
+        )}
+      </div>
+    </section>
+  )}
+
+  <!-- EXTERNAL LINK -->
+  {(p.link || p.video) && (
+    <section class="actions">
+      {p.link && (
+        <a href={p.link} target="_blank" rel="noopener" class="btn btn--hot">
+          <span>View externally</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      )}
+      {p.video && (
+        <a href={p.video} target="_blank" rel="noopener" class="btn btn--outline">
+          <span>Open on {p.video.includes("vimeo") ? "Vimeo" : "YouTube"}</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      )}
+      <a href="/works" class="btn btn--ghost">← All works</a>
+    </section>
+  )}
+  {!p.link && !p.video && (
+    <section class="actions">
+      <a href="/works" class="btn btn--ghost">← All works</a>
+    </section>
+  )}
+
+  <!-- PREV / NEXT -->
+  <nav class="pagination" aria-label="Project navigation">
+    {prev ? (
+      <a href={`/works/${prev.slug}`} class="pag__item pag__prev">
+        <span class="mono pag__dir">← Prev</span>
+        <span class="pag__t display">{prev.title}</span>
+      </a>
+    ) : <div />}
+    {next ? (
+      <a href={`/works/${next.slug}`} class="pag__item pag__next">
+        <span class="mono pag__dir">Next →</span>
+        <span class="pag__t display">{next.title}</span>
+      </a>
+    ) : <div />}
+  </nav>
+</BaseLayout>
+
+<style>
+  /* HEAD */
+  .head {
+    padding: clamp(2rem, 4vw, 3rem) var(--gutter) clamp(1.5rem, 3vw, 2.5rem);
+    border-bottom: var(--rule-w) solid var(--rule);
+  }
+  .head__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px dashed var(--rule-soft);
+    margin-bottom: 1.5rem;
+  }
+  .back {
+    color: var(--ink-mute);
+    font-size: 0.65rem;
+    transition: color var(--dur-fast) var(--ease);
+  }
+  .back:hover { color: var(--hot); }
+  .head__n { color: var(--ink-faint); font-size: 0.65rem; }
+  .head__title {
+    font-size: clamp(2.5rem, 7vw, 7rem);
+    line-height: 0.88;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+  .head__credit {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--hot);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  .head__meta {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    align-items: center;
+    color: var(--ink-mute);
+    font-size: 0.65rem;
+  }
+  .role {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.2rem 0.5rem;
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* PLAYER */
+  .player {
+    padding: clamp(2rem, 4vw, 3rem) var(--gutter);
+    border-bottom: var(--rule-w) solid var(--rule);
+    background: #000;
+  }
+  .player__wrap {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border: var(--rule-w) solid var(--hot);
+    background: #000;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .player__wrap iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* COVER (no embed) */
+  .cover {
+    padding: clamp(2rem, 4vw, 3rem) var(--gutter);
+    border-bottom: var(--rule-w) solid var(--rule);
+  }
+  .cover__wrap {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border: var(--rule-w) solid var(--ink);
+    overflow: hidden;
+    max-width: 1080px;
+    background: var(--ink);
+  }
+  .cover__wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.3) contrast(1.05);
+  }
+  .cover__soon {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: var(--paper);
+    color: var(--ink-faint);
+    padding: 0.25rem 0.6rem;
+    border: 1px solid var(--ink);
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ACTIONS */
+  .actions {
+    padding: clamp(2rem, 4vw, 3rem) var(--gutter);
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    border-bottom: var(--rule-w) solid var(--rule);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.5rem;
+    border: var(--rule-w) solid var(--ink);
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 1.05rem;
+    transition: all var(--dur-fast) var(--ease);
+    line-height: 1;
+  }
+  .btn--hot { background: var(--hot); color: var(--ink); border-color: var(--hot); }
+  .btn--hot:hover { background: var(--ink); color: var(--hot); border-color: var(--ink); }
+  .btn--outline { background: transparent; color: var(--ink); }
+  .btn--outline:hover { background: var(--ink); color: var(--paper); }
+  .btn--ghost {
+    background: transparent;
+    color: var(--ink-mute);
+    border-color: var(--rule);
+    font-size: 0.85rem;
+  }
+  .btn--ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+  /* PAGINATION */
+  .pagination {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: var(--rule-w) solid var(--rule);
+  }
+  .pag__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem) var(--gutter);
+    color: var(--ink);
+    transition: background var(--dur-fast) var(--ease);
+    border-right: var(--rule-w) solid var(--rule);
+  }
+  .pag__next {
+    border-right: 0;
+    text-align: right;
+    align-items: flex-end;
+  }
+  .pag__item:hover { background: var(--paper-dim); }
+  .pag__item:hover .pag__t { color: var(--hot); }
+  .pag__dir { color: var(--ink-faint); font-size: 0.6rem; }
+  .pag__t {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    line-height: 1;
+    transition: color var(--dur-fast) var(--ease);
+  }
+</style>
