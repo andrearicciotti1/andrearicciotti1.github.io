@@ -62,26 +62,26 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
 
   <!-- STATS STRIP -->
   <section class="stats">
-    <div class="stat">
+    <a class="stat" href="/works">
       <div class="stat__k mono">A · Projects</div>
       <div class="stat__v display">{projects.length}</div>
       <div class="stat__n serif-italic">shipped</div>
-    </div>
-    <div class="stat">
+    </a>
+    <a class="stat" href="/works?filter=Editor">
       <div class="stat__k mono">B · As Editor</div>
       <div class="stat__v display">{String(editorCount).padStart(2,"0")}</div>
       <div class="stat__n serif-italic">credits</div>
-    </div>
-    <div class="stat">
+    </a>
+    <a class="stat" href="/works?filter=Director">
       <div class="stat__k mono">C · As Director</div>
       <div class="stat__v display">{String(directorCount).padStart(2,"0")}</div>
       <div class="stat__n serif-italic">films</div>
-    </div>
-    <div class="stat">
+    </a>
+    <a class="stat" href="/bio">
       <div class="stat__k mono">D · Experience</div>
       <div class="stat__v display">10+</div>
       <div class="stat__n serif-italic">years</div>
-    </div>
+    </a>
   </section>
 
   <!-- MARQUEE 2 -->
@@ -248,7 +248,12 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
     padding: 1.5rem var(--gutter);
     border-right: var(--rule-w) solid var(--rule);
     position: relative;
+    color: var(--ink);
+    transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
   }
+  .stat:hover { background: var(--ink); color: var(--paper); }
+  .stat:hover .stat__v { color: var(--hot); }
+  .stat:hover .stat__n { color: var(--paper); }
   .stat:last-child { border-right: 0; }
   @media (max-width: 720px) {
     .stat:nth-child(2) { border-right: 0; }

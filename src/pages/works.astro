@@ -61,7 +61,7 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
     </div>
 
     <ul class="index__list">
-      {projects.map((p) => (
+      {[...projects].reverse().map((p) => (
         <li class="row" data-roles={p.roles.join(",")}>
           <a class="row__link" href={`/works/${p.slug}`} aria-label={p.title}></a>
           <div class="row__cell row__n mono">{String(p.n).padStart(2,"0")}</div>
@@ -103,16 +103,20 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
     const filters = document.querySelectorAll<HTMLButtonElement>(".filter");
     const rows = document.querySelectorAll<HTMLElement>("[data-roles]");
 
-    filters.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const f = btn.dataset.filter!;
-        filters.forEach((b) => b.classList.toggle("is-active", b === btn));
-        rows.forEach((r) => {
-          const roles = (r.dataset.roles || "").split(",");
-          const match = f === "all" || roles.includes(f);
-          r.style.display = match ? "" : "none";
-        });
+    function applyFilter(f: string) {
+      filters.forEach((b) => b.classList.toggle("is-active", b.dataset.filter === f || (f === "all" && b.dataset.filter === "all")));
+      rows.forEach((r) => {
+        const roles = (r.dataset.roles || "").split(",");
+        const match = f === "all" || roles.includes(f);
+        r.style.display = match ? "" : "none";
       });
+    }
+
+    const param = new URLSearchParams(window.location.search).get("filter");
+    if (param) applyFilter(param);
+
+    filters.forEach((btn) => {
+      btn.addEventListener("click", () => applyFilter(btn.dataset.filter!));
     });
   </script>
 </BaseLayout>
