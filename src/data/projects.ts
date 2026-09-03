@@ -12,6 +12,14 @@ export interface Project {
   featured?: boolean;
   link?: string;
   video?: string;
+  /** Release year, or a range / "Upcoming" label. */
+  year?: string;
+  /** One-paragraph description of the project itself. */
+  synopsis?: string;
+  /** What Andrea actually did on it, in a sentence. */
+  contribution?: string;
+  /** Technical sheet rows — only the ones that are known. */
+  specs?: { k: string; v: string }[];
 }
 
 export const projects: Project[] = [
@@ -24,6 +32,16 @@ export const projects: Project[] = [
     category: "TV Series",
     platform: "Prime Video",
     cover: "/assets/projects/pesci-piccoli-2.jpg",
+    year: "Upcoming",
+    synopsis:
+      "Third season of the mockumentary workplace comedy set inside a Neapolitan advertising agency, produced by The Jackal.",
+    contribution: "In the writers' room for the third season.",
+    specs: [
+      { k: "Format", v: "TV Series · Mockumentary" },
+      { k: "Platform", v: "Prime Video" },
+      { k: "Production", v: "The Jackal" },
+      { k: "Status", v: "In development" },
+    ],
   },
   {
     n: 2,
@@ -35,6 +53,14 @@ export const projects: Project[] = [
     cover: "/assets/scenes/primo-della-classe.svg",
     featured: true,
     link: "https://tg24.sky.it/spettacolo/cinema/video/2026/08/27/il-primo-della-classe-teaser-1120152",
+    year: "2026",
+    contribution: "Wrote and directed.",
+    specs: [
+      { k: "Format", v: "Short Film" },
+      { k: "Direction", v: "Andrea Ricciotti" },
+      { k: "Screenplay", v: "Andrea Ricciotti" },
+      { k: "Year", v: "2026" },
+    ],
   },
   {
     n: 3,
@@ -46,6 +72,13 @@ export const projects: Project[] = [
     cover: "/assets/projects/nameless-ballad.jpg",
     featured: true,
     link: "https://www.imdb.com/title/tt37543956/",
+    year: "2026",
+    contribution: "Cut the feature from assembly to final picture lock.",
+    specs: [
+      { k: "Format", v: "Feature Film" },
+      { k: "Editing", v: "Andrea Ricciotti" },
+      { k: "Year", v: "2026" },
+    ],
   },
   {
     n: 4,
@@ -58,6 +91,14 @@ export const projects: Project[] = [
     cover: "/assets/projects/kuni-she.jpg",
     featured: true,
     video: "https://www.youtube.com/watch?v=0OCUOAB6hCo",
+    year: "2026",
+    contribution: "Directed and edited the music video.",
+    specs: [
+      { k: "Format", v: "Music Video" },
+      { k: "Artist", v: "Kuni" },
+      { k: "Direction", v: "Andrea Ricciotti" },
+      { k: "Editing", v: "Andrea Ricciotti" },
+    ],
   },
   {
     n: 5,
@@ -70,6 +111,16 @@ export const projects: Project[] = [
     cover: "/assets/projects/benetton-formula.jpg",
     featured: true,
     link: "https://www.imdb.com/it/title/tt38952951/",
+    year: "2025",
+    synopsis:
+      "Documentary on the Benetton Formula 1 team — the Italian outfit that took on the establishment and won back-to-back drivers' titles.",
+    contribution: "Editor on the documentary.",
+    specs: [
+      { k: "Format", v: "Documentary" },
+      { k: "Platform", v: "Sky" },
+      { k: "Editing", v: "Andrea Ricciotti" },
+      { k: "Year", v: "2025" },
+    ],
   },
   {
     n: 6,
@@ -82,6 +133,16 @@ export const projects: Project[] = [
     cover: "/assets/projects/pesci-piccoli-2.jpg",
     featured: true,
     video: "https://www.youtube.com/watch?v=8OgiR59ZOxw",
+    year: "2025",
+    synopsis:
+      "Second season of the mockumentary comedy following the staff of an advertising agency, produced by The Jackal.",
+    contribution: "Edited episodes 1, 2, 4, 6 and 8.",
+    specs: [
+      { k: "Format", v: "TV Series · Mockumentary" },
+      { k: "Platform", v: "Prime Video" },
+      { k: "Production", v: "The Jackal" },
+      { k: "Editing", v: "Episodes 1, 2, 4, 6, 8" },
+    ],
   },
   {
     n: 7,
@@ -93,6 +154,15 @@ export const projects: Project[] = [
     platform: "Netflix",
     cover: "/assets/projects/love-is-blind.jpeg",
     video: "https://www.youtube.com/watch?v=siliU3I_yKM",
+    year: "2024",
+    synopsis:
+      "Italian edition of the Netflix dating format in which singles get engaged before ever seeing each other.",
+    contribution: "Authored and cut the launch trailer.",
+    specs: [
+      { k: "Format", v: "Reality Series" },
+      { k: "Platform", v: "Netflix" },
+      { k: "Credit", v: "Trailer Author" },
+    ],
   },
   {
     n: 8,
@@ -104,6 +174,16 @@ export const projects: Project[] = [
     platform: "Rai Play",
     cover: "/assets/projects/puccini.jpg",
     link: "https://www.raiplay.it/video/2024/11/Il-Codice-Puccini-b7343d9c-03d7-4f2c-af41-6ce8188e9df0.html",
+    year: "2024",
+    synopsis:
+      "Rai documentary marking the centenary of Giacomo Puccini's death, tracing the composer's life and work.",
+    contribution: "Supervised the edit.",
+    specs: [
+      { k: "Format", v: "Documentary · TV Movie" },
+      { k: "Platform", v: "Rai Play" },
+      { k: "Credit", v: "Editing Supervisor" },
+      { k: "Year", v: "2024" },
+    ],
   },
   {
     n: 9,
@@ -116,6 +196,16 @@ export const projects: Project[] = [
     cover: "/assets/projects/uomo-ragno.jpg",
     featured: true,
     video: "https://www.youtube.com/watch?v=7YqEXoASb3U",
+    year: "2024",
+    synopsis:
+      "The origin story of 883 — how two friends from Pavia, Max Pezzali and Mauro Repetto, became the sound of a generation.",
+    contribution: "Edited episodes 5, 7 and 8.",
+    specs: [
+      { k: "Format", v: "TV Series" },
+      { k: "Platform", v: "Sky" },
+      { k: "Created by", v: "Sydney Sibilia" },
+      { k: "Editing", v: "Episodes 5, 7, 8" },
+    ],
   },
   {
     n: 10,
@@ -126,6 +216,14 @@ export const projects: Project[] = [
     category: "Short Film",
     cover: "/assets/projects/lbc2.jpg",
     video: "https://vimeo.com/1019853117",
+    year: "2024",
+    contribution: "Cut the trailer for the short.",
+    specs: [
+      { k: "Format", v: "Short Film" },
+      { k: "Direction", v: "Francesco Ghegghi" },
+      { k: "Credit", v: "Trailer Editor" },
+      { k: "Year", v: "2024" },
+    ],
   },
   {
     n: 11,
@@ -137,6 +235,14 @@ export const projects: Project[] = [
     cover: "/assets/projects/combattere.jpeg",
     featured: true,
     video: "https://youtu.be/kZgvsQGGer8",
+    year: "2024",
+    contribution: "Wrote, directed and edited.",
+    specs: [
+      { k: "Format", v: "Short Film" },
+      { k: "Direction", v: "Andrea Ricciotti" },
+      { k: "Screenplay", v: "Andrea Ricciotti" },
+      { k: "Editing", v: "Andrea Ricciotti" },
+    ],
   },
   {
     n: 12,
@@ -148,6 +254,16 @@ export const projects: Project[] = [
     platform: "Prime Video",
     cover: "/assets/projects/pesci-piccoli.jpg",
     video: "https://www.youtube.com/watch?v=tAdNBU8eYI4",
+    year: "2023",
+    synopsis:
+      "First season of the mockumentary comedy set inside an advertising agency, produced by The Jackal.",
+    contribution: "Editor on the first season.",
+    specs: [
+      { k: "Format", v: "TV Series · Mockumentary" },
+      { k: "Platform", v: "Prime Video" },
+      { k: "Production", v: "The Jackal" },
+      { k: "Year", v: "2023" },
+    ],
   },
   {
     n: 13,
@@ -159,6 +275,14 @@ export const projects: Project[] = [
     cover: "/assets/projects/showu-kuni.jpg",
     featured: true,
     video: "https://www.youtube.com/watch?v=7wpHFh-S-yY",
+    year: "2023",
+    contribution: "Directed and edited the music video.",
+    specs: [
+      { k: "Format", v: "Music Video" },
+      { k: "Artist", v: "Kuni" },
+      { k: "Direction", v: "Andrea Ricciotti" },
+      { k: "Editing", v: "Andrea Ricciotti" },
+    ],
   },
   {
     n: 14,
@@ -170,6 +294,14 @@ export const projects: Project[] = [
     platform: "Rai Play",
     cover: "/assets/projects/shake.png",
     video: "https://www.youtube.com/watch?v=bcgjwusIH48",
+    year: "2023",
+    contribution: "Co-editor on the series.",
+    specs: [
+      { k: "Format", v: "TV Series" },
+      { k: "Platform", v: "Rai Play" },
+      { k: "Credit", v: "Co-Editor" },
+      { k: "Year", v: "2023" },
+    ],
   },
   {
     n: 15,
@@ -181,6 +313,14 @@ export const projects: Project[] = [
     platform: "Rai Play",
     cover: "/assets/projects/nostos-2.jpeg",
     video: "https://www.youtube.com/watch?v=iVdX6LQLC1I",
+    year: "2023",
+    contribution: "Cut the trailer for the short.",
+    specs: [
+      { k: "Format", v: "Short Film" },
+      { k: "Direction", v: "Mauro Zingarelli" },
+      { k: "Production", v: "Slim Dogs" },
+      { k: "Credit", v: "Trailer Editor" },
+    ],
   },
   {
     n: 16,
@@ -192,6 +332,16 @@ export const projects: Project[] = [
     platform: "Prime Video",
     cover: "/assets/projects/bad-guy.jpg",
     video: "https://www.youtube.com/watch?v=6-VY6rNLPtU",
+    year: "2022",
+    synopsis:
+      "A Sicilian anti-mafia prosecutor, framed and disgraced, decides that if everyone believes he is a mobster he might as well become one.",
+    contribution: "Pre-editor on the series.",
+    specs: [
+      { k: "Format", v: "TV Series" },
+      { k: "Platform", v: "Prime Video" },
+      { k: "Credit", v: "Pre-Editor" },
+      { k: "Year", v: "2022" },
+    ],
   },
   {
     n: 17,
@@ -202,6 +352,13 @@ export const projects: Project[] = [
     category: "Feature Film",
     cover: "/assets/projects/altrimenti.jpg",
     video: "https://www.youtube.com/watch?v=sqR5KTcNS3s",
+    year: "2022",
+    contribution: "Cut the trailer for the feature.",
+    specs: [
+      { k: "Format", v: "Feature Film" },
+      { k: "Credit", v: "Trailer Editor" },
+      { k: "Year", v: "2022" },
+    ],
   },
   {
     n: 18,
@@ -213,6 +370,12 @@ export const projects: Project[] = [
     platform: "YouTube",
     cover: "/assets/projects/tv-ragazzi.jpg",
     video: "https://www.youtube.com/watch?v=fxiUE2YkAiw",
+    year: "2022",
+    contribution: "Editor on the documentary.",
+    specs: [
+      { k: "Format", v: "Documentary" },
+      { k: "Editing", v: "Andrea Ricciotti" },
+    ],
   },
   {
     n: 19,
@@ -223,6 +386,15 @@ export const projects: Project[] = [
     category: "Podcast",
     cover: "/assets/projects/cinema-morto.jpg",
     link: "https://www.youtube.com/@IlCinemaEMorto",
+    year: "2021 — ongoing",
+    synopsis:
+      "A podcast about cinema and the state it is in — conversations, arguments and obituaries for a medium that keeps refusing to die.",
+    contribution: "Creative director and host.",
+    specs: [
+      { k: "Format", v: "Podcast" },
+      { k: "Credit", v: "Creative Director · Host" },
+      { k: "Status", v: "Ongoing" },
+    ],
   },
   {
     n: 20,
@@ -233,6 +405,13 @@ export const projects: Project[] = [
     category: "Feature Film",
     cover: "/assets/projects/anni-da-cane.jpg",
     video: "https://www.youtube.com/watch?v=925fx6umRzk",
+    year: "2021",
+    contribution: "Cut the trailer for the feature.",
+    specs: [
+      { k: "Format", v: "Feature Film" },
+      { k: "Credit", v: "Trailer Editor" },
+      { k: "Year", v: "2021" },
+    ],
   },
   {
     n: 21,
@@ -243,6 +422,16 @@ export const projects: Project[] = [
     category: "Feature Film",
     cover: "/assets/projects/arminuta.jpg",
     video: "https://www.youtube.com/watch?v=6V9ycKizFIQ",
+    year: "2021",
+    synopsis:
+      "Adapted from Donatella Di Pietrantonio's novel: a thirteen-year-old girl is returned without explanation to the birth family she never knew she had.",
+    contribution: "Cut the trailer for the feature.",
+    specs: [
+      { k: "Format", v: "Feature Film" },
+      { k: "Direction", v: "Giuseppe Bonito" },
+      { k: "Based on", v: "The novel by Donatella Di Pietrantonio" },
+      { k: "Credit", v: "Trailer Editor" },
+    ],
   },
   {
     n: 22,
@@ -253,8 +442,29 @@ export const projects: Project[] = [
     category: "Commercial",
     cover: "/assets/projects/clark.jpg",
     link: "https://jadehosting.app/",
+    year: "2021",
+    contribution: "Directed the spot.",
+    specs: [
+      { k: "Format", v: "Commercial" },
+      { k: "Client", v: "Jade" },
+      { k: "Direction", v: "Andrea Ricciotti" },
+    ],
   },
   {
+    n: 23,
+    slug: "coi-baci-e-coi-morsi",
+    title: "Coi Baci e Coi Morsi — Autside",
+    roles: ["Director"],
+    credit: "Director",
+    category: "Music Video",
+    cover: "/assets/projects/combattere.jpeg",
+    year: "2020",
+    contribution: "Directed the music video.",
+    specs: [
+      { k: "Format", v: "Music Video" },
+      { k: "Artist", v: "Autside" },
+      { k: "Direction", v: "Andrea Ricciotti" },
+    ],
   },
   {
     n: 24,
@@ -266,5 +476,12 @@ export const projects: Project[] = [
     cover: "/assets/projects/clark.jpg",
     featured: true,
     video: "https://vimeo.com/325713625",
+    year: "2018",
+    contribution: "Directed the short.",
+    specs: [
+      { k: "Format", v: "Short Film" },
+      { k: "Direction", v: "Andrea Ricciotti" },
+      { k: "Year", v: "2018" },
+    ],
   },
 ];

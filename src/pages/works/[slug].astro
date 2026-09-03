@@ -39,6 +39,7 @@ const next = projects[p.n] ?? null;
     <h1 class="head__title display">{p.title}</h1>
     <p class="head__credit">{p.credit}</p>
     <div class="head__meta mono">
+      {p.year && <span class="head__year">{p.year}</span>}
       <span>{p.category}</span>
       {p.platform && <span>· {p.platform}</span>}
       {p.roles.map((r) => <span class="role">{r}</span>)}
@@ -64,6 +65,38 @@ const next = projects[p.n] ?? null;
         <img src={p.cover} alt={p.title} />
         {!p.video && !p.link && (
           <div class="cover__soon mono">Coming soon</div>
+        )}
+      </div>
+    </section>
+  )}
+
+  <!-- RECAP / TECHNICAL SHEET -->
+  {(p.synopsis || p.contribution || p.specs) && (
+    <section class="recap">
+      <div class="recap__grid">
+        <div class="recap__body">
+          <div class="mono recap__label">§ — About</div>
+          {p.synopsis && <p class="recap__synopsis">{p.synopsis}</p>}
+          {p.contribution && (
+            <div class="recap__role">
+              <div class="mono recap__label recap__label--sub">§ — My role</div>
+              <p class="recap__contribution">{p.contribution}</p>
+            </div>
+          )}
+        </div>
+
+        {p.specs && (
+          <aside class="sheet">
+            <div class="mono recap__label">§ — Technical sheet</div>
+            <dl class="sheet__list">
+              {p.specs.map((s) => (
+                <div class="sheet__row">
+                  <dt class="mono sheet__k">{s.k}</dt>
+                  <dd class="sheet__v">{s.v}</dd>
+                </div>
+              ))}
+            </dl>
+          </aside>
         )}
       </div>
     </section>
@@ -154,6 +187,11 @@ const next = projects[p.n] ?? null;
     color: var(--ink-mute);
     font-size: 0.65rem;
   }
+  .head__year {
+    color: var(--hot);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
   .role {
     background: var(--ink);
     color: var(--paper);
@@ -215,6 +253,69 @@ const next = projects[p.n] ?? null;
     font-size: 0.58rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
+  }
+
+  /* RECAP + TECHNICAL SHEET */
+  .recap {
+    padding: clamp(2rem, 4vw, 3.5rem) var(--gutter);
+    border-bottom: var(--rule-w) solid var(--rule);
+  }
+  .recap__grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+  @media (max-width: 820px) {
+    .recap__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+  .recap__label {
+    color: var(--ink-faint);
+    font-size: 0.62rem;
+    padding-bottom: 0.6rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px dashed var(--rule-soft);
+  }
+  .recap__label--sub { margin-top: 2rem; }
+  .recap__synopsis {
+    font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 56ch;
+  }
+  .recap__contribution {
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+    line-height: 1.55;
+    color: var(--ink-mute);
+    max-width: 56ch;
+    border-left: var(--rule-w) solid var(--hot);
+    padding-left: 1rem;
+  }
+
+  .sheet__list { margin: 0; }
+  .sheet__row {
+    display: grid;
+    grid-template-columns: 8.5rem 1fr;
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .sheet__row:last-child { border-bottom: 0; }
+  @media (max-width: 420px) {
+    .sheet__row { grid-template-columns: 1fr; gap: 0.2rem; }
+  }
+  .sheet__k {
+    color: var(--ink-faint);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding-top: 0.15rem;
+  }
+  .sheet__v {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    color: var(--ink);
   }
 
   /* ACTIONS */
