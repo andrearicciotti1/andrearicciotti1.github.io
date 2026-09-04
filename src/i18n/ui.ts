@@ -330,6 +330,7 @@ const CATEGORY_IT: Dict = {
 const CREDIT_IT: Dict = {
   "Director": "Regia",
   "Co-Director": "Co-regia",
+  "Co-Writer": "Co-sceneggiatura",
   "Editor": "Montaggio",
   "Writer": "Sceneggiatura",
   "Co-Editor": "Co-montaggio",
@@ -553,6 +554,7 @@ const PROSE_IT: Dict = {
   "Editor across the branching video tree.": "Montaggio dell'intero albero di video ramificati.",
   "Wrote, directed and edited. His first self-produced short.": "Scritto, diretto e montato. Il suo primo cortometraggio autoprodotto.",
   "Editor on the campaign film.": "Montaggio dello spot.",
+  "Co-writing the screenplay with Mauro Zingarelli.": "Co-sceneggiatura con Mauro Zingarelli.",
   "Co-directed, co-wrote and co-edited.": "Co-regia, co-sceneggiatura e co-montaggio.",
 
   // --- synopses ---

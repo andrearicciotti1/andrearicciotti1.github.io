@@ -17,6 +17,20 @@ on Netlify at https://andrearicciotti.netlify.app.
   prop. `src/pages/*` and `src/pages/it/*` are thin route files.
 - Fonts are self-hosted in `public/fonts`. Do not reintroduce Google Fonts.
 
+## Working rules — these matter more than any feature
+
+**Stop early when something will not budge.** Two failed attempts at the
+same thing is the limit: a blocked API, a file that will not download, a
+rate limit. Do not sit in retry loops with long waits — that has burned
+whole sessions of Andrea's credits for nothing, which costs him real time
+and real money. Say what is blocked, ask him for the missing fact, and
+carry on with everything else. He answers in seconds; the retry loop never
+worked once.
+
+**Check what renders, not what the markup says.** Counting elements in the
+built HTML once "confirmed" a section that CSS was hiding entirely. If a
+change is visual, open the page in the browser and look.
+
 ## Conventions
 
 - The works index credit column stays short — a role, not a sentence.
