@@ -8,6 +8,9 @@ const totalCount = projects.length;
 const directorCount = projects.filter((p) => p.roles.includes("Director")).length;
 const editorCount   = projects.filter((p) => p.roles.includes("Editor")).length;
 const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
+const assistantCount = projects.filter(
+  (p) => p.roles.includes("Assistant Director") || p.roles.includes("Assistant Editor")
+).length;
 ---
 
 <BaseLayout title="Works / Index — Andrea Ricciotti">
@@ -17,7 +20,7 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
   <section class="head">
     <div class="head__top">
       <span class="mono">§ 01 — Filmography</span>
-      <span class="mono">{totalCount} entries · 2018 — 2026</span>
+      <span class="mono">{totalCount} entries · 2016 — 2026</span>
     </div>
     <h1 class="head__title display">
       <span>Works</span>
@@ -47,6 +50,10 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
       <span class="filter__label display">As Writer</span>
       <span class="filter__n mono">{String(writerCount).padStart(3,"0")}</span>
     </button>
+    <button class="filter" data-filter="Assistant">
+      <span class="filter__label display">As Assistant</span>
+      <span class="filter__n mono">{String(assistantCount).padStart(3,"0")}</span>
+    </button>
   </div>
 
   <!-- INDEX TABLE -->
@@ -61,7 +68,7 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
     </div>
 
     <ul class="index__list">
-      {[...projects].reverse().map((p) => (
+      {projects.map((p) => (
         <li class="row" data-roles={p.roles.join(",")}>
           <a class="row__link" href={`/works/${p.slug}`} aria-label={p.title}></a>
           <div class="row__cell row__n mono">{String(p.n).padStart(2,"0")}</div>
@@ -107,7 +114,11 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
       filters.forEach((b) => b.classList.toggle("is-active", b.dataset.filter === f || (f === "all" && b.dataset.filter === "all")));
       rows.forEach((r) => {
         const roles = (r.dataset.roles || "").split(",");
-        const match = f === "all" || roles.includes(f);
+        const match =
+          f === "all" ||
+          (f === "Assistant"
+            ? roles.some((role) => role.startsWith("Assistant"))
+            : roles.includes(f));
         r.style.display = match ? "" : "none";
       });
     }
