@@ -307,6 +307,7 @@ export function useTranslations(lang: Lang) {
 const CATEGORY_IT: Dict = {
   "Feature Film": "Lungometraggio",
   "Short Film": "Cortometraggio",
+  "Short Film · Horror": "Cortometraggio · Horror",
   "TV Series": "Serie TV",
   "TV Movie": "Film TV",
   "Documentary": "Documentario",
@@ -325,6 +326,7 @@ const CATEGORY_IT: Dict = {
 /** Credit lines are built from these tokens, joined by · or —. */
 const CREDIT_IT: Dict = {
   "Director": "Regia",
+  "Co-Director": "Co-regia",
   "Editor": "Montaggio",
   "Writer": "Sceneggiatura",
   "Co-Editor": "Co-montaggio",
@@ -383,6 +385,15 @@ const SPEC_KEY_IT: Dict = {
   "Also known as": "Conosciuto anche come",
   "Track produced by": "Brano prodotto da",
   "Campaign": "Campagna",
+  "Executive producer": "Produttore esecutivo",
+  "Production design": "Scenografia",
+  "Costumes": "Costumi",
+  "Make-up": "Trucco",
+  "Mix": "Mix",
+  "Colour": "Color",
+  "VFX": "VFX",
+  "Selection": "Selezione",
+  "Main partner": "Main partner",
   "Note": "Nota",
 };
 
@@ -537,6 +548,7 @@ const PROSE_IT: Dict = {
   "Editor across the branching video tree.": "Montaggio dell'intero albero di video ramificati.",
   "Wrote, directed and edited. His first self-produced short.": "Scritto, diretto e montato. Il suo primo cortometraggio autoprodotto.",
   "Editor on the campaign film.": "Montaggio dello spot.",
+  "Co-directed, co-wrote and co-edited.": "Co-regia, co-sceneggiatura e co-montaggio.",
 
   // --- synopses ---
   "Third season of the mockumentary workplace comedy set inside a Neapolitan advertising agency, produced by The Jackal.": "Terza stagione della mockumentary comedy ambientata in un'agenzia pubblicitaria napoletana, prodotta da The Jackal.",
@@ -570,6 +582,8 @@ const PROSE_IT: Dict = {
   "A short film made with AIPAMM, the Italian association of patients with myeloproliferative diseases, about living a real life alongside a chronic illness.": "Un cortometraggio realizzato con AIPAMM, l'associazione italiana pazienti con malattie mieloproliferative, su come si vive una vita vera accanto a una malattia cronica.",
   "Part of Campioni Ogni Giorno, P&G Italia’s programme of everyday actions in the run-up to the Milano Cortina 2026 Games.": "Parte di Campioni Ogni Giorno, il programma di azioni concrete di P&G Italia verso i Giochi di Milano Cortina 2026.",
   "The first film Andrea ever made: written, directed and cut on his own, with no one asking for it.": "Il primo film che Andrea abbia mai fatto: scritto, diretto e montato da solo, senza che nessuno glielo avesse chiesto.",
+  "Geopop goes inside a waste-to-energy plant to show how it works and where the leftovers actually end up.": "Geopop entra in un termovalorizzatore per far vedere come funziona e che fine fanno davvero gli scarti.",
+  "A vertical horror short about a doppelgänger, made for the TikTok Short Film Competition.": "Un horror verticale su un doppelgänger, realizzato per la TikTok Short Film Competition.",
   "Italy's biggest tennis tournament, held every spring at the Foro Italico in Rome.": "Il più grande torneo di tennis italiano, ogni primavera al Foro Italico di Roma.",
   "Interview with Inio Asano, author of Goodnight Punpun.": "Intervista a Inio Asano, autore di Buonanotte Punpun.",
   "screenWEEK's trailer-reaction series, hosted by Claudio Di Biagio with a rotating cast of guests.": "La serie di reaction ai trailer di screenWEEK, condotta da Claudio Di Biagio con ospiti sempre diversi.",
