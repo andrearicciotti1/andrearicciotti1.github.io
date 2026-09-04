@@ -1,0 +1,462 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import NavBar from "../NavBar.astro";
+import Marquee from "../Marquee.astro";
+import { projects } from "../../data/projects";
+import { useTranslations, localize, type Lang } from "../../i18n/ui";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const L = (p: string) => localize(lang, p);
+
+const featured = projects.filter((p) => p.featured).slice(0, 6);
+const editorCount   = projects.filter((p) => p.roles.includes("Editor")).length;
+const directorCount = projects.filter((p) => p.roles.includes("Director")).length;
+const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
+const year = new Date().getFullYear();
+const nowLabel = new Date().toLocaleString(lang === "it" ? "it-IT" : "en-US", { weekday: "short", month: "short", day: "2-digit", year: "numeric" });
+---
+
+<BaseLayout title={t("home.title")} description={t("home.desc")} lang={lang}>
+  <NavBar active="index" lang={lang} />
+
+  <!-- HERO: giant slab -->
+  <section class="hero">
+    <div class="hero__topline">
+      <span class="mono">{t("home.file")} / 2016 → {year}</span>
+      <span class="mono">{nowLabel} · {t("home.photo_caption")}, IT</span>
+    </div>
+
+    <h1 class="hero__title display">
+      <span class="line">ANDREA</span>
+      <span class="line line--offset">
+        <span class="hot">RICCIOTTI</span>
+      </span>
+    </h1>
+
+    <div class="hero__split">
+      <div class="hero__label">
+        <span class="mono">{t("home.role_label")}</span>
+        <h2 class="hero__role display">
+          {t("home.role")}<br/>
+          <span class="serif-italic role-ital">&amp;</span>
+          {t("home.role_2")}
+        </h2>
+        <div class="hero__cta">
+          <a href={L("/works")} class="btn btn--hot">
+            <span>{t("home.cta_works")}</span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href={L("/contact")} class="btn btn--ghost">{t("home.cta_brief")}</a>
+        </div>
+      </div>
+
+      <div class="hero__photo">
+        <img src="/assets/ar-02189.jpg" alt="Andrea Ricciotti" />
+        <div class="hero__photo-caption mono">{t("home.photo_caption")} · {year}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE 1 -->
+  <Marquee
+    items={t("home.marquee").split("|")}
+    speed={45}
+    hot={true}
+    separator="●"
+  />
+
+  <!-- STATS STRIP -->
+  <section class="stats">
+    <a class="stat" href={L("/works")}>
+      <div class="stat__k mono">{t("home.stat_projects")}</div>
+      <div class="stat__v display">{projects.length}</div>
+      <div class="stat__n serif-italic">{t("home.stat_projects_n")}</div>
+    </a>
+    <a class="stat" href={L("/works") + "?filter=Editor"}>
+      <div class="stat__k mono">{t("home.stat_editor")}</div>
+      <div class="stat__v display">{String(editorCount).padStart(2,"0")}</div>
+      <div class="stat__n serif-italic">{t("home.stat_editor_n")}</div>
+    </a>
+    <a class="stat" href={L("/works") + "?filter=Director"}>
+      <div class="stat__k mono">{t("home.stat_director")}</div>
+      <div class="stat__v display">{String(directorCount).padStart(2,"0")}</div>
+      <div class="stat__n serif-italic">{t("home.stat_director_n")}</div>
+    </a>
+    <a class="stat" href={L("/bio")}>
+      <div class="stat__k mono">{t("home.stat_exp")}</div>
+      <div class="stat__v display">10+</div>
+      <div class="stat__n serif-italic">{t("home.stat_exp_n")}</div>
+    </a>
+  </section>
+
+  <!-- MARQUEE 2 -->
+  <Marquee
+    items={["Netflix", "Prime Video", "Sky", "Rai Play", "Cinema", "Punx Film", "Cit Studio"]}
+    speed={55}
+    invert={true}
+    separator="/"
+  />
+
+  <!-- FOOTER: full-bleed brutalist -->
+  <footer class="foot">
+    <div class="foot__grid">
+      <div class="foot__col">
+        <div class="mono foot__label">{t("common.get_in_touch")}</div>
+        <a class="foot__mail display" href="mailto:andrearicciotti1@gmail.com">
+          andrearicciotti1<span class="hot">@</span>gmail.com
+        </a>
+      </div>
+
+      <div class="foot__col">
+        <div class="mono foot__label">{t("common.elsewhere")}</div>
+        <ul class="foot__list">
+          <li><a href="https://www.imdb.com/it/name/nm10527696/" target="_blank" rel="noopener">IMDb ↗</a></li>
+          <li><a href="https://www.linkedin.com/in/andrea-ricciotti-3a351b159/" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+          <li><a href="https://www.instagram.com/andrea_ricciotti1/" target="_blank" rel="noopener">Instagram ↗</a></li>
+          <li><a href="https://open.spotify.com/user/1171026149" target="_blank" rel="noopener">Spotify ↗</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <div class="mono foot__label">{t("common.nav")}</div>
+        <ul class="foot__list">
+          <li><a href={L("/works")}>{t("nav.works")} →</a></li>
+          <li><a href={L("/bio")}>{t("nav.bio")} →</a></li>
+          <li><a href={L("/contact")}>{t("nav.contact")} →</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col foot__col--meta">
+        <div class="mono foot__label">{t("common.build")}</div>
+        <div class="mono foot__fine">© {new Date().getFullYear()} Andrea Ricciotti<br/>{t("common.rights")}<br/>{t("common.built")}</div>
+      </div>
+    </div>
+
+    <div class="foot__mega display" aria-hidden="true">A/R — {year}</div>
+    <!-- RICC88 -->
+    <div class="ricc88" aria-hidden="true" title="RICC88">RICC88</div>
+  </footer>
+</BaseLayout>
+
+<style>
+  /* HERO */
+  .hero {
+    padding: clamp(0.85rem, 1.6vh, 1.4rem) var(--gutter) clamp(1rem, 2vh, 1.6rem);
+    border-bottom: var(--rule-w) solid var(--rule);
+    position: relative;
+  }
+  .hero__topline {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px dashed var(--rule-soft);
+    margin-bottom: clamp(0.6rem, 1.2vw, 1rem);
+  }
+  @media (max-width: 520px) { .hero__topline { flex-direction: column; gap: 0.3rem; } }
+
+  .hero__title {
+    color: var(--ink);
+    font-size: clamp(3.5rem, 16.5vw, 14rem);
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    line-height: 0.8;
+  }
+  .line { display: block; }
+  .line--offset {
+    padding-left: clamp(0rem, 12vw, 8rem);
+    letter-spacing: -0.025em;
+  }
+  .hot { color: var(--hot); }
+
+  .hero__split {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: clamp(1rem, 2.5vw, 2rem);
+    margin-top: clamp(0.5rem, 1.2vw, 1rem);
+    padding-top: clamp(0.6rem, 1.2vw, 1rem);
+    border-top: 1px dashed var(--rule-soft);
+  }
+  /* lift the photo into the whitespace the display face leaves under the name */
+  @media (min-width: 821px) {
+    .hero__photo { margin-top: clamp(-4.5rem, -3.5vw, -1.5rem); }
+  }
+  @media (max-width: 820px) { .hero__split { grid-template-columns: 1fr; } }
+
+  .hero__label { position: relative; }
+  .hero__role {
+    font-size: clamp(1.9rem, 5vw, 3.6rem);
+    line-height: 0.9;
+    margin-top: 0.3rem;
+  }
+  .role-ital {
+    color: var(--hot);
+    font-style: italic;
+    margin-right: 0.1em;
+  }
+
+  .hero__cta {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: clamp(0.9rem, 2vw, 1.4rem);
+    flex-wrap: wrap;
+  }
+  .hero__photo {
+    position: relative;
+    border: var(--rule-w) solid var(--ink);
+    overflow: hidden;
+    align-self: stretch;
+    min-height: 280px;
+  }
+  .hero__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+    filter: grayscale(0.15) contrast(1.05);
+  }
+  .hero__photo-caption {
+    position: absolute;
+    bottom: 0.6rem;
+    left: 0.6rem;
+    font-size: 0.58rem;
+    background: var(--paper);
+    color: var(--ink);
+    padding: 0.22rem 0.55rem;
+    border: 1px solid var(--ink);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.4rem;
+    border: var(--rule-w) solid var(--ink);
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    transition: all var(--dur-fast) var(--ease);
+  }
+  .btn--hot {
+    background: var(--hot);
+    color: var(--ink);
+  }
+  .btn--hot:hover { background: var(--ink); color: var(--hot); }
+  .btn--ghost { background: transparent; color: var(--ink); }
+  .btn--ghost:hover { background: var(--ink); color: var(--paper); }
+
+  /* STATS */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: var(--rule-w) solid var(--rule);
+  }
+  @media (max-width: 720px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+  .stat {
+    padding: clamp(0.9rem, 2vw, 1.15rem) var(--gutter);
+    border-right: var(--rule-w) solid var(--rule);
+    position: relative;
+    color: var(--ink);
+    transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+  }
+  .stat:hover { background: var(--ink); color: var(--paper); }
+  .stat:hover .stat__v { color: var(--hot); }
+  .stat:hover .stat__n { color: var(--paper); }
+  .stat:last-child { border-right: 0; }
+  @media (max-width: 720px) {
+    .stat:nth-child(2) { border-right: 0; }
+    .stat:nth-child(1), .stat:nth-child(2) { border-bottom: var(--rule-w) solid var(--rule); }
+  }
+  .stat__k { margin-bottom: 0.4rem; }
+  .stat__v {
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+    line-height: 0.9;
+    color: var(--ink);
+    font-family: var(--font-display);
+  }
+  .stat__n {
+    margin-top: 0.2rem;
+    font-size: 1.15rem;
+    color: var(--hot);
+  }
+
+  /* REEL */
+  .reel { padding: clamp(3rem, 6vw, 5rem) var(--gutter); border-bottom: var(--rule-w) solid var(--rule); }
+  .reel__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--rule-soft);
+  }
+  .reel__label { display: flex; align-items: baseline; gap: 0.6rem; }
+  .reel__label h3 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 0.9; color: var(--ink); }
+  .reel__all {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: var(--rule-w) solid var(--ink);
+    padding-bottom: 2px;
+    color: var(--ink);
+    transition: color var(--dur-fast) var(--ease);
+  }
+  .reel__all:hover { color: var(--hot); border-color: var(--hot); }
+
+  .reel__grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 860px) { .reel__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 520px) { .reel__grid { grid-template-columns: 1fr; } }
+
+  .slate { display: flex; flex-direction: column; color: var(--ink); }
+  .slate:nth-child(6n+1) { grid-column: span 7; }
+  .slate:nth-child(6n+2) { grid-column: span 5; }
+  .slate:nth-child(6n+3) { grid-column: span 4; }
+  .slate:nth-child(6n+4) { grid-column: span 4; }
+  .slate:nth-child(6n+5) { grid-column: span 4; }
+  .slate:nth-child(6n)   { grid-column: span 12; }
+  @media (max-width: 860px) {
+    .slate,
+    .slate:nth-child(n) { grid-column: span 1; }
+  }
+
+  .slate__frame {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    border: var(--rule-w) solid var(--ink);
+    background: var(--ink);
+    overflow: hidden;
+  }
+  .slate:nth-child(6n) .slate__frame { aspect-ratio: 21 / 9; }
+  .slate__frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.5) contrast(1.05);
+    transition: filter var(--dur-med) var(--ease), transform var(--dur-med) var(--ease);
+  }
+  .slate:hover .slate__frame img {
+    filter: grayscale(0) contrast(1.08);
+    transform: scale(1.03);
+  }
+  .slate__ticker {
+    position: absolute;
+    bottom: 0.6rem;
+    left: 0.6rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.55rem;
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    font-size: 0.58rem;
+  }
+  .slate__ticker .blink { color: var(--hot); }
+
+  .slate__foot { padding-top: 0.8rem; }
+  .slate__row {
+    display: flex; justify-content: space-between;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--rule-soft);
+    margin-bottom: 0.4rem;
+  }
+  .slate__title {
+    font-size: clamp(1.3rem, 2vw, 1.85rem);
+    line-height: 1;
+    color: var(--ink);
+    transition: color var(--dur-fast) var(--ease);
+  }
+  .slate:hover .slate__title { color: var(--hot); }
+  .slate__credit { margin-top: 0.3rem; color: var(--ink-mute); }
+
+  /* MANIFESTO */
+  .manifesto {
+    padding: clamp(4rem, 9vw, 8rem) var(--gutter);
+    border-bottom: var(--rule-w) solid var(--rule);
+    position: relative;
+  }
+  .manifesto__label { margin-bottom: 2rem; }
+  .manifesto__q {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: clamp(1.8rem, 4.5vw, 4.2rem);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    max-width: 26ch;
+    color: var(--ink);
+  }
+  .manifesto__q .serif-italic { text-transform: none; color: var(--hot); letter-spacing: 0; }
+  .manifesto__q .hot { color: var(--hot); }
+  .manifesto__sig { margin-top: 1.5rem; }
+
+  /* FOOTER */
+  .foot {
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(3rem, 6vw, 5rem) var(--gutter) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .foot__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 2rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(236, 230, 216, 0.2);
+  }
+  @media (max-width: 820px) { .foot__grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .foot__grid { grid-template-columns: 1fr; } }
+  .foot__col { display: flex; flex-direction: column; gap: 0.75rem; }
+  .foot__label {
+    color: var(--hot);
+    font-size: 0.65rem;
+  }
+  .foot__mail {
+    font-size: clamp(1.5rem, 3.5vw, 2.6rem);
+    line-height: 1;
+    color: var(--paper);
+    letter-spacing: -0.01em;
+  }
+  .foot__mail:hover { color: var(--hot); }
+  .foot__list { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+  .foot__list a {
+    color: var(--paper);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    transition: color var(--dur-fast) var(--ease);
+  }
+  .foot__list a:hover { color: var(--hot); }
+  .foot__fine { color: var(--ink-faint); line-height: 1.6; font-size: 0.65rem; }
+
+  .foot__mega {
+    font-size: clamp(5rem, 22vw, 22rem);
+    line-height: 0.85;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(236, 230, 216, 0.35);
+    margin: 1.5rem -0.03em -0.12em;
+    white-space: nowrap;
+    letter-spacing: -0.03em;
+  }
+
+  /* easter egg */
+  .ricc88 {
+    position: absolute;
+    bottom: 1.2rem;
+    right: var(--gutter);
+    font-family: var(--font-mono);
+    font-size: 0.5rem;
+    letter-spacing: 0.15em;
+    color: rgba(236, 230, 216, 0.06);
+    pointer-events: none;
+    user-select: none;
+  }
+</style>

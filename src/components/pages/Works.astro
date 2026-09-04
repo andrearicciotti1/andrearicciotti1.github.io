@@ -1,0 +1,320 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import NavBar from "../NavBar.astro";
+import Marquee from "../Marquee.astro";
+import { projects } from "../../data/projects";
+import { useTranslations, localize, tCredit, tCategory, type Lang } from "../../i18n/ui";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const L = (p: string) => localize(lang, p);
+
+const year = new Date().getFullYear();
+const totalCount = projects.length;
+const directorCount = projects.filter((p) => p.roles.includes("Director")).length;
+const editorCount   = projects.filter((p) => p.roles.includes("Editor")).length;
+const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
+---
+
+<BaseLayout title={t("works.title")} description={t("works.desc")} lang={lang}>
+  <NavBar active="works" lang={lang} />
+
+  <!-- TITLE -->
+  <section class="head">
+    <div class="head__top">
+      <span class="mono">{t("works.section")}</span>
+      <span class="mono">{totalCount} {t("works.entries")} · 2016 — {year}</span>
+    </div>
+    <h1 class="head__title display">
+      <span>{t("works.h1")}</span>
+      <span class="serif-italic head__it">{t("works.h1_it")}</span>
+    </h1>
+    <p class="head__lede">
+      {t("works.lede")}
+    </p>
+  </section>
+
+  <!-- FILTER -->
+  <div class="filters">
+    <button class="filter is-active" data-filter="all">
+      <span class="filter__label display">{t("works.all")}</span>
+      <span class="filter__n mono">{String(totalCount).padStart(3,"0")}</span>
+    </button>
+    <button class="filter" data-filter="Director">
+      <span class="filter__label display">{t("works.as_director")}</span>
+      <span class="filter__n mono">{String(directorCount).padStart(3,"0")}</span>
+    </button>
+    <button class="filter" data-filter="Editor">
+      <span class="filter__label display">{t("works.as_editor")}</span>
+      <span class="filter__n mono">{String(editorCount).padStart(3,"0")}</span>
+    </button>
+    <button class="filter" data-filter="Writer">
+      <span class="filter__label display">{t("works.as_writer")}</span>
+      <span class="filter__n mono">{String(writerCount).padStart(3,"0")}</span>
+    </button>
+  </div>
+
+  <!-- INDEX TABLE -->
+  <section class="index">
+    <div class="index__cols mono" aria-hidden="true">
+      <span>{t("works.col_n")}</span>
+      <span>{t("works.col_title")}</span>
+      <span>{t("works.col_credit")}</span>
+      <span>{t("works.col_platform")}</span>
+      <span>{t("works.col_format")}</span>
+      <span class="ta-r">{t("works.col_view")}</span>
+    </div>
+
+    <ul class="index__list">
+      {projects.map((p) => (
+        <li class="row" data-roles={p.roles.join(",")}>
+          <a class="row__link" href={L(`/works/${p.slug}`)} aria-label={p.title}></a>
+          <div class="row__cell row__n mono">{String(p.n).padStart(3,"0")}</div>
+          <div class="row__cell row__title">
+            <span class="row__t display">{p.title}</span>
+          </div>
+          <div class="row__cell row__credit">{tCredit(p.credit, lang)}</div>
+          <div class="row__cell row__plat mono">{p.platform || "—"}</div>
+          <div class="row__cell row__cat mono">{tCategory(p.category, lang)}</div>
+          <div class="row__cell row__view mono">→</div>
+          <div class="row__preview" aria-hidden="true">
+            <img src={p.cover} alt="" loading="lazy" />
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <Marquee
+    items={t("works.marquee").split("|")}
+    speed={50}
+    hot={true}
+    separator="●"
+  />
+
+  <!-- CLOSING -->
+  <section class="close">
+    <h2 class="close__title display">
+      {t("works.close_title")} <span class="serif-italic hot">{t("works.close_it")}</span>
+    </h2>
+    <a href={L("/contact")} class="btn btn--hot">
+      <span>{t("home.cta_brief")}</span>
+      <span aria-hidden="true">→</span>
+    </a>
+    <div class="close__fine mono">© {new Date().getFullYear()} · Andrea Ricciotti · {t("home.photo_caption")}, IT</div>
+  </section>
+
+  <script>
+    const filters = document.querySelectorAll<HTMLButtonElement>(".filter");
+    const rows = document.querySelectorAll<HTMLElement>("[data-roles]");
+
+    function applyFilter(f: string) {
+      filters.forEach((b) => b.classList.toggle("is-active", b.dataset.filter === f || (f === "all" && b.dataset.filter === "all")));
+      rows.forEach((r) => {
+        const roles = (r.dataset.roles || "").split(",");
+        const match = f === "all" || roles.includes(f);
+        r.style.display = match ? "" : "none";
+      });
+    }
+
+    const param = new URLSearchParams(window.location.search).get("filter");
+    if (param) applyFilter(param);
+
+    filters.forEach((btn) => {
+      btn.addEventListener("click", () => applyFilter(btn.dataset.filter!));
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  /* HEAD */
+  .head {
+    padding: clamp(2rem, 4vw, 3rem) var(--gutter) clamp(1.5rem, 3vw, 2.5rem);
+    border-bottom: var(--rule-w) solid var(--rule);
+  }
+  .head__top {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px dashed var(--rule-soft);
+    margin-bottom: 1.5rem;
+  }
+  .head__title {
+    font-size: clamp(3rem, 10vw, 9rem);
+    line-height: 0.88;
+    color: var(--ink);
+  }
+  .head__it {
+    display: inline-block;
+    color: var(--hot);
+    text-transform: none;
+    letter-spacing: -0.01em;
+    padding-left: 0.1em;
+  }
+  .head__lede {
+    margin-top: 1.5rem;
+    max-width: 58ch;
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.5;
+    color: var(--ink-mute);
+  }
+
+  /* FILTERS */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: var(--rule-w) solid var(--rule);
+  }
+  .filter {
+    flex: 1 1 0;
+    min-width: 160px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 1rem var(--gutter);
+    border-right: var(--rule-w) solid var(--rule);
+    background: var(--paper);
+    color: var(--ink);
+    transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+  }
+  .filter:last-child { border-right: 0; }
+  .filter:hover { background: var(--paper-dim); }
+  .filter.is-active { background: var(--ink); color: var(--paper); }
+  .filter.is-active .filter__n { color: var(--hot); }
+  .filter__label { font-size: clamp(1rem, 1.5vw, 1.25rem); }
+  .filter__n { color: var(--ink-faint); }
+
+  /* INDEX TABLE */
+  .index {
+    border-bottom: var(--rule-w) solid var(--rule);
+  }
+  .index__cols {
+    display: grid;
+    grid-template-columns: 3.5rem 2.4fr 1.6fr 1fr 1.2fr 2rem;
+    gap: 1rem;
+    padding: 0.7rem var(--gutter);
+    color: var(--ink-faint);
+    font-size: 0.62rem;
+    border-bottom: 1px dashed var(--rule-soft);
+  }
+  .ta-r { text-align: right; }
+  @media (max-width: 820px) { .index__cols { display: none; } }
+
+  .index__list { list-style: none; padding: 0; margin: 0; }
+
+  .row {
+    display: grid;
+    grid-template-columns: 3.5rem 2.4fr 1.6fr 1fr 1.2fr 2rem;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem var(--gutter);
+    border-bottom: 1px solid var(--rule-soft);
+    position: relative;
+    transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+    cursor: default;
+  }
+  .row__link { position: absolute; inset: 0; z-index: 1; }
+  .row:hover { background: var(--ink); color: var(--paper); }
+  .row:hover .row__n,
+  .row:hover .row__cat,
+  .row:hover .row__plat,
+  .row:hover .row__credit,
+  .row:hover .row__roles { color: var(--paper); opacity: 0.85; }
+  .row:hover .row__t { color: var(--hot); }
+  .row:hover .row__preview { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+  .row__n { color: var(--ink-faint); }
+  .row__title { display: flex; flex-direction: column; gap: 0.15rem; }
+  .row__t {
+    font-size: clamp(1.2rem, 2.2vw, 1.85rem);
+    line-height: 1;
+    color: var(--ink);
+    transition: color var(--dur-fast) var(--ease);
+  }
+  .row__credit {
+    font-family: var(--font-display);
+    font-size: clamp(0.85rem, 1.2vw, 1.1rem);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--hot);
+    line-height: 1.2;
+  }
+  .row:hover .row__credit { color: var(--paper); opacity: 1; }
+  .row__cat, .row__plat { color: var(--ink-mute); }
+  .row__view {
+    text-align: right;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--ink);
+  }
+  .row:hover .row__view { color: var(--hot); }
+
+  /* Preview tooltip */
+  .row__preview {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: clamp(220px, 22vw, 320px);
+    aspect-ratio: 16 / 10;
+    transform: translate(-50%, -50%) scale(0.95);
+    border: var(--rule-w) solid var(--hot);
+    background: var(--ink);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--dur-med) var(--ease), transform var(--dur-med) var(--ease);
+    z-index: 5;
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.4);
+  }
+  .row__preview img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: grayscale(0.2) contrast(1.05);
+  }
+  @media (max-width: 820px) { .row__preview { display: none; } }
+
+  @media (max-width: 820px) {
+    .row {
+      grid-template-columns: 3.5rem 1fr 2rem;
+      row-gap: 0.3rem;
+    }
+    .row__credit {
+      grid-column: 2 / 3;
+      font-size: 0.75rem;
+      order: 2;
+    }
+    .row__cat, .row__plat {
+      grid-column: 2 / 3;
+      font-size: 0.6rem;
+    }
+    .row__cat { order: 4; }
+    .row__plat { order: 3; }
+  }
+
+  /* CLOSE */
+  .close {
+    padding: clamp(4rem, 8vw, 7rem) var(--gutter);
+    text-align: center;
+  }
+  .close__title {
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    line-height: 0.95;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+  .close__title .hot { color: var(--hot); text-transform: none; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.5rem;
+    border: var(--rule-w) solid var(--ink);
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 1.05rem;
+    transition: all var(--dur-fast) var(--ease);
+  }
+  .btn--hot { background: var(--hot); color: var(--ink); }
+  .btn--hot:hover { background: var(--ink); color: var(--hot); }
+  .close__fine { margin-top: 3rem; color: var(--ink-faint); font-size: 0.6rem; }
+</style>

@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NavBar from "../components/NavBar.astro";
+---
+<BaseLayout title="404 — Andrea Ricciotti" description="Page not found." lang="en">
+  <NavBar active="index" lang="en" />
+  <section class="nf">
+    <span class="mono nf__n">404</span>
+    <h1 class="nf__title display">
+      This cut <span class="serif-italic hot">doesn't exist.</span>
+    </h1>
+    <p class="nf__lede">
+      The page you were looking for isn't here — it may have been renamed or moved.
+    </p>
+    <div class="nf__cta">
+      <a href="/works" class="btn btn--hot"><span>View the works</span><span aria-hidden="true">→</span></a>
+      <a href="/" class="btn btn--ghost">← Home</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .nf { padding: clamp(4rem, 12vw, 9rem) var(--gutter); }
+  .nf__n { color: var(--hot); font-size: 0.7rem; letter-spacing: 0.1em; }
+  .nf__title {
+    margin-top: 1rem;
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    line-height: 0.92;
+    color: var(--ink);
+  }
+  .nf__title .hot { color: var(--hot); text-transform: none; }
+  .nf__lede { margin-top: 1.5rem; max-width: 46ch; color: var(--ink-mute); line-height: 1.5; }
+  .nf__cta { display: flex; gap: 0.75rem; margin-top: 2.5rem; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.9rem 1.5rem; border: var(--rule-w) solid var(--ink);
+    font-family: var(--font-display); text-transform: uppercase;
+    letter-spacing: 0.04em; font-size: 1.05rem;
+    transition: all var(--dur-fast) var(--ease);
+  }
+  .btn--hot { background: var(--hot); color: var(--ink); border-color: var(--hot); }
+  .btn--hot:hover { background: var(--ink); color: var(--hot); border-color: var(--ink); }
+  .btn--ghost { background: transparent; color: var(--ink-mute); border-color: var(--rule); font-size: 0.85rem; }
+  .btn--ghost:hover { color: var(--ink); border-color: var(--ink); }
+</style>
