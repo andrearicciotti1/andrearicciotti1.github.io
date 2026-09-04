@@ -4,3 +4,17 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Self-hosted font files carry a content hash in their name, so they can be
+# cached for good. Astro fingerprints its own output under /_astro; anything
+# dropped in public/ is served verbatim and would otherwise be revalidated
+# on every visit.
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
