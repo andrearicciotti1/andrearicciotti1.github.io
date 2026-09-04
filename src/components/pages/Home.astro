@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import NavBar from "../NavBar.astro";
 import Marquee from "../Marquee.astro";
+import ProjectCard from "../ProjectCard.astro";
 import { projects } from "../../data/projects";
 import { useTranslations, localize, type Lang } from "../../i18n/ui";
 
@@ -89,6 +90,20 @@ const nowLabel = new Date().toLocaleString(lang === "it" ? "it-IT" : "en-US", { 
       <div class="stat__v display">10+</div>
       <div class="stat__n serif-italic">{t("home.stat_exp_n")}</div>
     </a>
+  </section>
+
+  <!-- SELECTED WORK -->
+  <section class="reel">
+    <header class="reel__header">
+      <div class="reel__label">
+        <span class="mono">{t("home.reel_label")}</span>
+        <h3 class="display">{t("home.reel_title")}</h3>
+      </div>
+      <a href={L("/works")} class="reel__all mono">{t("home.reel_all")}</a>
+    </header>
+    <div class="reel__grid">
+      {featured.map((p, i) => <ProjectCard project={p} index={i} lang={lang} />)}
+    </div>
   </section>
 
   <!-- MARQUEE 2 -->

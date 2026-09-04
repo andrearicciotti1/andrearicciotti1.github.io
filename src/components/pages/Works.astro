@@ -37,10 +37,6 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
 
   <!-- FILTER -->
   <div class="filters">
-    <button class="filter is-active" data-filter="all">
-      <span class="filter__label display">{t("works.all")}</span>
-      <span class="filter__n mono">{String(totalCount).padStart(3,"0")}</span>
-    </button>
     <button class="filter" data-filter="Director">
       <span class="filter__label display">{t("works.as_director")}</span>
       <span class="filter__n mono">{String(directorCount).padStart(3,"0")}</span>
@@ -52,6 +48,10 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
     <button class="filter" data-filter="Writer">
       <span class="filter__label display">{t("works.as_writer")}</span>
       <span class="filter__n mono">{String(writerCount).padStart(3,"0")}</span>
+    </button>
+    <button class="filter is-active" data-filter="all">
+      <span class="filter__label display">{t("works.all")}</span>
+      <span class="filter__n mono">{String(totalCount).padStart(3,"0")}</span>
     </button>
   </div>
 
