@@ -1,16 +1,20 @@
 ---
 import type { Project } from "../data/projects";
+import { localize, tCredit, tCategory, tYear, useTranslations, type Lang } from "../i18n/ui";
 
 export interface Props {
   project: Project;
   index?: number;
+  lang: Lang;
 }
-const { project, index = 0 } = Astro.props;
-const n = String(project.n).padStart(2, "0");
+const { project, index = 0, lang } = Astro.props;
+const t = useTranslations(lang);
+const n = String(project.n).padStart(3, "0");
 ---
 
-<article
+<a
   class="card reveal"
+  href={localize(lang, `/works/${project.slug}`)}
   data-roles={project.roles.join(",")}
   style={`--i:${index}`}
 >
@@ -23,27 +27,33 @@ const n = String(project.n).padStart(2, "0");
     <div class="card__scrim"></div>
     <div class="card__num mono">N°{n}</div>
     <div class="card__marker mono">
-      {project.roles.map((r) => <span class="chip">{r}</span>)}
+      {project.comingSoon && <span class="chip chip--soon">{t("proj.coming_soon")}</span>}
+      {project.year && <span class="chip">{tYear(project.year, lang)}</span>}
     </div>
   </div>
   <div class="card__meta">
     <div class="card__row">
       <div class="card__line"></div>
-      <span class="mono card__cat">{project.category}{project.platform ? ` · ${project.platform}` : ""}</span>
+      <span class="mono card__cat">{tCategory(project.category, lang)}{project.platform ? ` · ${project.platform}` : ""}</span>
     </div>
     <h2 class="card__title">
       <span>{project.title}</span>
     </h2>
-    <p class="mono card__credit">{project.credit}</p>
+    <p class="mono card__credit">{tCredit(project.credit, lang)}</p>
   </div>
-</article>
+</a>
 
 <style>
   .card {
     display: flex;
     flex-direction: column;
     position: relative;
+    color: inherit;
   }
+  .card:hover .card__title { color: var(--hot); }
+  .card:hover .card__frame img { transform: scale(1.04); }
+  .card__frame img { transition: transform var(--dur-med) var(--ease); }
+  .chip--soon { background: var(--hot) !important; color: var(--ink) !important; }
 
   .card.is-filtering-in {
     animation: fade-in 500ms var(--ease) both;

@@ -52,6 +52,9 @@ const en: Dict = {
   "home.stat_director_n": "films",
   "home.stat_exp": "D · Experience",
   "home.stat_exp_n": "years",
+  "home.reel_label": "§ 02 — Selected work",
+  "home.reel_title": "Recent cuts.",
+  "home.reel_all": "All works ↗",
   "home.marquee": "Director|Editor|Assembly|Trailer Cutter|Writer|Rome · IT",
 
   // works index
@@ -178,6 +181,9 @@ const it: Dict = {
   "home.stat_director_n": "film",
   "home.stat_exp": "D · Esperienza",
   "home.stat_exp_n": "anni",
+  "home.reel_label": "§ 02 — Lavori scelti",
+  "home.reel_title": "Ultimi montaggi.",
+  "home.reel_all": "Tutti i lavori ↗",
   "home.marquee": "Regia|Montaggio|Assemblaggio|Trailer|Sceneggiatura|Roma · IT",
 
   "works.title": "Lavori / Indice — Andrea Ricciotti",
@@ -312,6 +318,7 @@ const CATEGORY_IT: Dict = {
   "Web Series": "Web Series",
   "Branded Content": "Branded Content",
   "Sport": "Sport",
+  "Reel": "Reel",
 };
 
 /** Credit lines are built from these tokens, joined by · or —. */
@@ -518,6 +525,8 @@ const PROSE_IT: Dict = {
   "Shot the backstage on the feature.": "Riprese del backstage del film.",
   "Editor on the tournament's video output every year since 2017.": "Montaggio dei contenuti video del torneo, ogni anno dal 2017.",
 
+  "Cut the reel.": "Montaggio del reel.",
+
   // --- synopses ---
   "Third season of the mockumentary workplace comedy set inside a Neapolitan advertising agency, produced by The Jackal.": "Terza stagione della mockumentary comedy ambientata in un'agenzia pubblicitaria napoletana, prodotta da The Jackal.",
   "A horror feature written and directed by Federico Zampaglione with Barbara Baraldi, out 5 November 2026.": "Un horror scritto e diretto da Federico Zampaglione con Barbara Baraldi, in uscita il 5 novembre 2026.",
@@ -544,6 +553,7 @@ const PROSE_IT: Dict = {
   "A ten-part travel series following Dario Moccia across Japan.": "Una serie di viaggio in dieci episodi che segue Dario Moccia attraverso il Giappone.",
   "A documentary portrait of Gipi, one of the most singular voices in Italian comics.": "Un ritratto documentario di Gipi, una delle voci più singolari del fumetto italiano.",
   "Two friends from the Roman outskirts, with no real prospects, accidentally kill a pedestrian with their car and end up as low-level hires for a local crime family. The D’Innocenzo brothers’ debut feature, premiered in Panorama at the 68th Berlinale.": "Due amici della periferia romana, senza prospettive, investono per sbaglio un pedone e finiscono a fare i manovali di un clan criminale. L'esordio dei fratelli D'Innocenzo, presentato in Panorama alla 68ª Berlinale.",
+  "A director’s reel cut for Mauro Zingarelli, drawing his shorts and commercials into a single showreel.": "Il director's reel di Mauro Zingarelli, che raccoglie i suoi corti e i suoi spot in un unico montaggio.",
   "Italy's biggest tennis tournament, held every spring at the Foro Italico in Rome.": "Il più grande torneo di tennis italiano, ogni primavera al Foro Italico di Roma.",
   "Interview with Inio Asano, author of Goodnight Punpun.": "Intervista a Inio Asano, autore di Buonanotte Punpun.",
   "screenWEEK's trailer-reaction series, hosted by Claudio Di Biagio with a rotating cast of guests.": "La serie di reaction ai trailer di screenWEEK, condotta da Claudio Di Biagio con ospiti sempre diversi.",

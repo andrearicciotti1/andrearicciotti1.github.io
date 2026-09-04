@@ -35,7 +35,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    n: 55,
+    n: 56,
     slug: "pesci-piccoli-3",
     title: "Pesci Piccoli 3",
     roles: ["Writer"],
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 54,
+    n: 55,
     slug: "nameless-ballad",
     title: "The Nameless Ballad",
     roles: ["Editor"],
@@ -77,7 +77,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 53,
+    n: 54,
     slug: "il-primo-della-classe",
     title: "Il Primo della Classe",
     roles: ["Director", "Writer"],
@@ -110,7 +110,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 52,
+    n: 53,
     slug: "coi-baci-e-coi-morsi",
     title: "Coi Baci e Coi Morsi — Autside",
     roles: ["Director"],
@@ -128,7 +128,7 @@ export const projects: Project[] = [
     comingSoon: true,
   },
   {
-    n: 51,
+    n: 52,
     slug: "jade-spot",
     title: "Jade",
     roles: ["Director"],
@@ -147,7 +147,7 @@ export const projects: Project[] = [
     comingSoon: true,
   },
   {
-    n: 50,
+    n: 51,
     slug: "burn-it-all",
     title: "Burn It All",
     roles: ["Editor"],
@@ -170,7 +170,7 @@ export const projects: Project[] = [
     comingSoon: true,
   },
   {
-    n: 49,
+    n: 50,
     slug: "kuni-she",
     title: "Kuni — She",
     roles: ["Director", "Editor"],
@@ -190,7 +190,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 48,
+    n: 49,
     slug: "benetton-formula",
     title: "Benetton Formula",
     roles: ["Editor"],
@@ -211,7 +211,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 47,
+    n: 48,
     slug: "pesci-piccoli-2",
     title: "Pesci Piccoli 2",
     roles: ["Editor"],
@@ -232,7 +232,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 46,
+    n: 47,
     slug: "la-prima-volta",
     title: "La Prima Volta",
     roles: ["Editor"],
@@ -252,7 +252,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 45,
+    n: 46,
     slug: "love-is-blind-italy",
     title: "Love is Blind: Italy",
     roles: ["Editor"],
@@ -271,7 +271,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 44,
+    n: 45,
     slug: "il-codice-puccini",
     title: "Il Codice Puccini",
     roles: ["Editor"],
@@ -291,7 +291,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 43,
+    n: 44,
     slug: "hanno-ucciso-luomo-ragno",
     title: "Hanno Ucciso L'Uomo Ragno",
     roles: ["Editor"],
@@ -313,7 +313,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 42,
+    n: 43,
     slug: "la-buona-condotta",
     title: "La Buona Condotta",
     roles: ["Editor"],
@@ -331,7 +331,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 41,
+    n: 42,
     slug: "combattere",
     title: "Combattere",
     roles: ["Director", "Editor", "Writer"],
@@ -351,7 +351,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 40,
+    n: 41,
     slug: "showu-kuni",
     title: "Showu — Kuni",
     roles: ["Director", "Editor"],
@@ -370,7 +370,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 39,
+    n: 40,
     slug: "shake",
     title: "Shake",
     roles: ["Editor"],
@@ -395,7 +395,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 38,
+    n: 39,
     slug: "pesci-piccoli",
     title: "Pesci Piccoli",
     roles: ["Editor"],
@@ -412,6 +412,24 @@ export const projects: Project[] = [
       { k: "Platform", v: "Prime Video" },
       { k: "Production", v: "The Jackal" },
       { k: "Editing", v: "11 episodes across seasons" },
+    ],
+  },
+  {
+    n: 38,
+    slug: "mauro-zingarelli-reel",
+    title: "Mauro Zingarelli — Director’s Reel",
+    roles: ["Editor"],
+    credit: "Editor",
+    category: "Reel",
+    cover: "/assets/scenes/mauro-zingarelli-reel.jpg",
+    year: "2023",
+    synopsis: "A director’s reel cut for Mauro Zingarelli, drawing his shorts and commercials into a single showreel.",
+    contribution: "Cut the reel.",
+    specs: [
+      { k: "Format", v: "Reel" },
+      { k: "For", v: "Mauro Zingarelli" },
+      { k: "Editing", v: "Andrea Ricciotti" },
+      { k: "Year", v: "2023" },
     ],
   },
   {
