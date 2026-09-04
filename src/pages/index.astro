@@ -8,6 +8,7 @@ const featured = projects.filter((p) => p.featured).slice(0, 6);
 const editorCount   = projects.filter((p) => p.roles.includes("Editor")).length;
 const directorCount = projects.filter((p) => p.roles.includes("Director")).length;
 const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
+const year = new Date().getFullYear();
 const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "short", day: "2-digit", year: "numeric" });
 ---
 
@@ -17,7 +18,7 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
   <!-- HERO: giant slab -->
   <section class="hero">
     <div class="hero__topline">
-      <span class="mono">File · Portfolio / 2016 → 2026</span>
+      <span class="mono">File · Portfolio / 2016 → {year}</span>
       <span class="mono">{nowLabel} · Rome, IT</span>
     </div>
 
@@ -38,7 +39,7 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
         </h2>
         <div class="hero__cta">
           <a href="/works" class="btn btn--hot">
-            <span>View the index</span>
+            <span>View the works</span>
             <span aria-hidden="true">→</span>
           </a>
           <a href="/contact" class="btn btn--ghost">Send a brief</a>
@@ -127,7 +128,7 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
       </div>
     </div>
 
-    <div class="foot__mega display" aria-hidden="true">A/R — 2026</div>
+    <div class="foot__mega display" aria-hidden="true">A/R — {year}</div>
     <!-- RICC88 -->
     <div class="ricc88" aria-hidden="true" title="RICC88">RICC88</div>
   </footer>
@@ -136,7 +137,7 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
 <style>
   /* HERO */
   .hero {
-    padding: clamp(1.5rem, 3vh, 2.5rem) var(--gutter) clamp(2rem, 4vh, 3rem);
+    padding: clamp(0.85rem, 1.6vh, 1.4rem) var(--gutter) clamp(1rem, 2vh, 1.6rem);
     border-bottom: var(--rule-w) solid var(--rule);
     position: relative;
   }
@@ -144,18 +145,18 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
     display: flex;
     justify-content: space-between;
     gap: 1rem;
-    padding-bottom: 0.75rem;
+    padding-bottom: 0.55rem;
     border-bottom: 1px dashed var(--rule-soft);
-    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    margin-bottom: clamp(0.6rem, 1.2vw, 1rem);
   }
   @media (max-width: 520px) { .hero__topline { flex-direction: column; gap: 0.3rem; } }
 
   .hero__title {
     color: var(--ink);
-    font-size: clamp(4rem, 18vw, 16rem);
+    font-size: clamp(3.5rem, 16.5vw, 14rem);
     font-family: var(--font-display);
     letter-spacing: -0.02em;
-    line-height: 0.84;
+    line-height: 0.8;
   }
   .line { display: block; }
   .line--offset {
@@ -167,18 +168,22 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
   .hero__split {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    gap: clamp(1.5rem, 4vw, 3.5rem);
-    margin-top: clamp(2rem, 5vw, 3.5rem);
-    padding-top: clamp(1.5rem, 3vw, 2.5rem);
+    gap: clamp(1rem, 2.5vw, 2rem);
+    margin-top: clamp(0.5rem, 1.2vw, 1rem);
+    padding-top: clamp(0.6rem, 1.2vw, 1rem);
     border-top: 1px dashed var(--rule-soft);
+  }
+  /* lift the photo into the whitespace the display face leaves under the name */
+  @media (min-width: 821px) {
+    .hero__photo { margin-top: clamp(-4.5rem, -3.5vw, -1.5rem); }
   }
   @media (max-width: 820px) { .hero__split { grid-template-columns: 1fr; } }
 
   .hero__label { position: relative; }
   .hero__role {
-    font-size: clamp(2.2rem, 6vw, 4.5rem);
-    line-height: 0.92;
-    margin-top: 0.5rem;
+    font-size: clamp(1.9rem, 5vw, 3.6rem);
+    line-height: 0.9;
+    margin-top: 0.3rem;
   }
   .role-ital {
     color: var(--hot);
@@ -189,7 +194,7 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
   .hero__cta {
     display: flex;
     gap: 0.75rem;
-    margin-top: 2rem;
+    margin-top: clamp(0.9rem, 2vw, 1.4rem);
     flex-wrap: wrap;
   }
   .hero__photo {
@@ -197,7 +202,7 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
     border: var(--rule-w) solid var(--ink);
     overflow: hidden;
     align-self: stretch;
-    min-height: 340px;
+    min-height: 280px;
   }
   .hero__photo img {
     width: 100%;
@@ -245,7 +250,7 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
   }
   @media (max-width: 720px) { .stats { grid-template-columns: repeat(2, 1fr); } }
   .stat {
-    padding: 1.5rem var(--gutter);
+    padding: clamp(0.9rem, 2vw, 1.15rem) var(--gutter);
     border-right: var(--rule-w) solid var(--rule);
     position: relative;
     color: var(--ink);
@@ -261,7 +266,7 @@ const nowLabel = new Date().toLocaleString("en-US", { weekday: "short", month: "
   }
   .stat__k { margin-bottom: 0.4rem; }
   .stat__v {
-    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
     line-height: 0.9;
     color: var(--ink);
     font-family: var(--font-display);
