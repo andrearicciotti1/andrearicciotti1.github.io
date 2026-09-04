@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar.astro";
 import Marquee from "../components/Marquee.astro";
 import { projects } from "../data/projects";
 
+const year = new Date().getFullYear();
 const totalCount = projects.length;
 const directorCount = projects.filter((p) => p.roles.includes("Director")).length;
 const editorCount   = projects.filter((p) => p.roles.includes("Editor")).length;
@@ -17,7 +18,7 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
   <section class="head">
     <div class="head__top">
       <span class="mono">§ 01 — Filmography</span>
-      <span class="mono">{totalCount} entries · 2016 — 2026</span>
+      <span class="mono">{totalCount} entries · 2016 — {year}</span>
     </div>
     <h1 class="head__title display">
       <span>Works</span>
@@ -64,7 +65,7 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
       {projects.map((p) => (
         <li class="row" data-roles={p.roles.join(",")}>
           <a class="row__link" href={`/works/${p.slug}`} aria-label={p.title}></a>
-          <div class="row__cell row__n mono">{String(p.n).padStart(2,"0")}</div>
+          <div class="row__cell row__n mono">{String(p.n).padStart(3,"0")}</div>
           <div class="row__cell row__title">
             <span class="row__t display">{p.title}</span>
           </div>
@@ -185,7 +186,7 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
   }
   .index__cols {
     display: grid;
-    grid-template-columns: 3rem 2.4fr 1.6fr 1fr 1.2fr 2rem;
+    grid-template-columns: 3.5rem 2.4fr 1.6fr 1fr 1.2fr 2rem;
     gap: 1rem;
     padding: 0.7rem var(--gutter);
     color: var(--ink-faint);
@@ -199,7 +200,7 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
 
   .row {
     display: grid;
-    grid-template-columns: 3rem 2.4fr 1.6fr 1fr 1.2fr 2rem;
+    grid-template-columns: 3.5rem 2.4fr 1.6fr 1fr 1.2fr 2rem;
     gap: 1rem;
     align-items: center;
     padding: 1rem var(--gutter);
@@ -268,7 +269,7 @@ const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
 
   @media (max-width: 820px) {
     .row {
-      grid-template-columns: 3rem 1fr 2rem;
+      grid-template-columns: 3.5rem 1fr 2rem;
       row-gap: 0.3rem;
     }
     .row__credit {

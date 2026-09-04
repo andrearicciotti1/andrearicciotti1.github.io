@@ -3,6 +3,7 @@ export interface Props {
   active?: "index" | "works" | "bio" | "contact";
 }
 const { active = "index" } = Astro.props;
+const year = new Date().getFullYear();
 
 const links = [
   { key: "index",   label: "Index",   href: "/",        n: "00" },
@@ -36,7 +37,7 @@ const links = [
   <div class="nav__right">
     <span class="mono nav__status">
       <span class="nav__pulse"></span>
-      Open to work · 2026
+      Open to work · {year}
     </span>
   </div>
 </header>
