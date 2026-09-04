@@ -319,6 +319,7 @@ const CATEGORY_IT: Dict = {
   "Branded Content": "Branded Content",
   "Sport": "Sport",
   "Reel": "Reel",
+  "Interactive": "Interattivo",
 };
 
 /** Credit lines are built from these tokens, joined by · or —. */
@@ -338,6 +339,7 @@ const CREDIT_IT: Dict = {
   "Editing Supervisor": "Supervisione al montaggio",
   "Supervising Editor": "Supervisione al montaggio",
   "Creative Director": "Direzione creativa",
+  "Filmmaker": "Filmmaker",
   "Cinematography": "Fotografia",
   "Host": "Conduzione",
   "Backstage": "Backstage",
@@ -380,6 +382,8 @@ const SPEC_KEY_IT: Dict = {
   "For": "Per",
   "Also known as": "Conosciuto anche come",
   "Track produced by": "Brano prodotto da",
+  "Campaign": "Campagna",
+  "Note": "Nota",
 };
 
 /** Only the spec values that are prose rather than proper nouns. */
@@ -389,6 +393,9 @@ const SPEC_VALUE_IT: Dict = {
   "Completed": "Completato",
   "Ongoing": "In corso",
   "Sport · Live event": "Sport · Evento dal vivo",
+  "Interactive video": "Video interattivo",
+  "First short film": "Primo cortometraggio",
+  "Filmmaker · Editing": "Riprese · Montaggio",
   "Foro Italico, Rome": "Foro Italico, Roma",
   "The novel by Donatella Di Pietrantonio": "Il romanzo di Donatella Di Pietrantonio",
   "Othello by William Shakespeare": "Otello di William Shakespeare",
@@ -527,6 +534,10 @@ const PROSE_IT: Dict = {
 
   "Cut the reel.": "Montaggio del reel.",
 
+  "Editor across the branching video tree.": "Montaggio dell'intero albero di video ramificati.",
+  "Wrote, directed and edited. His first self-produced short.": "Scritto, diretto e montato. Il suo primo cortometraggio autoprodotto.",
+  "Editor on the campaign film.": "Montaggio dello spot.",
+
   // --- synopses ---
   "Third season of the mockumentary workplace comedy set inside a Neapolitan advertising agency, produced by The Jackal.": "Terza stagione della mockumentary comedy ambientata in un'agenzia pubblicitaria napoletana, prodotta da The Jackal.",
   "A horror feature written and directed by Federico Zampaglione with Barbara Baraldi, out 5 November 2026.": "Un horror scritto e diretto da Federico Zampaglione con Barbara Baraldi, in uscita il 5 novembre 2026.",
@@ -554,6 +565,11 @@ const PROSE_IT: Dict = {
   "A documentary portrait of Gipi, one of the most singular voices in Italian comics.": "Un ritratto documentario di Gipi, una delle voci più singolari del fumetto italiano.",
   "Two friends from the Roman outskirts, with no real prospects, accidentally kill a pedestrian with their car and end up as low-level hires for a local crime family. The D’Innocenzo brothers’ debut feature, premiered in Panorama at the 68th Berlinale.": "Due amici della periferia romana, senza prospettive, investono per sbaglio un pedone e finiscono a fare i manovali di un clan criminale. L'esordio dei fratelli D'Innocenzo, presentato in Panorama alla 68ª Berlinale.",
   "A director’s reel cut for Mauro Zingarelli, drawing his shorts and commercials into a single showreel.": "Il director's reel di Mauro Zingarelli, che raccoglie i suoi corti e i suoi spot in un unico montaggio.",
+  "Fondazione Telethon’s campaign film with Frank Matano — life smiles at you when you help research.": "Lo spot di Fondazione Telethon con Frank Matano: la vita ti sorride quando aiuti la ricerca.",
+  "An interactive mini-film built with Warner Bros. for the Italian release of Final Destination Bloodlines: every choice branches, and the wrong turn kills Mauro Zingarelli in a new way.": "Un mini-film interattivo realizzato con Warner Bros. per l'uscita italiana di Final Destination Bloodlines: ogni scelta apre un bivio, e quella sbagliata uccide Mauro Zingarelli in un modo sempre diverso.",
+  "A short film made with AIPAMM, the Italian association of patients with myeloproliferative diseases, about living a real life alongside a chronic illness.": "Un cortometraggio realizzato con AIPAMM, l'associazione italiana pazienti con malattie mieloproliferative, su come si vive una vita vera accanto a una malattia cronica.",
+  "Part of Campioni Ogni Giorno, P&G Italia’s programme of everyday actions in the run-up to the Milano Cortina 2026 Games.": "Parte di Campioni Ogni Giorno, il programma di azioni concrete di P&G Italia verso i Giochi di Milano Cortina 2026.",
+  "The first film Andrea ever made: written, directed and cut on his own, with no one asking for it.": "Il primo film che Andrea abbia mai fatto: scritto, diretto e montato da solo, senza che nessuno glielo avesse chiesto.",
   "Italy's biggest tennis tournament, held every spring at the Foro Italico in Rome.": "Il più grande torneo di tennis italiano, ogni primavera al Foro Italico di Roma.",
   "Interview with Inio Asano, author of Goodnight Punpun.": "Intervista a Inio Asano, autore di Buonanotte Punpun.",
   "screenWEEK's trailer-reaction series, hosted by Claudio Di Biagio with a rotating cast of guests.": "La serie di reaction ai trailer di screenWEEK, condotta da Claudio Di Biagio con ospiti sempre diversi.",

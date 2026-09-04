@@ -36,7 +36,8 @@ const timelineIt = [
   { year: "2025 — oggi", title: "Adesso",              body: "Montaggio di Pesci Piccoli 2 e del documentario Benetton Formula. Ho montato l'ultimo film di Federico Zampaglione, presentato in anteprima a Londra." },
   { year: "2026", title: "Il Primo della Classe",      body: "Vincitore dell'VIII edizione de \"La Realtà che Non Esiste\", prodotto da One More Pictures con Rai Cinema. Scritto e diretto, con Samuele Carrino. Selezionato a Venezia." },
 ];
-const timeline = lang === "it" ? timelineIt : timelineEn;
+// newest first, like the rest of the site
+const timeline = [...(lang === "it" ? timelineIt : timelineEn)].reverse();
 
 const facts = [
   { k: t("bio.fact_based"),  v: t("bio.fact_based_v") },
@@ -140,7 +141,7 @@ const facts = [
     <ol class="timeline__list">
       {timeline.map((t, i) => (
         <li class="t-row">
-          <div class="t-row__n mono">{String(i + 1).padStart(2, "0")}</div>
+          <div class="t-row__n mono">{String(timeline.length - i).padStart(2, "0")}</div>
           <div class="t-row__year mono">{t.year}</div>
           <div class="t-row__title display">{t.title}</div>
           <div class="t-row__body">{t.body}</div>
