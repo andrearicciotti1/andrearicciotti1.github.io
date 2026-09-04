@@ -39,6 +39,7 @@ const next = projects[p.n] ?? null;
     <h1 class="head__title display">{p.title}</h1>
     <p class="head__credit">{p.credit}</p>
     <div class="head__meta mono">
+      {p.comingSoon && <span class="head__soon">Coming Soon</span>}
       {p.year && <span class="head__year">{p.year}</span>}
       <span>{p.category}</span>
       {p.platform && <span>· {p.platform}</span>}
@@ -63,7 +64,7 @@ const next = projects[p.n] ?? null;
     <section class="cover">
       <div class="cover__wrap">
         <img src={p.cover} alt={p.title} />
-        {!p.video && !p.link && (
+        {(p.comingSoon || (!p.video && !p.link)) && (
           <div class="cover__soon mono">Coming soon</div>
         )}
       </div>
@@ -102,6 +103,23 @@ const next = projects[p.n] ?? null;
     </section>
   )}
 
+  <!-- PRESS -->
+  {p.articles && (
+    <section class="press">
+      <div class="mono press__label">§ — Press</div>
+      <ul class="press__list">
+        {p.articles.map((a) => (
+          <li>
+            <a href={a.url} target="_blank" rel="noopener" class="press__item">
+              <span class="press__t">{a.label}</span>
+              <span class="press__arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
   <!-- EXTERNAL LINK -->
   {(p.link || p.video) && (
     <section class="actions">
@@ -113,7 +131,7 @@ const next = projects[p.n] ?? null;
       )}
       {p.video && (
         <a href={p.video} target="_blank" rel="noopener" class="btn btn--outline">
-          <span>Open on {p.video.includes("vimeo") ? "Vimeo" : "YouTube"}</span>
+          <span>Open on {p.video.includes("vimeo") ? "Vimeo" : p.video.includes("facebook") ? "Facebook" : "YouTube"}</span>
           <span aria-hidden="true">↗</span>
         </a>
       )}
@@ -186,6 +204,15 @@ const next = projects[p.n] ?? null;
     align-items: center;
     color: var(--ink-mute);
     font-size: 0.65rem;
+  }
+  .head__soon {
+    background: var(--hot);
+    color: var(--ink);
+    padding: 0.2rem 0.5rem;
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
   }
   .head__year {
     color: var(--hot);
@@ -317,6 +344,38 @@ const next = projects[p.n] ?? null;
     line-height: 1.35;
     color: var(--ink);
   }
+
+  /* PRESS */
+  .press {
+    padding: clamp(1.5rem, 3vw, 2.5rem) var(--gutter);
+    border-bottom: var(--rule-w) solid var(--rule);
+  }
+  .press__label {
+    color: var(--ink-faint);
+    font-size: 0.62rem;
+    padding-bottom: 0.6rem;
+    margin-bottom: 0.6rem;
+    border-bottom: 1px dashed var(--rule-soft);
+  }
+  .press__list { list-style: none; margin: 0; padding: 0; }
+  .press__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--rule-soft);
+    color: var(--ink);
+    transition: color var(--dur-fast) var(--ease), padding-left var(--dur-fast) var(--ease);
+  }
+  .press__item:hover { color: var(--hot); padding-left: 0.4rem; }
+  .press__t {
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .press__arrow { color: var(--hot); }
 
   /* ACTIONS */
   .actions {
