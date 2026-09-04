@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" role="img" aria-label="In development">
+  <rect width="1200" height="750" fill="#0a0a0a"/>
+  <rect x="28" y="28" width="1144" height="694" fill="none" stroke="#ff3b00" stroke-width="3"/>
+  <text x="600" y="360" fill="#ece6d8" font-family="'JetBrains Mono',monospace" font-size="30" letter-spacing="12" text-anchor="middle">IN DEVELOPMENT</text>
+  <text x="600" y="424" fill="#ff3b00" font-family="'JetBrains Mono',monospace" font-size="22" letter-spacing="9" text-anchor="middle">TITANUS</text>
+</svg>

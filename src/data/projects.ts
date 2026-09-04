@@ -35,6 +35,25 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    n: 64,
+    slug: "titanus-feature",
+    title: "Untitled Titanus Feature",
+    roles: ["Writer"],
+    credit: "Co-Writer",
+    category: "Feature Film",
+    cover: "/assets/projects/in-development.svg",
+    year: "Upcoming",
+    contribution: "Co-writing the screenplay with Mauro Zingarelli.",
+    specs: [
+      { k: "Format", v: "Feature Film" },
+      { k: "Direction", v: "Mauro Zingarelli" },
+      { k: "Screenplay", v: "Andrea Ricciotti · Mauro Zingarelli" },
+      { k: "Production", v: "Titanus" },
+      { k: "Status", v: "In development" },
+    ],
+    comingSoon: true,
+  },
+  {
     n: 63,
     slug: "pesci-piccoli-3",
     title: "Pesci Piccoli 3",
