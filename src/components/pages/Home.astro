@@ -11,6 +11,10 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const L = (p: string) => localize(lang, p);
 
+// Selected work is parked: .reel__grid is a 12-column grid and ProjectCard
+// sets no column span, so each card takes 1/12 and the row collapses to
+// thumbnails. Flip this back on once the grid and the card agree.
+const SHOW_REEL = false;
 const featured = projects.filter((p) => p.featured).slice(0, 6);
 const editorCount   = projects.filter((p) => p.roles.includes("Editor")).length;
 const directorCount = projects.filter((p) => p.roles.includes("Director")).length;
@@ -90,7 +94,8 @@ const nowLabel = new Date().toLocaleString(lang === "it" ? "it-IT" : "en-US", { 
     </a>
   </section>
 
-  <!-- SELECTED WORK -->
+  <!-- SELECTED WORK — parked, see SHOW_REEL above -->
+  {SHOW_REEL && (
   <section class="reel">
     <header class="reel__header">
       <div class="reel__label">
@@ -103,6 +108,7 @@ const nowLabel = new Date().toLocaleString(lang === "it" ? "it-IT" : "en-US", { 
       {featured.map((p, i) => <ProjectCard project={p} index={i} lang={lang} />)}
     </div>
   </section>
+  )}
 
   <!-- MARQUEE 2 -->
   <Marquee

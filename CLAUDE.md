@@ -38,6 +38,15 @@ change is visual, open the page in the browser and look.
 - Only assert credits, years and names that come from a source Andrea gave
   or that were verified online. Leave a field out rather than guessing it.
 
+## Parked
+
+The home page's **Selected work** grid is switched off behind `SHOW_REEL`
+in `src/components/pages/Home.astro`. It rendered as a row of thumbnails
+crushed to the left: `.reel__grid` is `repeat(12, 1fr)` and `ProjectCard`
+sets no column span, so every card took one twelfth of the row. Andrea
+wants the section, so this is a layout job to finish, not a feature to
+drop.
+
 ## Open thread — to design together, later
 
 A **stills page**: a gallery of frames from his work, treated as
