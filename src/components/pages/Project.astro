@@ -17,6 +17,8 @@ function getEmbedUrl(url: string): string | null {
   if (yt) return `https://www.youtube-nocookie.com/embed/${yt[1]}?rel=0&modestbranding=1`;
   const vm = url.match(/vimeo\.com\/(\d+)/);
   if (vm) return `https://player.vimeo.com/video/${vm[1]}?dnt=1`;
+  const dr = url.match(/drive\.google\.com\/file\/d\/([\w-]+)/);
+  if (dr) return `https://drive.google.com/file/d/${dr[1]}/preview`;
   return null;
 }
 
@@ -73,18 +75,15 @@ const next = projects[i + 1] ?? null;
   )}
 
   <!-- RECAP / TECHNICAL SHEET -->
-  {(p.synopsis || p.contribution || p.specs) && (
-    <section class="recap">
+  <section class="recap">
       <div class="recap__grid">
         <div class="recap__body">
           <div class="mono recap__label">{t("proj.about")}</div>
           {p.synopsis && <p class="recap__synopsis">{tProse(p.synopsis, lang)}</p>}
-          {p.contribution && (
-            <div class="recap__role">
-              <div class="mono recap__label recap__label--sub">{t("proj.my_role")}</div>
-              <p class="recap__contribution">{tProse(p.contribution, lang)}</p>
-            </div>
-          )}
+          <div class="recap__role">
+            <div class="mono recap__label recap__label--sub">{t("proj.my_role")}</div>
+            <p class="recap__contribution">{tCredit(p.credit, lang)}</p>
+          </div>
         </div>
 
         {p.specs && (
@@ -101,8 +100,7 @@ const next = projects[i + 1] ?? null;
           </aside>
         )}
       </div>
-    </section>
-  )}
+  </section>
 
   <!-- PRESS -->
   {p.articles && (
@@ -132,7 +130,7 @@ const next = projects[i + 1] ?? null;
       )}
       {p.video && (
         <a href={p.video} target="_blank" rel="noopener" class="btn btn--outline">
-          <span>{t("proj.open_on")} {p.video.includes("vimeo") ? "Vimeo" : p.video.includes("facebook") ? "Facebook" : "YouTube"}</span>
+          <span>{t("proj.open_on")} {p.video.includes("vimeo") ? "Vimeo" : p.video.includes("facebook") ? "Facebook" : p.video.includes("drive.google") ? "Drive" : "YouTube"}</span>
           <span aria-hidden="true">↗</span>
         </a>
       )}
@@ -312,10 +310,12 @@ const next = projects[i + 1] ?? null;
     max-width: 56ch;
   }
   .recap__contribution {
-    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
-    line-height: 1.55;
-    color: var(--ink-mute);
-    max-width: 56ch;
+    font-family: var(--font-display);
+    font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    color: var(--ink);
     border-left: var(--rule-w) solid var(--hot);
     padding-left: 1rem;
   }
