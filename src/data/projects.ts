@@ -35,7 +35,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    n: 64,
+    n: 65,
     slug: "titanus-feature",
     title: "Untitled Titanus Feature",
     roles: ["Writer"],
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     comingSoon: true,
   },
   {
-    n: 63,
+    n: 64,
     slug: "pesci-piccoli-3",
     title: "Pesci Piccoli 3",
     roles: ["Writer"],
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 62,
+    n: 63,
     slug: "nameless-ballad",
     title: "The Nameless Ballad",
     roles: ["Editor"],
@@ -96,7 +96,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 61,
+    n: 62,
     slug: "il-primo-della-classe",
     title: "Il Primo della Classe",
     roles: ["Director", "Writer"],
@@ -129,7 +129,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 60,
+    n: 61,
     slug: "coi-baci-e-coi-morsi",
     title: "Coi Baci e Coi Morsi — Autside",
     roles: ["Director", "Editor"],
@@ -148,7 +148,7 @@ export const projects: Project[] = [
     comingSoon: true,
   },
   {
-    n: 59,
+    n: 60,
     slug: "jade-spot",
     title: "Jade",
     roles: ["Director"],
@@ -167,7 +167,7 @@ export const projects: Project[] = [
     comingSoon: true,
   },
   {
-    n: 58,
+    n: 59,
     slug: "burn-it-all",
     title: "Burn It All",
     roles: ["Editor"],
@@ -190,7 +190,7 @@ export const projects: Project[] = [
     comingSoon: true,
   },
   {
-    n: 57,
+    n: 58,
     slug: "kuni-she",
     title: "Kuni — She",
     roles: ["Director", "Editor"],
@@ -210,7 +210,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 56,
+    n: 57,
     slug: "pg-punti-di-vista",
     title: "Punti di Vista — P&G Italia",
     roles: ["Director", "Editor"],
@@ -231,7 +231,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 55,
+    n: 56,
     slug: "telethon-frank-matano",
     title: "Frank Matano × Fondazione Telethon",
     roles: ["Editor"],
@@ -252,7 +252,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 54,
+    n: 55,
     slug: "benetton-formula",
     title: "Benetton Formula",
     roles: ["Editor"],
@@ -273,7 +273,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 53,
+    n: 54,
     slug: "pesci-piccoli-2",
     title: "Pesci Piccoli 2",
     roles: ["Editor"],
@@ -295,7 +295,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 52,
+    n: 53,
     slug: "final-destination-bloodlines-game",
     title: "Final Destination Bloodlines — Interactive",
     roles: ["Editor"],
@@ -319,7 +319,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 51,
+    n: 52,
     slug: "una-vita-vera",
     title: "Una Vita Vera",
     roles: ["Editor"],
@@ -338,6 +338,26 @@ export const projects: Project[] = [
       { k: "With", v: "AIPAMM · AOP Health" },
       { k: "Editing", v: "Andrea Ricciotti" },
       { k: "Premiere", v: "Uno Sguardo Raro Festival, 2025" },
+    ],
+  },
+  {
+    n: 51,
+    slug: "sivola-euphoria",
+    title: "Sivola — Euphoria",
+    roles: ["Editor"],
+    credit: "Editor",
+    category: "Commercial",
+    cover: "/assets/projects/sivola-euphoria.jpg",
+    video: "https://vimeo.com/1087164762",
+    year: "2025",
+    contribution: "Editor on the spot.",
+    specs: [
+      { k: "Format", v: "Commercial" },
+      { k: "Direction", v: "Mauro Zingarelli" },
+      { k: "Production", v: "Micidial" },
+      { k: "Editing", v: "Andrea Ricciotti" },
+      { k: "Runtime", v: "20 sec" },
+      { k: "Release", v: "May 2025" },
     ],
   },
   {
