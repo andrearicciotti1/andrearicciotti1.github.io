@@ -35,7 +35,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    n: 63,
+    n: 64,
     slug: "pesci-piccoli-3",
     title: "Pesci Piccoli 3",
     roles: ["Writer"],
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 62,
+    n: 63,
     slug: "nameless-ballad",
     title: "The Nameless Ballad",
     roles: ["Editor"],
@@ -77,7 +77,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 61,
+    n: 62,
     slug: "il-primo-della-classe",
     title: "Il Primo della Classe",
     roles: ["Director", "Writer"],
@@ -110,7 +110,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 60,
+    n: 61,
     slug: "coi-baci-e-coi-morsi",
     title: "Coi Baci e Coi Morsi — Autside",
     roles: ["Director", "Editor"],
@@ -129,7 +129,7 @@ export const projects: Project[] = [
     comingSoon: true,
   },
   {
-    n: 59,
+    n: 60,
     slug: "jade-spot",
     title: "Jade",
     roles: ["Director"],
@@ -148,7 +148,7 @@ export const projects: Project[] = [
     comingSoon: true,
   },
   {
-    n: 58,
+    n: 59,
     slug: "burn-it-all",
     title: "Burn It All",
     roles: ["Editor"],
@@ -171,7 +171,7 @@ export const projects: Project[] = [
     comingSoon: true,
   },
   {
-    n: 57,
+    n: 58,
     slug: "kuni-she",
     title: "Kuni — She",
     roles: ["Director", "Editor"],
@@ -191,7 +191,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 56,
+    n: 57,
     slug: "pg-punti-di-vista",
     title: "Punti di Vista — P&G Italia",
     roles: ["Director", "Editor"],
@@ -212,7 +212,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 55,
+    n: 56,
     slug: "telethon-frank-matano",
     title: "Frank Matano × Fondazione Telethon",
     roles: ["Editor"],
@@ -233,7 +233,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 54,
+    n: 55,
     slug: "benetton-formula",
     title: "Benetton Formula",
     roles: ["Editor"],
@@ -254,7 +254,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 53,
+    n: 54,
     slug: "pesci-piccoli-2",
     title: "Pesci Piccoli 2",
     roles: ["Editor"],
@@ -276,7 +276,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 52,
+    n: 53,
     slug: "final-destination-bloodlines-game",
     title: "Final Destination Bloodlines — Interactive",
     roles: ["Editor"],
@@ -300,7 +300,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 51,
+    n: 52,
     slug: "una-vita-vera",
     title: "Una Vita Vera",
     roles: ["Editor"],
@@ -322,7 +322,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 50,
+    n: 51,
     slug: "la-prima-volta",
     title: "La Prima Volta",
     roles: ["Editor"],
@@ -342,7 +342,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 49,
+    n: 50,
     slug: "movement-alert",
     title: "Movement Alert",
     roles: ["Director", "Editor"],
@@ -370,7 +370,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 48,
+    n: 49,
     slug: "geopop-termovalorizzatore",
     title: "Geopop — Dentro un Termovalorizzatore",
     roles: ["Director", "Editor"],
@@ -379,17 +379,23 @@ export const projects: Project[] = [
     platform: "YouTube",
     cover: "/assets/projects/geopop-termovalorizzatore.jpg",
     video: "https://www.youtube.com/watch?v=6IJDwYCG6fw",
+    year: "2023",
     synopsis: "Geopop goes inside a waste-to-energy plant to show how it works and where the leftovers actually end up.",
     contribution: "Directed and edited.",
     specs: [
       { k: "Format", v: "Documentary" },
       { k: "For", v: "Geopop" },
+      { k: "Client", v: "Iren · TRM Torino" },
       { k: "Direction", v: "Andrea Ricciotti" },
       { k: "Editing", v: "Andrea Ricciotti" },
+      { k: "Year", v: "2023" },
+    ],
+    articles: [
+      { label: "Iren — the full visit", url: "https://www.youtube.com/watch?v=qQzhSF2jL6o" },
     ],
   },
   {
-    n: 47,
+    n: 48,
     slug: "love-is-blind-italy",
     title: "Love is Blind: Italy",
     roles: ["Editor"],
@@ -408,7 +414,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 46,
+    n: 47,
     slug: "il-codice-puccini",
     title: "Il Codice Puccini",
     roles: ["Editor"],
@@ -428,7 +434,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 45,
+    n: 46,
     slug: "hanno-ucciso-luomo-ragno",
     title: "Hanno Ucciso L'Uomo Ragno",
     roles: ["Editor"],
@@ -451,7 +457,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 44,
+    n: 45,
     slug: "la-buona-condotta",
     title: "La Buona Condotta",
     roles: ["Editor"],
@@ -469,13 +475,13 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 43,
+    n: 44,
     slug: "combattere",
     title: "Combattere",
     roles: ["Director", "Editor", "Writer"],
     credit: "Director · Editor · Writer",
     category: "Short Film",
-    cover: "/assets/projects/combattere.jpeg",
+    cover: "/assets/projects/combattere-poster.jpg",
     featured: true,
     video: "https://youtu.be/FqsHaJlkdGk",
     link: "https://www.imdb.com/title/tt31592133/",
@@ -499,7 +505,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 42,
+    n: 43,
     slug: "showu-kuni",
     title: "Showu — Kuni",
     roles: ["Director", "Editor"],
@@ -518,7 +524,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 41,
+    n: 42,
     slug: "shake",
     title: "Shake",
     roles: ["Editor"],
@@ -543,7 +549,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 40,
+    n: 41,
     slug: "pesci-piccoli",
     title: "Pesci Piccoli",
     roles: ["Editor"],
@@ -563,7 +569,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 39,
+    n: 40,
     slug: "mauro-zingarelli-reel",
     title: "Mauro Zingarelli — Director’s Reel",
     roles: ["Editor"],
@@ -581,7 +587,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 38,
+    n: 39,
     slug: "yolo",
     title: "YOLO — You Only Love Once",
     roles: ["Editor"],
@@ -608,7 +614,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 37,
+    n: 38,
     slug: "nostos",
     title: "Nostos",
     roles: ["Editor"],
@@ -628,7 +634,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 36,
+    n: 37,
     slug: "the-bad-guy",
     title: "The Bad Guy",
     roles: ["Editor"],
@@ -646,6 +652,27 @@ export const projects: Project[] = [
       { k: "Credit", v: "Additional Editor" },
       { k: "Episodes", v: "6" },
       { k: "Year", v: "2022" },
+    ],
+  },
+  {
+    n: 36,
+    slug: "dune-buggy",
+    title: "Dune Buggy — Francesco Cerasi feat. Federico Zampaglione",
+    roles: ["Editor"],
+    credit: "Editor",
+    category: "Music Video",
+    platform: "YouTube",
+    cover: "/assets/projects/dune-buggy.jpg",
+    video: "https://www.youtube.com/watch?v=gbGTo0y8Elo",
+    year: "2022",
+    synopsis: "The official video for the Dune Buggy cover from the Altrimenti ci arrabbiamo! soundtrack, cut by the film\u2019s composer Francesco Cerasi with Federico Zampaglione.",
+    contribution: "Editor on the music video.",
+    specs: [
+      { k: "Format", v: "Music Video" },
+      { k: "Artist", v: "Francesco Cerasi feat. Federico Zampaglione" },
+      { k: "Label", v: "BMG Italy" },
+      { k: "From", v: "Altrimenti ci arrabbiamo! (2022)" },
+      { k: "Editing", v: "Andrea Ricciotti" },
     ],
   },
   {
