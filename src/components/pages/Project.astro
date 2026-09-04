@@ -22,6 +22,16 @@ function getEmbedUrl(url: string): string | null {
   return null;
 }
 
+/** Name the platform a link points at, for the button label. */
+function host(url: string): string {
+  if (url.includes("vimeo")) return "Vimeo";
+  if (url.includes("facebook")) return "Facebook";
+  if (url.includes("drive.google")) return "Drive";
+  if (url.includes("raiplay")) return "RaiPlay";
+  if (url.includes("tiktok")) return "TikTok";
+  return "YouTube";
+}
+
 const embedUrl = p.video ? getEmbedUrl(p.video) : null;
 const n = String(p.n).padStart(3, "0");
 // `n` is a stable catalogue number, not a position, so walk the array itself.
@@ -130,7 +140,7 @@ const next = projects[i + 1] ?? null;
       )}
       {p.video && (
         <a href={p.video} target="_blank" rel="noopener" class="btn btn--outline">
-          <span>{t("proj.open_on")} {p.video.includes("vimeo") ? "Vimeo" : p.video.includes("facebook") ? "Facebook" : p.video.includes("drive.google") ? "Drive" : "YouTube"}</span>
+          <span>{t("proj.open_on")} {host(p.video)}</span>
           <span aria-hidden="true">↗</span>
         </a>
       )}
