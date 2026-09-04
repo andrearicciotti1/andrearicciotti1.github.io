@@ -29,14 +29,17 @@ const nowLabel = new Date().toLocaleString(lang === "it" ? "it-IT" : "en-US", { 
       <span class="mono">{nowLabel} · {t("home.photo_caption")}, IT</span>
     </div>
 
-    <h1 class="hero__title display">
-      <span class="line">ANDREA</span>
-      <span class="line line--offset">
-        <span class="hot">RICCIOTTI</span>
-      </span>
-    </h1>
+    <div class="hero__stage">
+      <div class="hero__photo">
+        <img src="/assets/ar-02189.jpg" alt="Andrea Ricciotti" />
+        <div class="hero__photo-caption mono">{t("home.photo_caption")} · {year}</div>
+      </div>
 
-    <div class="hero__split">
+      <h1 class="hero__title display">
+        <span class="line">ANDREA</span>
+        <span class="line line--offset"><span class="hot">RICCIOTTI</span></span>
+      </h1>
+
       <div class="hero__label">
         <span class="mono">{t("home.role_label")}</span>
         <h2 class="hero__role display">
@@ -51,11 +54,6 @@ const nowLabel = new Date().toLocaleString(lang === "it" ? "it-IT" : "en-US", { 
           </a>
           <a href={L("/contact")} class="btn btn--ghost">{t("home.cta_brief")}</a>
         </div>
-      </div>
-
-      <div class="hero__photo">
-        <img src="/assets/ar-02189.jpg" alt="Andrea Ricciotti" />
-        <div class="hero__photo-caption mono">{t("home.photo_caption")} · {year}</div>
       </div>
     </div>
   </section>
@@ -172,66 +170,35 @@ const nowLabel = new Date().toLocaleString(lang === "it" ? "it-IT" : "en-US", { 
   }
   @media (max-width: 520px) { .hero__topline { flex-direction: column; gap: 0.3rem; } }
 
-  .hero__title {
-    color: var(--ink);
-    font-size: clamp(3.5rem, 16.5vw, 14rem);
-    font-family: var(--font-display);
-    letter-spacing: -0.02em;
-    line-height: 0.8;
-  }
-  .line { display: block; }
-  .line--offset {
-    padding-left: clamp(0rem, 12vw, 8rem);
-    letter-spacing: -0.025em;
-  }
-  .hot { color: var(--hot); }
-
-  .hero__split {
+  /* Name, portrait and role share one grid so the type can ride over the
+     photo instead of stacking above it. */
+  .hero__stage {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: clamp(1rem, 2.5vw, 2rem);
-    margin-top: clamp(0.5rem, 1.2vw, 1rem);
-    padding-top: clamp(0.6rem, 1.2vw, 1rem);
-    border-top: 1px dashed var(--rule-soft);
-  }
-  /* lift the photo into the whitespace the display face leaves under the name */
-  @media (min-width: 821px) {
-    .hero__photo { margin-top: clamp(-4.5rem, -3.5vw, -1.5rem); }
-  }
-  @media (max-width: 820px) { .hero__split { grid-template-columns: 1fr; } }
-
-  .hero__label { position: relative; }
-  .hero__role {
-    font-size: clamp(1.9rem, 5vw, 3.6rem);
-    line-height: 0.9;
-    margin-top: 0.3rem;
-  }
-  .role-ital {
-    color: var(--hot);
-    font-style: italic;
-    margin-right: 0.1em;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(1rem, 2.5vw, 2rem);
+    row-gap: clamp(0.75rem, 1.6vw, 1.25rem);
+    align-items: start;
   }
 
-  .hero__cta {
-    display: flex;
-    gap: 0.75rem;
-    margin-top: clamp(0.9rem, 2vw, 1.4rem);
-    flex-wrap: wrap;
-  }
   .hero__photo {
+    grid-column: 2;
+    grid-row: 1 / -1;
     position: relative;
     border: var(--rule-w) solid var(--ink);
     overflow: hidden;
     align-self: stretch;
-    min-height: 280px;
+    min-height: clamp(320px, 38vw, 560px);
+    z-index: 0;
   }
   .hero__photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 20%;
+    /* subject sits right of centre, clear of the type that crosses the frame */
+    object-position: 68% 22%;
     display: block;
-    filter: grayscale(0.15) contrast(1.05);
+    filter: grayscale(1) contrast(1.08);
   }
   .hero__photo-caption {
     position: absolute;
@@ -242,6 +209,75 @@ const nowLabel = new Date().toLocaleString(lang === "it" ? "it-IT" : "en-US", { 
     color: var(--ink);
     padding: 0.22rem 0.55rem;
     border: 1px solid var(--ink);
+  }
+
+  .hero__title {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    color: var(--ink);
+    /* height as well as width, so the hero always clears the fold on a laptop */
+    font-size: clamp(3.25rem, min(18.5vw, 26vh), 17.5rem);
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    line-height: 0.82;
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
+  }
+  /* Each line is its own paper slug, so the type reads as printed over the
+     plate. A block background follows line-height, unlike an inline one,
+     which with a face this tall would tower over the letters. */
+  .line {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    background: var(--paper);
+    padding: 0.1em 0.14em 0.05em 0;
+  }
+  .line--offset {
+    padding-left: clamp(0rem, 5vw, 4rem);
+    letter-spacing: -0.025em;
+  }
+  .hot { color: var(--hot); }
+
+  .hero__label {
+    grid-column: 1;
+    grid-row: 2;
+    position: relative;
+    z-index: 2;
+    align-self: end;
+    /* the photo spans both rows, so ending the row flush lands the buttons
+       on the same baseline as the foot of the frame */
+    padding-bottom: 0;
+  }
+  .hero__role {
+    font-size: clamp(1.9rem, 4.6vw, 3.4rem);
+    line-height: 0.9;
+    margin-top: 0.3rem;
+  }
+  .role-ital {
+    color: var(--hot);
+    font-style: italic;
+    margin-right: 0.1em;
+  }
+  .hero__cta {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: clamp(1rem, 2.2vw, 1.6rem);
+    flex-wrap: wrap;
+  }
+
+  /* Stack on narrow screens: no overlap, photo below the name. */
+  @media (max-width: 860px) {
+    .hero__stage {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+    }
+    .hero__title { grid-column: 1; grid-row: 1; }
+    .hero__label { grid-column: 1; grid-row: 2; align-self: start; padding-bottom: 0; }
+    .hero__photo { grid-column: 1; grid-row: 3; min-height: 320px; }
+    .hero__photo img { object-position: center 20%; }
+    .line, .line:first-child, .line > span { background: none; }
   }
   .btn {
     display: inline-flex;

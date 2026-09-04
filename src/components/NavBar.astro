@@ -178,16 +178,17 @@ const bare = depath(Astro.url.pathname);
   }
 
   @media (max-width: 860px) {
-    .nav { grid-template-columns: auto 1fr; row-gap: 0; }
-    .nav__right { display: none; }
+    .nav { grid-template-columns: auto 1fr auto; row-gap: 0; }
+    .nav__status { display: none; }
+    .nav__langs { margin-right: 0; }
     .nav__mid { justify-self: end; overflow-x: auto; scrollbar-width: none; }
     .nav__mid::-webkit-scrollbar { display: none; }
     .nav__link { padding: 0.45rem 0.7rem; }
     .nav__label { font-size: 0.9rem; }
   }
   @media (max-width: 520px) {
-    .nav { grid-template-columns: auto; }
-    .nav__mid { grid-column: 1; margin-top: 0.75rem; border-top: var(--rule-w) solid var(--rule); }
+    .nav { grid-template-columns: auto 1fr; }
+    .nav__mid { grid-column: 1 / -1; margin-top: 0.75rem; border-top: var(--rule-w) solid var(--rule); }
     .mark__tag { display: none; }
   }
 </style>
