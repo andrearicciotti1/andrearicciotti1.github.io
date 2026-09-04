@@ -176,9 +176,9 @@ const it: Dict = {
   "home.photo_caption": "Roma",
   "home.stat_projects": "A · Progetti",
   "home.stat_projects_n": "realizzati",
-  "home.stat_editor": "B · Al montaggio",
+  "home.stat_editor": "B · Montaggio",
   "home.stat_editor_n": "crediti",
-  "home.stat_director": "C · Alla regia",
+  "home.stat_director": "C · Regia",
   "home.stat_director_n": "progetti",
   "home.stat_exp": "D · Esperienza",
   "home.stat_exp_n": "anni",
@@ -195,9 +195,9 @@ const it: Dict = {
   "works.h1_it": "l'indice.",
   "works.lede": "L'elenco dei progetti di montaggio e regia. Filtra per ruolo. Passa sopra una riga per vedere l'anteprima.",
   "works.all": "Tutti",
-  "works.as_director": "Alla regia",
-  "works.as_editor": "Al montaggio",
-  "works.as_writer": "Alla scrittura",
+  "works.as_director": "Regia",
+  "works.as_editor": "Montaggio",
+  "works.as_writer": "Sceneggiatura",
   "works.col_n": "N°",
   "works.col_title": "Titolo",
   "works.col_credit": "Credito",
@@ -328,29 +328,30 @@ const CATEGORY_IT: Dict = {
 
 /** Credit lines are built from these tokens, joined by · or —. */
 const CREDIT_IT: Dict = {
-  "Director": "Regia",
-  "Co-Director": "Co-regia",
-  "Co-Writer": "Co-sceneggiatura",
-  "Editor": "Montaggio",
-  "Writer": "Sceneggiatura",
-  "Co-Editor": "Co-montaggio",
-  "Pre-Editor": "Pre-montaggio",
-  "Additional Editor": "Montaggio aggiuntivo",
-  "On-Set Editor": "Montaggio in presa diretta",
+  "Director": "Regista",
+  "Co-Director": "Co-regista",
+  "Editor": "Montatore",
+  "Co-Editor": "Co-montatore",
+  "Pre-Editor": "Pre-montatore",
+  "Additional Editor": "Montatore aggiuntivo",
+  "On-Set Editor": "Montatore in presa diretta",
   "Assistant Editor": "Assistente al montaggio",
-  "Assistant Director": "Aiuto regia",
-  "Second Assistant Director": "Secondo aiuto regia",
-  "Trailer Editor": "Montaggio trailer",
+  "Trailer Editor": "Montatore trailer",
   "Trailer Author": "Autore del trailer",
   "Editing Supervisor": "Supervisione al montaggio",
   "Supervising Editor": "Supervisione al montaggio",
-  "Creative Director": "Direzione creativa",
+  "Writer": "Sceneggiatore",
+  "Co-Writer": "Co-sceneggiatore",
+  "Assistant Director": "Aiuto regia",
+  "Second Assistant Director": "Secondo aiuto regia",
+  "Second Second Assistant Director": "Secondo aiuto regia",
+  "Creative Director": "Direttore creativo",
+  "Host": "Conduttore",
   "Filmmaker": "Filmmaker",
-  "Cinematography": "Fotografia",
-  "Host": "Conduzione",
-  "Backstage": "Backstage",
+  "Cinematography": "Direttore della fotografia",
   "Camera": "Operatore",
-  "DoP": "Fotografia",
+  "Backstage": "Backstage",
+  "DoP": "Direttore della fotografia",
 };
 
 const SPEC_KEY_IT: Dict = {
@@ -482,6 +483,10 @@ export function tSpecKey(k: string, lang: Lang): string {
 export function tSpecValue(v: string, lang: Lang): string {
   if (lang !== "it") return v;
   if (SPEC_VALUE_IT[v]) return SPEC_VALUE_IT[v];
+  // A Credit row holds the same labels as the credit line, so translate it
+  // through the same table rather than leaving it in English.
+  const asCredit = translateSegments(v, CREDIT_IT);
+  if (asCredit !== v) return asCredit;
   let out = v;
   for (const [k, val] of Object.entries(WORD_IT)) {
     out = out.replace(new RegExp(`\\b${k}\\b`, "g"), val);
