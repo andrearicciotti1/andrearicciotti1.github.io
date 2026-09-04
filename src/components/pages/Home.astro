@@ -487,6 +487,10 @@ const nowLabel = new Date().toLocaleString(lang === "it" ? "it-IT" : "en-US", { 
   .foot__fine { color: var(--ink-faint); line-height: 1.6; font-size: 0.65rem; }
 
   .foot__mega {
+    /* Decoration only: it overlaps the tail of the shorter footer columns,
+       and without this it was swallowing clicks on Instagram, Spotify and
+       Contact. */
+    pointer-events: none;
     font-size: clamp(5rem, 22vw, 22rem);
     line-height: 0.85;
     color: transparent;
