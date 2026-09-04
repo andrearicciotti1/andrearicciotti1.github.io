@@ -1,28 +1,35 @@
 ---
+import { useTranslations, localize, depath, LANGS, LANG_META, type Lang } from "../i18n/ui";
+
 export interface Props {
-  active?: "index" | "works" | "bio" | "contact";
+  active?: "index" | "works" | "bio" | "contact" | "more";
+  lang: Lang;
 }
-const { active = "index" } = Astro.props;
+const { active = "index", lang } = Astro.props;
+const t = useTranslations(lang);
 const year = new Date().getFullYear();
 
 const links = [
-  { key: "index",   label: "Index",   href: "/",        n: "00" },
-  { key: "works",   label: "Works",   href: "/works",   n: "01" },
-  { key: "bio",     label: "Bio",     href: "/bio",     n: "02" },
-  { key: "contact", label: "Contact", href: "/contact", n: "03" },
+  { key: "index",   label: t("nav.index"),   href: localize(lang, "/"),        n: "00" },
+  { key: "works",   label: t("nav.works"),   href: localize(lang, "/works"),   n: "01" },
+  { key: "bio",     label: t("nav.bio"),     href: localize(lang, "/bio"),     n: "02" },
+  { key: "contact", label: t("nav.contact"), href: localize(lang, "/contact"), n: "03" },
 ];
+
+// keep the reader on the same page when they switch language
+const bare = depath(Astro.url.pathname);
 ---
 
 <header class="nav">
   <div class="nav__left">
-    <a href="/" class="nav__mark" aria-label="Andrea Ricciotti — Home">
+    <a href={localize(lang, "/")} class="nav__mark" aria-label={t("nav.home_aria")}>
       <span class="mark__ar">A/R</span>
       <span class="mark__dot"></span>
-      <span class="mono mark__tag">Dir · Ed</span>
+      <span class="mono mark__tag">{t("nav.role_tag")}</span>
     </a>
   </div>
 
-  <nav class="nav__mid" aria-label="Primary">
+  <nav class="nav__mid" aria-label={t("nav.primary")}>
     {links.map((l) => (
       <a
         href={l.href}
@@ -35,14 +42,44 @@ const links = [
   </nav>
 
   <div class="nav__right">
+    <div class="nav__langs" role="group" aria-label={t("nav.lang_aria")}>
+      {LANGS.map((l) => (
+        <a
+          href={localize(l, bare)}
+          class:list={["nav__lang", { "is-active": l === lang }]}
+          hreflang={LANG_META[l].htmlLang}
+          aria-label={LANG_META[l].label}
+          aria-current={l === lang ? "true" : undefined}
+          title={LANG_META[l].label}
+        >{LANG_META[l].flag}</a>
+      ))}
+    </div>
     <span class="mono nav__status">
       <span class="nav__pulse"></span>
-      Open to work · {year}
+      {t("nav.status")} · {year}
     </span>
   </div>
 </header>
 
 <style>
+  .nav__langs {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15rem;
+    margin-right: 0.7rem;
+    vertical-align: middle;
+  }
+  .nav__lang {
+    font-size: 0.95rem;
+    line-height: 1;
+    padding: 0.2rem 0.3rem;
+    border: 1px solid transparent;
+    filter: grayscale(1) opacity(0.45);
+    transition: filter var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+  }
+  .nav__lang:hover { filter: none; }
+  .nav__lang.is-active { filter: none; border-color: var(--hot); }
+
   .nav {
     display: grid;
     grid-template-columns: auto 1fr auto;

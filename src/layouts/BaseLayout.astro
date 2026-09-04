@@ -1,14 +1,27 @@
 ---
 import '../styles/global.css';
 
+import { LANGS, LANG_META, localize, depath, DEFAULT_LANG, type Lang } from "../i18n/ui";
+
 export interface Props {
   title: string;
   description?: string;
+  lang?: Lang;
+  image?: string;
 }
-const { title, description = "Andrea Ricciotti — editor | director" } = Astro.props;
+const {
+  title,
+  description = "Andrea Ricciotti — editor | director",
+  lang = DEFAULT_LANG,
+  image = "/assets/og-image.png",
+} = Astro.props;
+
+const site = "https://andrearicciotti.netlify.app";
+const bare = depath(Astro.url.pathname);
+const canonical = site + localize(lang, bare);
 ---
 
-<html lang="it">
+<html lang={LANG_META[lang].htmlLang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,7 +30,16 @@ const { title, description = "Andrea Ricciotti — editor | director" } = Astro.
     <meta name="keywords" content="andrea ricciotti, editor, director, regista, montatore, pesci piccoli, hanno ucciso l'uomo ragno" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/assets/og-image.png" />
+    <meta property="og:image" content={new URL(image, site).href} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={lang === "it" ? "it_IT" : "en_GB"} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href={canonical} />
+    {LANGS.map((l) => (
+      <link rel="alternate" hreflang={LANG_META[l].htmlLang} href={site + localize(l, bare)} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={site + bare} />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
