@@ -44,8 +44,29 @@ const canonical = site + localize(lang, bare);
     <link rel="preload" href="/fonts/Anton-latin-1Ptgg87LROyAm3Kz-C8.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/fonts/fonts.css" />
     <title>{title}</title>
+    <script is:inline>
+      // set before first paint, so .reveal only hides where JS can restore it
+      document.documentElement.classList.add("js");
+    </script>
   </head>
   <body>
     <slot />
-  </body>
+    <script>
+      const reveals = document.querySelectorAll<HTMLElement>(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        reveals.forEach((el) => el.classList.add("visible"));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((e) => {
+              if (!e.isIntersecting) return;
+              e.target.classList.add("visible");
+              io.unobserve(e.target);
+            });
+          },
+          { rootMargin: "0px 0px -10% 0px" },
+        );
+        reveals.forEach((el) => io.observe(el));
+      }
+    </script>
 </html>

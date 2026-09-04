@@ -130,15 +130,21 @@ button {
   text-transform: none;
 }
 
-/* Scroll reveal */
-.reveal {
+/* Scroll reveal.
+   Gated on .js: without the observer that reveals them — no script, an
+   error, a crawler — the elements must simply be visible, never a blank
+   section. Anyone who asked for less motion skips the animation too. */
+.js .reveal {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
 }
-.reveal.visible {
+.js .reveal.visible {
   opacity: 1;
   transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
 }
 
 /* Focus ring — sharp */
