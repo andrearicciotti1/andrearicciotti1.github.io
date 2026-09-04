@@ -495,7 +495,7 @@ export const projects: Project[] = [
     slug: "combattere",
     title: "Combattere",
     roles: ["Director", "Editor", "Writer"],
-    credit: "Director · Editor · Writer",
+    credit: "Director · Editor · Co-Writer",
     category: "Short Film",
     cover: "/assets/projects/combattere-poster.jpg",
     featured: true,
