@@ -8,9 +8,6 @@ const totalCount = projects.length;
 const directorCount = projects.filter((p) => p.roles.includes("Director")).length;
 const editorCount   = projects.filter((p) => p.roles.includes("Editor")).length;
 const writerCount   = projects.filter((p) => p.roles.includes("Writer")).length;
-const assistantCount = projects.filter(
-  (p) => p.roles.includes("Assistant Director") || p.roles.includes("Assistant Editor")
-).length;
 ---
 
 <BaseLayout title="Works / Index — Andrea Ricciotti">
@@ -49,10 +46,6 @@ const assistantCount = projects.filter(
     <button class="filter" data-filter="Writer">
       <span class="filter__label display">As Writer</span>
       <span class="filter__n mono">{String(writerCount).padStart(3,"0")}</span>
-    </button>
-    <button class="filter" data-filter="Assistant">
-      <span class="filter__label display">As Assistant</span>
-      <span class="filter__n mono">{String(assistantCount).padStart(3,"0")}</span>
     </button>
   </div>
 
@@ -114,11 +107,7 @@ const assistantCount = projects.filter(
       filters.forEach((b) => b.classList.toggle("is-active", b.dataset.filter === f || (f === "all" && b.dataset.filter === "all")));
       rows.forEach((r) => {
         const roles = (r.dataset.roles || "").split(",");
-        const match =
-          f === "all" ||
-          (f === "Assistant"
-            ? roles.some((role) => role.startsWith("Assistant"))
-            : roles.includes(f));
+        const match = f === "all" || roles.includes(f);
         r.style.display = match ? "" : "none";
       });
     }
