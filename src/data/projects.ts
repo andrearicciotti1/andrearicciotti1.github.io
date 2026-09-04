@@ -166,9 +166,6 @@ export const projects: Project[] = [
       { k: "Editing", v: "Andrea Ricciotti" },
     ],
     comingSoon: true,
-    articles: [
-      { label: "ComingSoon.it — WeShort", url: "https://www.comingsoon.it/cinema/news/l-ora-del-buio-il-corto-horror-di-weshort-da-vedere-su-comingsoon-it/n222942/" },
-    ],
   },
   {
     n: 7,
@@ -1000,20 +997,23 @@ export const projects: Project[] = [
   {
     n: 48,
     slug: "boys-cry",
-    title: "Boys Cry",
+    title: "Boys Cry — La Terra dell’Abbastanza",
     roles: ["Camera"],
     credit: "Camera Operator — Backstage",
     category: "Feature Film",
-    cover: "/assets/projects/altrimenti.jpg",
+    cover: "/assets/projects/boys-cry.jpg",
     link: "https://www.imdb.com/title/tt7737790/",
     year: "2018",
-    synopsis: "Two friends from the Roman outskirts are pulled into the orbit of organised crime after a night that goes wrong.",
+    synopsis: "Two friends from the Roman outskirts, with no real prospects, accidentally kill a pedestrian with their car and end up as low-level hires for a local crime family. The D’Innocenzo brothers’ debut feature, premiered in Panorama at the 68th Berlinale.",
     contribution: "Backstage camera operator on the feature.",
     specs: [
-      { k: "Format", v: "Feature Film" },
+      { k: "Format", v: "Feature Film · Drama" },
       { k: "Direction", v: "Damiano and Fabio D’Innocenzo" },
+      { k: "Cast", v: "Andrea Carpenzano · Matteo Olivetti · Luca Zingaretti · Max Tortora" },
+      { k: "Cinematography", v: "Paolo Carnera" },
+      { k: "Editing", v: "Marco Spoletini" },
+      { k: "Premiere", v: "Berlinale 68 — Panorama" },
       { k: "Credit", v: "Camera Operator: Backstage" },
-      { k: "Year", v: "2018" },
     ],
   },
   {
