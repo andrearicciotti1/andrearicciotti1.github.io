@@ -196,7 +196,7 @@ const nowLabel = new Date().toLocaleString(lang === "it" ? "it-IT" : "en-US", { 
     height: 100%;
     object-fit: cover;
     /* subject sits right of centre, clear of the type that crosses the frame */
-    object-position: 68% 22%;
+    object-position: 50% 20%;
     display: block;
     filter: grayscale(1) contrast(1.08);
   }
@@ -216,28 +216,21 @@ const nowLabel = new Date().toLocaleString(lang === "it" ? "it-IT" : "en-US", { 
     grid-row: 1;
     color: var(--ink);
     /* height as well as width, so the hero always clears the fold on a laptop */
-    font-size: clamp(3.25rem, min(18.5vw, 26vh), 17.5rem);
+    font-size: clamp(3rem, min(17.4vw, 29vh), 21rem);
     font-family: var(--font-display);
     letter-spacing: -0.02em;
-    line-height: 0.82;
+    line-height: 0.88;
     position: relative;
     z-index: 2;
     pointer-events: none;
   }
-  /* Each line is its own paper slug, so the type reads as printed over the
-     plate. A block background follows line-height, unlike an inline one,
-     which with a face this tall would tower over the letters. */
   .line {
     display: block;
     width: max-content;
     max-width: 100%;
-    background: var(--paper);
-    padding: 0.1em 0.14em 0.05em 0;
   }
-  .line--offset {
-    padding-left: clamp(0rem, 5vw, 4rem);
-    letter-spacing: -0.025em;
-  }
+  /* both lines flush left; RICCIOTTI is simply the longer word */
+  .line--offset { letter-spacing: -0.025em; }
   .hot { color: var(--hot); }
 
   .hero__label {
@@ -268,7 +261,7 @@ const nowLabel = new Date().toLocaleString(lang === "it" ? "it-IT" : "en-US", { 
   }
 
   /* Stack on narrow screens: no overlap, photo below the name. */
-  @media (max-width: 860px) {
+  @media (max-width: 1024px) {
     .hero__stage {
       grid-template-columns: 1fr;
       grid-template-rows: auto auto auto;
@@ -277,7 +270,6 @@ const nowLabel = new Date().toLocaleString(lang === "it" ? "it-IT" : "en-US", { 
     .hero__label { grid-column: 1; grid-row: 2; align-self: start; padding-bottom: 0; }
     .hero__photo { grid-column: 1; grid-row: 3; min-height: 320px; }
     .hero__photo img { object-position: center 20%; }
-    .line, .line:first-child, .line > span { background: none; }
   }
   .btn {
     display: inline-flex;
