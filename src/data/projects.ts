@@ -232,27 +232,12 @@ export const projects: Project[] = [
       { k: "Format", v: "TV Series" },
       { k: "Platform", v: "Sky" },
       { k: "Created by", v: "Sydney Sibilia" },
+      { k: "Also known as", v: "Accidentally Famous" },
       { k: "Editing", v: "Episodes 5, 7, 8" },
     ],
   },
   {
     n: 12,
-    slug: "accidentally-famous",
-    title: "Accidentally Famous",
-    roles: ["Editor"],
-    credit: "Editor — 3 Episodes",
-    category: "TV Series",
-    cover: "/assets/projects/accidentally-famous.jpg",
-    year: "2024",
-    contribution: "Edited three episodes of the series.",
-    specs: [
-      { k: "Format", v: "TV Mini Series" },
-      { k: "Editing", v: "3 episodes" },
-      { k: "Year", v: "2024" },
-    ],
-  },
-  {
-    n: 13,
     slug: "la-buona-condotta",
     title: "La Buona Condotta",
     roles: ["Editor"],
@@ -270,7 +255,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 14,
+    n: 13,
     slug: "combattere",
     title: "Combattere",
     roles: ["Director", "Editor", "Writer"],
@@ -290,7 +275,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 15,
+    n: 14,
     slug: "pesci-piccoli",
     title: "Pesci Piccoli",
     roles: ["Editor"],
@@ -310,7 +295,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 16,
+    n: 15,
     slug: "showu-kuni",
     title: "Showu — Kuni",
     roles: ["Director", "Editor"],
@@ -329,7 +314,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 17,
+    n: 16,
     slug: "shake",
     title: "Shake",
     roles: ["Editor"],
@@ -349,7 +334,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 18,
+    n: 17,
     slug: "yolo",
     title: "YOLO — You Only Live Once",
     roles: ["Editor"],
@@ -365,7 +350,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 19,
+    n: 18,
     slug: "nostos",
     title: "Nostos",
     roles: ["Editor"],
@@ -385,7 +370,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 20,
+    n: 19,
     slug: "the-bad-guy",
     title: "The Bad Guy",
     roles: ["Editor"],
@@ -406,7 +391,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 21,
+    n: 20,
     slug: "altrimenti-ci-arrabbiamo",
     title: "Altrimenti Ci Arrabbiamo",
     roles: ["Editor"],
@@ -423,7 +408,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 22,
+    n: 21,
     slug: "la-tv-dei-ragazzi",
     title: "La TV dei Ragazzi",
     roles: ["Editor"],
@@ -442,7 +427,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 23,
+    n: 22,
     slug: "il-cinema-e-morto",
     title: "Il Cinema È Morto",
     roles: ["Creative Director"],
@@ -460,7 +445,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 24,
+    n: 23,
     slug: "live-or-lie",
     title: "Live or Lie",
     roles: ["Director", "Editor", "Writer"],
@@ -479,7 +464,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 25,
+    n: 24,
     slug: "ai-confini-del-male",
     title: "Ai Confini del Male",
     roles: ["Director"],
@@ -500,7 +485,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 26,
+    n: 25,
     slug: "il-cacciatore-3",
     title: "Il Cacciatore — Season 3",
     roles: ["Director"],
@@ -521,7 +506,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 27,
+    n: 26,
     slug: "generation-56k",
     title: "Generation 56K",
     roles: ["Editor"],
@@ -541,7 +526,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 28,
+    n: 27,
     slug: "anni-da-cane",
     title: "Anni da Cane",
     roles: ["Editor"],
@@ -558,7 +543,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 29,
+    n: 28,
     slug: "larminuta",
     title: "L'Arminuta",
     roles: ["Editor"],
@@ -577,7 +562,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 30,
+    n: 29,
     slug: "jade-spot",
     title: "Jade",
     roles: ["Director"],
@@ -594,7 +579,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 31,
+    n: 30,
     slug: "empty-spaces",
     title: "Empty Spaces",
     roles: ["Director", "Editor", "Writer"],
@@ -615,7 +600,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 32,
+    n: 31,
     slug: "permette-alberto-sordi",
     title: "Permette? Alberto Sordi",
     roles: ["Editor"],
@@ -635,7 +620,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 33,
+    n: 32,
     slug: "ti-prego",
     title: "Ti Prego",
     roles: ["Editor"],
@@ -651,7 +636,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 34,
+    n: 33,
     slug: "the-pumpkin-man",
     title: "The Pumpkin Man",
     roles: ["Director"],
@@ -667,7 +652,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 35,
+    n: 34,
     slug: "coi-baci-e-coi-morsi",
     title: "Coi Baci e Coi Morsi — Autside",
     roles: ["Director"],
@@ -683,7 +668,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 36,
+    n: 35,
     slug: "bentornato-presidente",
     title: "Bentornato Presidente",
     roles: ["Editor"],
@@ -701,7 +686,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 37,
+    n: 36,
     slug: "pony-trap",
     title: "Pony Trap — The Pills x PlayStation",
     roles: ["Editor"],
@@ -720,7 +705,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 38,
+    n: 37,
     slug: "il-coreano",
     title: "Il Coreano — The Pills x PlayStation",
     roles: ["Editor"],
@@ -739,7 +724,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 39,
+    n: 38,
     slug: "clark",
     title: "Clark",
     roles: ["Director"],
@@ -758,7 +743,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 40,
+    n: 39,
     slug: "lost-in-tokyo",
     title: "Lost in Tokyo",
     roles: ["Director"],
@@ -780,7 +765,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 41,
+    n: 40,
     slug: "le-dovute-precauzioni",
     title: "Le Dovute Precauzioni — The Pills",
     roles: ["Editor"],
@@ -798,7 +783,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 42,
+    n: 41,
     slug: "cagna-the-pills",
     title: "Cagna — The Pills",
     roles: ["Editor"],
@@ -816,7 +801,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 43,
+    n: 42,
     slug: "cbd-franco126",
     title: "CBD — The Pills x Franco 126",
     roles: ["Editor"],
@@ -835,7 +820,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 44,
+    n: 43,
     slug: "all-the-time-on-your-own",
     title: "All The Time — On Your Own",
     roles: ["Director", "Editor"],
@@ -854,7 +839,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 45,
+    n: 44,
     slug: "taiyo-matsumoto",
     title: "Intervista a Taiyo Matsumoto",
     roles: ["Editor"],
@@ -873,7 +858,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 46,
+    n: 45,
     slug: "thomas-cheval-due-calamite",
     title: "Thomas Cheval — Due Calamite In Affitto",
     roles: ["Director", "Editor"],
@@ -893,7 +878,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 47,
+    n: 46,
     slug: "effe-resto-fermo",
     title: "EFFE — Resto Fermo",
     roles: ["Director", "Editor"],
@@ -914,7 +899,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 48,
+    n: 47,
     slug: "insidethecomic-gipi",
     title: "#InsideTheComic — Gipi",
     roles: ["Editor"],
@@ -934,7 +919,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 49,
+    n: 48,
     slug: "internazionali-bnl",
     title: "Internazionali BNL d'Italia",
     roles: ["Editor"],
@@ -954,7 +939,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 50,
+    n: 49,
     slug: "inio-asano",
     title: "Intervista a Inio Asano",
     roles: ["Editor"],
@@ -974,7 +959,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 51,
+    n: 50,
     slug: "ma-quando-inizia-il-film",
     title: "Ma Quando Inizia Il Film?",
     roles: ["Editor"],
@@ -995,7 +980,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 52,
+    n: 51,
     slug: "mark-osborne",
     title: "Intervista a Mark Osborne",
     roles: ["Editor"],
@@ -1015,7 +1000,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 53,
+    n: 52,
     slug: "martin-mystere",
     title: "Martin Mystère e il destino del fumetto italiano",
     roles: ["Editor"],
@@ -1034,7 +1019,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 54,
+    n: 53,
     slug: "recchioni-dylan-dog",
     title: "Roberto Recchioni — 30 anni di Dylan Dog",
     roles: ["Editor"],
@@ -1054,7 +1039,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    n: 55,
+    n: 54,
     slug: "love-edit",
     title: "Love Edit",
     roles: ["Director", "Writer"],
