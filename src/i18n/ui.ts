@@ -110,6 +110,7 @@ const en: Dict = {
   "bio.p3": "I sharpened my skills as an assistant editor ({i}Bentornato Presidente{/i}, {i}Permette, Alberto Sordi?{/i}), before stepping onto set as an assistant director ({i}Il Cacciatore S3{/i}, {i}Ai Confini del Male{/i}).",
   "bio.p4": "My path led me to assembly editing ({i}Altrimenti ci Arrabbiamo{/i}, {i}The Bad Guy{/i}, {i}Shake{/i}) before taking the lead in the cutting room, shaping {i}Pesci Piccoli{/i} (Prime Video) and {i}Hanno Ucciso l'Uomo Ragno{/i} (Sky, 2024).",
   "bio.p5": "Between 2019 and 2023, I cut trailers for Cit Studio. My latest directorial work, {i}Combattere{/i} — produced by PunxFilm — wrapped post-production in January 2024. Most recently, I completed {i}Pesci Piccoli S2{/i} and the documentary {i}Benetton Formula{/i}. I also edited Federico Zampaglione's latest feature film, which premiered in London. In 2026, I won the 8th edition of {i}La Realtà che Non Esiste{/i} with {i}Il Primo della Classe{/i} — produced with One More Pictures and Rai Cinema, and selected for Venice.",
+  "bio.p6": "Away from the cutting room I co-run {a:https://blandamentetero.com/}Blandamente Etero{/a}, a small clothing label that puts the things people say in therapy on a T-shirt.",
   "bio.tl_section": "§ 04 — Timeline",
   "bio.tl_title": "Chronology.",
   "bio.close": "Want to work",
@@ -236,6 +237,7 @@ const it: Dict = {
   "bio.p3": "Mi sono formato come assistente al montaggio ({i}Bentornato Presidente{/i}, {i}Permette? Alberto Sordi{/i}), prima di passare al set come aiuto regia ({i}Il Cacciatore 3{/i}, {i}Ai Confini del Male{/i}).",
   "bio.p4": "Da lì sono arrivato al montaggio di assemblaggio ({i}Altrimenti ci Arrabbiamo{/i}, {i}The Bad Guy{/i}, {i}Shake{/i}), per poi prendere in mano la sala di montaggio con {i}Pesci Piccoli{/i} (Prime Video) e {i}Hanno Ucciso l'Uomo Ragno{/i} (Sky, 2024).",
   "bio.p5": "Tra il 2019 e il 2023 ho montato trailer per Cit Studio. Il mio ultimo lavoro da regista, {i}Combattere{/i} — prodotto da PunxFilm — ha chiuso la post-produzione a gennaio 2024. Più di recente ho completato {i}Pesci Piccoli 2{/i} e il documentario {i}Benetton Formula{/i}. Ho montato anche l'ultimo film di Federico Zampaglione, presentato in anteprima a Londra. Nel 2026 ho vinto l'VIII edizione de {i}La Realtà che Non Esiste{/i} con {i}Il Primo della Classe{/i}, prodotto da One More Pictures con Rai Cinema e selezionato a Venezia.",
+  "bio.p6": "Fuori dalla sala di montaggio porto avanti {a:https://blandamentetero.com/}Blandamente Etero{/a}, un piccolo marchio di magliette che stampa le cose che si dicono in terapia.",
   "bio.tl_section": "§ 04 — Percorso",
   "bio.tl_title": "Cronologia.",
   "bio.close": "Lavoriamo",
@@ -278,16 +280,17 @@ const it: Dict = {
 
 const DICTS: Record<Lang, Dict> = { en, it };
 
-/** Split a dictionary string on {i}...{/i} into plain/italic runs. */
-export function runs(text: string): { text: string; italic: boolean }[] {
+/** Split a dictionary string into plain, italic {i}…{/i} and link {a:url}…{/a} runs. */
+export function runs(text: string): { text: string; italic: boolean; href?: string }[] {
   return text
-    .split(/(\{i\}.*?\{\/i\})/g)
+    .split(/(\{i\}.*?\{\/i\}|\{a:[^}]+\}.*?\{\/a\})/g)
     .filter(Boolean)
-    .map((part) =>
-      part.startsWith("{i}")
-        ? { text: part.slice(3, -4), italic: true }
-        : { text: part, italic: false },
-    );
+    .map((part) => {
+      if (part.startsWith("{i}")) return { text: part.slice(3, -4), italic: true };
+      const link = part.match(/^\{a:([^}]+)\}(.*?)\{\/a\}$/s);
+      if (link) return { text: link[2], italic: false, href: link[1] };
+      return { text: part, italic: false };
+    });
 }
 
 export function useTranslations(lang: Lang) {

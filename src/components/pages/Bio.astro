@@ -105,9 +105,11 @@ const facts = [
           r.italic ? <span class="serif-italic">{r.text}</span> : <Fragment>{r.text}</Fragment>
         ))}
       </p>
-      {["bio.p2", "bio.p3", "bio.p4", "bio.p5"].map((key) => (
+      {["bio.p2", "bio.p3", "bio.p4", "bio.p5", "bio.p6"].map((key) => (
         <p class="p">{runs(t(key)).map((r) => (
-          r.italic ? <span class="serif-italic">{r.text}</span> : <Fragment>{r.text}</Fragment>
+          r.href
+            ? <a class="p__link" href={r.href} target="_blank" rel="noopener">{r.text}</a>
+            : r.italic ? <span class="serif-italic">{r.text}</span> : <Fragment>{r.text}</Fragment>
         ))}</p>
       ))}
     </div>
@@ -163,6 +165,13 @@ const facts = [
 </BaseLayout>
 
 <style>
+  .p__link {
+    color: var(--hot);
+    border-bottom: 1px solid currentColor;
+    transition: opacity var(--dur-fast) var(--ease);
+  }
+  .p__link:hover { opacity: 0.65; }
+
   /* HEAD */
   .head {
     padding: clamp(2rem, 4vw, 3rem) var(--gutter) clamp(1.5rem, 3vw, 2.5rem);
