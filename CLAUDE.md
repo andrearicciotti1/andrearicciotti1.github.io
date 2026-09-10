@@ -31,6 +31,13 @@ worked once.
 built HTML once "confirmed" a section that CSS was hiding entirely. If a
 change is visual, open the page in the browser and look.
 
+**Both languages, every time.** The Italian and English sites are the same
+site — same pages, same layout, same components — and only the strings
+differ. Any new copy needs its Italian translation in the same change, and
+anything visual gets checked on `/…` and `/it/…` both, because Italian runs
+longer and breaks layouts English survives. A change that only landed in
+one language is not finished.
+
 ## Conventions
 
 - The works index credit column stays short — a role, not a sentence.
