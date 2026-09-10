@@ -60,9 +60,20 @@ const next = projects[i + 1] ?? null;
     </div>
   </section>
 
+  <!-- PRIMARY CALL TO ACTION -->
+  {p.link && p.linkLabel && (
+    <section class="cta">
+      <a href={p.link} target="_blank" rel="noopener" class="cta__btn display">
+        <span>{tProse(p.linkLabel, lang)}</span>
+        <span class="cta__arrow" aria-hidden="true">↗</span>
+      </a>
+    </section>
+  )}
+
   <!-- PLAYER / COVER -->
   {embedUrl ? (
-    <section class="player">
+    <section class:list={["player", p.videoLabel && "player--secondary"]}>
+      {p.videoLabel && <div class="mono player__label">{tProse(p.videoLabel, lang)}</div>}
       <div class="player__wrap">
         <iframe
           src={embedUrl}
@@ -132,7 +143,7 @@ const next = projects[i + 1] ?? null;
   <!-- EXTERNAL LINK -->
   {(p.link || p.video) && (
     <section class="actions">
-      {p.link && (
+      {p.link && !p.linkLabel && (
         <a href={p.link} target="_blank" rel="noopener" class="btn btn--hot">
           <span>{t("proj.view_external")}</span>
           <span aria-hidden="true">↗</span>
@@ -237,6 +248,38 @@ const next = projects[i + 1] ?? null;
     letter-spacing: 0.06em;
   }
 
+  /* PRIMARY CALL TO ACTION */
+  .cta {
+    padding: clamp(2rem, 5vw, 3.5rem) var(--gutter);
+    border-bottom: var(--rule-w) solid var(--rule);
+    display: flex;
+    justify-content: center;
+  }
+  .cta__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4em;
+    width: 100%;
+    max-width: 1080px;
+    padding: clamp(1rem, 2.2vw, 1.6rem) 1.25rem;
+    background: var(--hot);
+    color: var(--ink);
+    border: var(--rule-w) solid var(--hot);
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1;
+    font-size: clamp(1.5rem, 4.4vw, 3rem);
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .cta__btn:hover {
+    background: var(--ink);
+    color: var(--hot);
+    border-color: var(--ink);
+  }
+  .cta__arrow { font-size: 0.5em; align-self: center; }
+
   /* PLAYER */
   .player {
     padding: clamp(2rem, 4vw, 3rem) var(--gutter);
@@ -251,6 +294,18 @@ const next = projects[i + 1] ?? null;
     max-width: 1080px;
     margin: 0 auto;
   }
+  .player__label {
+    max-width: 1080px;
+    margin: 0 auto 0.75rem;
+    color: var(--paper-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+  }
+  /* A secondary clip — a teaser next to a primary CTA — sits smaller and quieter. */
+  .player--secondary .player__wrap,
+  .player--secondary .player__label { max-width: 680px; }
+  .player--secondary .player__wrap { border-color: var(--rule); }
   .player__wrap iframe {
     position: absolute;
     inset: 0;

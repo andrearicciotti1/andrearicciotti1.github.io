@@ -18,7 +18,13 @@ export interface Project {
   cover: string;
   featured?: boolean;
   link?: string;
+  /** Label for the primary call to action. When set, `link` is promoted to a
+   *  full-width button above the player. Translated by lookup, so the English
+   *  string has to exist in the prose table. */
+  linkLabel?: string;
   video?: string;
+  /** Short caption above the player, e.g. "Teaser". Translated by lookup. */
+  videoLabel?: string;
   /** Release year, or a range / "Upcoming" label. */
   year?: string;
   /** One-paragraph description of the project itself. */
@@ -106,7 +112,9 @@ export const projects: Project[] = [
     cover: "/assets/scenes/primo-della-classe.svg",
     featured: true,
     link: "https://www.raiplay.it/video/2026/09/Il-primo-della-classe-d077343c-9a25-4f28-be1f-9041c4840e3f.html",
+    linkLabel: "Watch the short film",
     video: "https://drive.google.com/file/d/1jRGMoT8Dtgz1eiTvepL_XxqvI0lQeqhR/view",
+    videoLabel: "Teaser",
     year: "2026",
     synopsis: "Vincenzo is the perfect boy: brilliant, popular, charismatic. When his ex-girlfriend accuses him of assault, a video seems to tell the whole story. But images can lie, and the truth stops being simple — friends and social media split, leaving one question open: who do you believe? Or rather, who do you want to believe?",
     contribution: "Wrote and directed. Winner of the 8th edition of La Realtà Che Non Esiste.",
