@@ -125,6 +125,11 @@ export const projects: Project[] = [
       { k: "Award", v: "Winner, La Realtà Che Non Esiste VIII" },
     ],
     articles: [
+      { label: "Virgilio — interview with the director", url: "https://www.virgilio.it/notizie/andrea-ricciotti-l-intervista-al-regista-i-numeri-non-mi-bastavano-avevo-bisogno-di-raccontare-storie-1780390/" },
+      { label: "la Repubblica — Tredici Pietro sings at Venice", url: "https://www.repubblica.it/spettacoli/dossier/mostra-del-cinema-di-venezia/2026/09/09/video/tredici_pietro_a_venezia_canta_per_il_corto_il_primo_della_classe-425574590/" },
+      { label: "Movieplayer — exclusive trailer premiere", url: "https://movieplayer.it/news/il-primo-della-classe-trailer-anteprima-esclusiva_170924/" },
+      { label: "The Walk of Fame — AI and digital manipulation at Venice 83", url: "https://www.thewalkoffame.it/blog/il-primo-della-classe-il-corto-sullia-e-la-manipolazione-digitale-a-venezia-83/" },
+      { label: "Marcianise.info — Tredici Pietro and the cast", url: "https://www.marcianise.info/2026/09/tredici-pietro-per-il-primo-della-classe-di-andrea-ricciotti-con-samuele-carrino-cecilia-cantarano-alessia-cosmo-e-gian-marco-tognazzi-le-nuove-sfide-dellia/" },
       { label: "Rai Cinema — Venice 83 Special Event", url: "https://www.rai.it/raicinema/news/2026/08/Il-primo-della-classe-cortometraggio-scritto-e-diretto-da-Andrea-Ricciotti-sara-presentato-martedi-8-settembre-come-Evento-Speciale-nellambito-della-83-Mostra-Internazionale-dArte-Cinematografica-di-Venezia-943d8cf2-95b4-4016-928c-4dad7cef7508.html" },
     ],
   },
