@@ -512,6 +512,10 @@ export function tYear(v: string | undefined, lang: Lang): string | undefined {
  * ------------------------------------------------------------------ */
 
 const PROSE_IT: Dict = {
+  // --- call-to-action labels and player captions ---
+  "Watch the short film": "Guarda il cortometraggio",
+  "Teaser": "Teaser",
+
   // --- contributions ---
   "In the writers' room for the third season.": "In sala scrittura per la terza stagione.",
   "Cut the feature from assembly to final picture lock.": "Montaggio del film, dall'assemblaggio al visto si stampi.",
