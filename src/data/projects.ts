@@ -39,6 +39,35 @@ export interface Project {
   articles?: { label: string; url: string }[];
 }
 
+/** A handful of press pieces worth putting on the home page. Kept separate
+ *  from a project's own `articles` list, which is exhaustive: this one is a
+ *  choice. `label` translates by lookup, like the rest of the prose. */
+export const pressHighlights: {
+  outlet: string;
+  label: string;
+  work: string;
+  url: string;
+}[] = [
+  {
+    outlet: "Sky TG24",
+    label: "The review",
+    work: "Il Primo della Classe",
+    url: "https://tg24.sky.it/spettacolo/cinema/2026/09/08/il-primo-della-classe-recensione",
+  },
+  {
+    outlet: "la Repubblica",
+    label: "Tredici Pietro sings at Venice",
+    work: "Il Primo della Classe",
+    url: "https://www.repubblica.it/spettacoli/dossier/mostra-del-cinema-di-venezia/2026/09/09/video/tredici_pietro_a_venezia_canta_per_il_corto_il_primo_della_classe-425574590/",
+  },
+  {
+    outlet: "il Messaggero",
+    label: "The truth passes through a screen",
+    work: "Il Primo della Classe",
+    url: "https://www.ilmessaggero.it/spettacoli/cinema/il_primo_classe_venezia_la_verita_passa_attraverso_schermo_arriva_su_rai_play-9752939.html",
+  },
+];
+
 export const projects: Project[] = [
   {
     n: 65,
@@ -133,14 +162,16 @@ export const projects: Project[] = [
       { k: "Award", v: "Winner, La Realtà Che Non Esiste VIII" },
     ],
     articles: [
-      { label: "Virgilio — interview with the director", url: "https://www.virgilio.it/notizie/andrea-ricciotti-l-intervista-al-regista-i-numeri-non-mi-bastavano-avevo-bisogno-di-raccontare-storie-1780390/" },
+      { label: "Sky TG24 — the review", url: "https://tg24.sky.it/spettacolo/cinema/2026/09/08/il-primo-della-classe-recensione" },
       { label: "la Repubblica — Tredici Pietro sings at Venice", url: "https://www.repubblica.it/spettacoli/dossier/mostra-del-cinema-di-venezia/2026/09/09/video/tredici_pietro_a_venezia_canta_per_il_corto_il_primo_della_classe-425574590/" },
+      { label: "il Messaggero — the truth passes through a screen", url: "https://www.ilmessaggero.it/spettacoli/cinema/il_primo_classe_venezia_la_verita_passa_attraverso_schermo_arriva_su_rai_play-9752939.html" },
+      { label: "Virgilio — interview with the director", url: "https://www.virgilio.it/notizie/andrea-ricciotti-l-intervista-al-regista-i-numeri-non-mi-bastavano-avevo-bisogno-di-raccontare-storie-1780390/" },
       { label: "Movieplayer — exclusive trailer premiere", url: "https://movieplayer.it/news/il-primo-della-classe-trailer-anteprima-esclusiva_170924/" },
       { label: "The Walk of Fame — AI and digital manipulation at Venice 83", url: "https://www.thewalkoffame.it/blog/il-primo-della-classe-il-corto-sullia-e-la-manipolazione-digitale-a-venezia-83/" },
       { label: "Marcianise.info — Tredici Pietro and the cast", url: "https://www.marcianise.info/2026/09/tredici-pietro-per-il-primo-della-classe-di-andrea-ricciotti-con-samuele-carrino-cecilia-cantarano-alessia-cosmo-e-gian-marco-tognazzi-le-nuove-sfide-dellia/" },
+      { label: "Rai Cinema — Venice 83 Special Event", url: "https://www.rai.it/raicinema/news/2026/08/Il-primo-della-classe-cortometraggio-scritto-e-diretto-da-Andrea-Ricciotti-sara-presentato-martedi-8-settembre-come-Evento-Speciale-nellambito-della-83-Mostra-Internazionale-dArte-Cinematografica-di-Venezia-943d8cf2-95b4-4016-928c-4dad7cef7508.html" },
       { label: "Sky TG24 — the teaser", url: "https://tg24.sky.it/spettacolo/cinema/video/2026/08/27/il-primo-della-classe-teaser-1120152" },
       { label: "Rai Cinema — trailer", url: "https://www.facebook.com/RaiCinemaChannel/videos/2582629742196598/" },
-      { label: "Rai Cinema — Venice 83 Special Event", url: "https://www.rai.it/raicinema/news/2026/08/Il-primo-della-classe-cortometraggio-scritto-e-diretto-da-Andrea-Ricciotti-sara-presentato-martedi-8-settembre-come-Evento-Speciale-nellambito-della-83-Mostra-Internazionale-dArte-Cinematografica-di-Venezia-943d8cf2-95b4-4016-928c-4dad7cef7508.html" },
     ],
   },
   {
