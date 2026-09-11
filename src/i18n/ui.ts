@@ -52,6 +52,8 @@ const en: Dict = {
   "home.stat_director_n": "projects",
   "home.stat_exp": "D · Experience",
   "home.stat_exp_n": "years",
+  "home.press_label": "Press",
+  "home.press_title": "Written about",
   "home.reel_label": "§ 02 — Selected work",
   "home.reel_title": "Recent cuts.",
   "home.reel_all": "All works ↗",
@@ -182,6 +184,8 @@ const it: Dict = {
   "home.stat_director_n": "progetti",
   "home.stat_exp": "D · Esperienza",
   "home.stat_exp_n": "anni",
+  "home.press_label": "Rassegna stampa",
+  "home.press_title": "Ne hanno scritto",
   "home.reel_label": "§ 02 — Lavori scelti",
   "home.reel_title": "Ultimi montaggi.",
   "home.reel_all": "Tutti i lavori ↗",
@@ -515,6 +519,25 @@ const PROSE_IT: Dict = {
   // --- call-to-action labels and player captions ---
   "Watch the short film": "Guarda il cortometraggio",
   "Teaser": "Teaser",
+
+  // --- home-page press highlights ---
+  "The review": "La recensione",
+  "Tredici Pietro sings at Venice": "Tredici Pietro canta a Venezia",
+  "The truth passes through a screen": "La verità passa attraverso lo schermo",
+
+  // --- press labels (publication — what the piece is) ---
+  "Sky TG24 — the review": "Sky TG24 — la recensione",
+  "Sky TG24 — the teaser": "Sky TG24 — il teaser",
+  "la Repubblica — Tredici Pietro sings at Venice": "la Repubblica — Tredici Pietro canta a Venezia",
+  "il Messaggero — the truth passes through a screen": "il Messaggero — la verità passa attraverso lo schermo",
+  "Virgilio — interview with the director": "Virgilio — l'intervista al regista",
+  "Movieplayer — exclusive trailer premiere": "Movieplayer — il trailer in anteprima esclusiva",
+  "The Walk of Fame — AI and digital manipulation at Venice 83": "The Walk of Fame — l'IA e la manipolazione digitale a Venezia 83",
+  "Marcianise.info — Tredici Pietro and the cast": "Marcianise.info — Tredici Pietro e il cast",
+  "Rai Cinema — Venice 83 Special Event": "Rai Cinema — Evento Speciale a Venezia 83",
+  "Rai Cinema — trailer": "Rai Cinema — il trailer",
+  "PunxFilm — the film": "PunxFilm — il film",
+  "Rai Pubblicità — press release": "Rai Pubblicità — il comunicato stampa",
 
   // --- contributions ---
   "In the writers' room for the third season.": "In sala scrittura per la terza stagione.",

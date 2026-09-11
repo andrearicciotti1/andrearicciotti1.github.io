@@ -131,7 +131,7 @@ const next = projects[i + 1] ?? null;
         {p.articles.map((a) => (
           <li>
             <a href={a.url} target="_blank" rel="noopener" class="press__item">
-              <span class="press__t">{a.label}</span>
+              <span class="press__t">{tProse(a.label, lang)}</span>
               <span class="press__arrow" aria-hidden="true">↗</span>
             </a>
           </li>
