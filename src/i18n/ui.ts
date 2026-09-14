@@ -361,12 +361,14 @@ const SPEC_KEY_IT: Dict = {
   "Platform": "Piattaforma",
   "Production": "Produzione",
   "Producer": "Produttore",
-  // The English sheet names the person ("Director"), the Italian names the
-  // craft ("Regia"), which is how each language actually credits a crew.
-  "Director": "Regia",
-  "Screenplay": "Sceneggiatura",
-  "Editor": "Montaggio",
-  "Cinematographer": "Fotografia",
+  "Distribution": "Distribuzione",
+  "Host": "Conduttore",
+  // Both languages name the person, not the craft: Andrea asked for the
+  // sheet to read "Regista", "Montatore", the way a credit does.
+  "Director": "Regista",
+  "Screenplay": "Sceneggiatore",
+  "Editor": "Montatore",
+  "Cinematographer": "Direttore della fotografia",
   "Cast": "Cast",
   "With": "Con",
   "Special appearance": "Con la partecipazione di",
