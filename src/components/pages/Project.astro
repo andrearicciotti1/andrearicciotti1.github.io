@@ -96,16 +96,15 @@ const next = projects[i + 1] ?? null;
   )}
 
   <!-- RECAP / TECHNICAL SHEET -->
+  {(p.synopsis || p.specs) && (
   <section class="recap">
       <div class="recap__grid">
-        <div class="recap__body">
-          <div class="mono recap__label">{t("proj.about")}</div>
-          {p.synopsis && <p class="recap__synopsis">{tProse(p.synopsis, lang)}</p>}
-          <div class="recap__role">
-            <div class="mono recap__label recap__label--sub">{t("proj.my_role")}</div>
-            <p class="recap__contribution">{tCredit(p.credit, lang)}</p>
+        {p.synopsis && (
+          <div class="recap__body">
+            <div class="mono recap__label">{t("proj.about")}</div>
+            <p class="recap__synopsis">{tProse(p.synopsis, lang)}</p>
           </div>
-        </div>
+        )}
 
         {p.specs && (
           <aside class="sheet">
@@ -122,6 +121,7 @@ const next = projects[i + 1] ?? null;
         )}
       </div>
   </section>
+  )}
 
   <!-- PRESS -->
   {p.articles && (
@@ -357,6 +357,9 @@ const next = projects[i + 1] ?? null;
     gap: clamp(2rem, 5vw, 4rem);
     align-items: start;
   }
+  /* With no synopsis the sheet is the only child; don't strand it in a
+     narrow right-hand column. */
+  .recap__grid:has(> .sheet:only-child) { grid-template-columns: 1fr; }
   @media (max-width: 820px) {
     .recap__grid { grid-template-columns: 1fr; gap: 2.5rem; }
   }
@@ -367,22 +370,11 @@ const next = projects[i + 1] ?? null;
     margin-bottom: 1rem;
     border-bottom: 1px dashed var(--rule-soft);
   }
-  .recap__label--sub { margin-top: 2rem; }
   .recap__synopsis {
     font-size: clamp(1.05rem, 1.7vw, 1.35rem);
     line-height: 1.55;
     color: var(--ink);
     max-width: 56ch;
-  }
-  .recap__contribution {
-    font-family: var(--font-display);
-    font-size: clamp(1.05rem, 1.7vw, 1.35rem);
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    line-height: 1.2;
-    color: var(--ink);
-    border-left: var(--rule-w) solid var(--hot);
-    padding-left: 1rem;
   }
 
   .sheet__list { margin: 0; }

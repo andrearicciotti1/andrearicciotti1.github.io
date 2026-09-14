@@ -84,7 +84,6 @@ const en: Dict = {
   // project page
   "proj.back": "← Works",
   "proj.about": "§ — About",
-  "proj.my_role": "§ — My role",
   "proj.sheet": "§ — Technical sheet",
   "proj.press": "§ — Press",
   "proj.coming_soon": "Coming Soon",
@@ -214,7 +213,6 @@ const it: Dict = {
 
   "proj.back": "← Lavori",
   "proj.about": "§ — Il progetto",
-  "proj.my_role": "§ — Il mio ruolo",
   "proj.sheet": "§ — Scheda tecnica",
   "proj.press": "§ — Rassegna stampa",
   "proj.coming_soon": "Prossimamente",
@@ -363,10 +361,12 @@ const SPEC_KEY_IT: Dict = {
   "Platform": "Piattaforma",
   "Production": "Produzione",
   "Producer": "Produttore",
-  "Direction": "Regia",
+  // The English sheet names the person ("Director"), the Italian names the
+  // craft ("Regia"), which is how each language actually credits a crew.
+  "Director": "Regia",
   "Screenplay": "Sceneggiatura",
-  "Editing": "Montaggio",
-  "Cinematography": "Fotografia",
+  "Editor": "Montaggio",
+  "Cinematographer": "Fotografia",
   "Cast": "Cast",
   "With": "Con",
   "Special appearance": "Con la partecipazione di",
