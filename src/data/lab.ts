@@ -26,28 +26,28 @@ export interface LabGroup {
 export const labGroups: LabGroup[] = [
   {
     n: "01",
-    label: "Editing plugins",
-    note: "Paste a video link, get the clip in your timeline. One build per NLE.",
+    label: "DropCut",
+    note: "One plugin, three builds — one per editing suite. Paste a video link and the clip lands in your project: no browser, no download folder, no manual import. Queues, playlists, batches and a built-in mini-browser, from YouTube, Reels, TikTok, Vimeo, X, Facebook and hundreds more.",
     items: [
       {
-        title: "DropCut · DaVinci Resolve",
-        blurb: "Paste any video link straight into the Media Pool — no browser, no download folder, no manual import. Queues, playlists and batches, plus a built-in mini-browser.",
+        title: "for DaVinci Resolve",
+        blurb: "The clip lands straight in the Media Pool.",
         url: "https://andrearicciotti1.gumroad.com/l/qkheq",
-        host: "Gumroad",
+        host: "DropCut · Gumroad",
         tags: ["Resolve 18+", "macOS 12+"],
       },
       {
-        title: "DropCut · Adobe Premiere Pro",
-        blurb: "The same thing for the Project panel: paste a link, pick a quality, the clip is already in the project.",
+        title: "for Adobe Premiere Pro",
+        blurb: "The clip lands straight in the Project panel.",
         url: "https://andrearicciotti1.gumroad.com/l/vwmjbi",
-        host: "Gumroad",
+        host: "DropCut · Gumroad",
         tags: ["Premiere Pro 2023+", "macOS 12+"],
       },
       {
-        title: "DropCut · Final Cut Pro",
-        blurb: "And for the Final Cut library. YouTube, Reels, TikTok, Vimeo, X, Facebook and hundreds more sources.",
+        title: "for Final Cut Pro",
+        blurb: "The clip lands straight in your Final Cut library.",
         url: "https://andrearicciotti1.gumroad.com/l/rfvay",
-        host: "Gumroad",
+        host: "DropCut · Gumroad",
         tags: ["Final Cut Pro 10.6+", "macOS 12+"],
       },
     ],
@@ -78,8 +78,15 @@ export const labGroups: LabGroup[] = [
   {
     n: "03",
     label: "Play",
-    note: "Built for fun. Runs in the browser, works offline.",
+    note: "Built for fun. Both run in the browser — nothing to install.",
     items: [
+      {
+        title: "MovieMatch",
+        blurb: "Tinder-style swiping to settle what to watch tonight. Two to four people in a room, pick your streaming services, swipe on films, and stop when everyone matches.",
+        url: "https://moviematch.agency/",
+        host: "Browser",
+        tags: ["2–4 people", "Free"],
+      },
       {
         title: "Friends Trivia — Central Perk Edition",
         blurb: "735 questions across five levels, from Easy to MANIAC. Every answer comes back with the line and the episode it came from, plus reactions and the original music.",

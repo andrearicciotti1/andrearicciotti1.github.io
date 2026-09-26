@@ -43,7 +43,7 @@ const count = labGroups.reduce((n, g) => n + g.items.length, 0);
           <li class="card">
             <a href={it.url} target="_blank" rel="noopener" class="card__main">
               <span class="mono card__host">{it.host}</span>
-              <h3 class="display card__title">{it.title}</h3>
+              <h3 class="display card__title">{tProse(it.title, lang)}</h3>
               <p class="card__blurb">{tProse(it.blurb, lang)}</p>
               <span class="mono card__open">{t("lab.open")} <span aria-hidden="true">↗</span></span>
             </a>
@@ -68,7 +68,7 @@ const count = labGroups.reduce((n, g) => n + g.items.length, 0);
   ))}
 
   <Marquee
-    items={["DropCut", "Armadillo Bar", "Boris Bar", "Friends Trivia", "Open source"]}
+    items={["DropCut", "Armadillo Bar", "Boris Bar", "MovieMatch", "Friends Trivia", "Open source"]}
     speed={50}
     invert={true}
     separator="/"
