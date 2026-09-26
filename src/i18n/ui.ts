@@ -548,9 +548,9 @@ const PROSE_IT: Dict = {
   // --- lab groups and items ---
   "Editing plugins": "Plugin per il montaggio",
   "Paste a video link, get the clip in your timeline. One build per NLE.": "Incolli un link, la clip è già nel montaggio. Una versione per ogni programma.",
-  "Paste any video link straight into your Final Cut library — no browser, no download folder, no manual import. Queues, playlists and batches, plus a built-in mini-browser.": "Incolli qualsiasi link video direttamente nella libreria di Final Cut — niente browser, niente cartella download, niente import manuale. Code, playlist intere e download in batch, più un mini-browser integrato.",
+  "Paste any video link straight into the Media Pool — no browser, no download folder, no manual import. Queues, playlists and batches, plus a built-in mini-browser.": "Incolli qualsiasi link video direttamente nel Media Pool — niente browser, niente cartella download, niente import manuale. Code, playlist intere e download in batch, più un mini-browser integrato.",
   "The same thing for the Project panel: paste a link, pick a quality, the clip is already in the project.": "La stessa cosa per il pannello Progetto: incolli il link, scegli la qualità, la clip è già nel progetto.",
-  "And for the Media Pool. YouTube, Reels, TikTok, Vimeo, X, Facebook and hundreds more sources.": "E per il Media Pool. YouTube, Reels, TikTok, Vimeo, X, Facebook e centinaia di altre fonti.",
+  "And for the Final Cut library. YouTube, Reels, TikTok, Vimeo, X, Facebook and hundreds more sources.": "E per la libreria di Final Cut. YouTube, Reels, TikTok, Vimeo, X, Facebook e centinaia di altre fonti.",
 
   "Menu bar apps": "App per la menu bar",
   "Free, open source, about 100 KB. No Electron, no Python, no dock icon.": "Gratis, open source, circa 100 KB. Niente Electron, niente Python, niente icona nel Dock.",
