@@ -130,11 +130,12 @@ const count = labGroups.reduce((n, g) => n + g.items.length, 0);
     margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
   }
   .grp__title { display: flex; align-items: baseline; gap: 0.85rem; }
-  .grp__n { color: var(--hot); font-size: 0.7rem; }
+  .grp__n { color: var(--ink-faint); font-size: 0.7rem; }
   .grp__label {
     font-size: clamp(1.5rem, 3.5vw, 2.5rem);
     line-height: 1;
     text-transform: uppercase;
+    color: var(--hot);
   }
   .grp__note {
     color: var(--ink-faint);
