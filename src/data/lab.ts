@@ -6,7 +6,12 @@
 export interface LabItem {
   title: string;
   blurb: string;
-  url: string;
+  /** Where the card itself links. Omitted when the item ships as `variants`
+   *  — one product with a build per host application. */
+  url?: string;
+  /** Builds of the same thing. Rendered inside the one card, so three
+   *  versions of a plugin do not read as three plugins. */
+  variants?: { label: string; url: string; tags?: string[] }[];
   /** Where the link goes, shown as a small tag. */
   host: string;
   /** Optional second link — a direct download, a mirror. */
@@ -26,29 +31,19 @@ export interface LabGroup {
 export const labGroups: LabGroup[] = [
   {
     n: "01",
-    label: "DropCut",
-    note: "One plugin, three builds — one per editing suite. Paste a video link and the clip lands in your project: no browser, no download folder, no manual import. Queues, playlists, batches and a built-in mini-browser, from YouTube, Reels, TikTok, Vimeo, X, Facebook and hundreds more.",
+    label: "Plugins",
+    note: "For the cutting room. Paid, with lifetime updates.",
     items: [
       {
-        title: "for DaVinci Resolve",
-        blurb: "The clip lands straight in the Media Pool.",
-        url: "https://andrearicciotti1.gumroad.com/l/qkheq",
-        host: "DropCut · Gumroad",
-        tags: ["Resolve 18+", "macOS 12+"],
-      },
-      {
-        title: "for Adobe Premiere Pro",
-        blurb: "The clip lands straight in the Project panel.",
-        url: "https://andrearicciotti1.gumroad.com/l/vwmjbi",
-        host: "DropCut · Gumroad",
-        tags: ["Premiere Pro 2023+", "macOS 12+"],
-      },
-      {
-        title: "for Final Cut Pro",
-        blurb: "The clip lands straight in your Final Cut library.",
-        url: "https://andrearicciotti1.gumroad.com/l/rfvay",
-        host: "DropCut · Gumroad",
-        tags: ["Final Cut Pro 10.6+", "macOS 12+"],
+        title: "DropCut",
+        blurb: "One plugin, three builds — one per editing suite. Paste a video link and the clip lands in your project: no browser, no download folder, no manual import. Queues, playlists, batches and a built-in mini-browser, from YouTube, Reels, TikTok, Vimeo, X, Facebook and hundreds more.",
+        host: "Gumroad",
+        variants: [
+          { label: "DaVinci Resolve", url: "https://andrearicciotti1.gumroad.com/l/qkheq", tags: ["Resolve 18+"] },
+          { label: "Adobe Premiere Pro", url: "https://andrearicciotti1.gumroad.com/l/vwmjbi", tags: ["Premiere Pro 2023+"] },
+          { label: "Final Cut Pro", url: "https://andrearicciotti1.gumroad.com/l/rfvay", tags: ["Final Cut Pro 10.6+"] },
+        ],
+        tags: ["macOS 12+", "Lifetime updates"],
       },
     ],
   },
