@@ -44,7 +44,8 @@ const facts = [
   { k: t("bio.fact_langs"),  v: t("bio.fact_langs_v") },
   { k: t("bio.fact_exp"),    v: t("bio.fact_exp_v") },
   { k: t("bio.fact_tools"),  v: "Avid · Premiere · DaVinci" },
-  { k: t("bio.fact_rep"),    v: t("bio.fact_rep_v") },
+  { k: t("bio.fact_rep_dir"), v: t("bio.fact_rep_dir_v") },
+  { k: t("bio.fact_rep_cre"), v: "Slim Dogs", href: "https://www.slimdogsproduction.com/" },
   { k: t("bio.fact_status"), v: t("bio.fact_status_v") },
 ];
 ---
@@ -74,7 +75,11 @@ const facts = [
     {facts.map((f) => (
       <div class="fact">
         <div class="mono fact__k">{f.k}</div>
-        <div class="fact__v display">{f.v}</div>
+        <div class="fact__v display">
+          {f.href
+            ? <a href={f.href} target="_blank" rel="noopener" class="fact__link">{f.v} <span aria-hidden="true">↗</span></a>
+            : f.v}
+        </div>
       </div>
     ))}
   </section>
@@ -201,10 +206,10 @@ const facts = [
   /* FACTS */
   .facts {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     border-bottom: var(--rule-w) solid var(--rule);
   }
-  @media (max-width: 960px) { .facts { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 1180px) { .facts { grid-template-columns: repeat(4, 1fr); } }
   @media (max-width: 560px) { .facts { grid-template-columns: repeat(2, 1fr); } }
 
   .fact {
@@ -212,9 +217,9 @@ const facts = [
     border-right: var(--rule-w) solid var(--rule);
   }
   .fact:last-child { border-right: 0; }
-  @media (max-width: 960px) {
-    .fact:nth-child(3n) { border-right: 0; }
-    .fact:nth-child(-n+3) { border-bottom: var(--rule-w) solid var(--rule); }
+  @media (max-width: 1180px) {
+    .fact:nth-child(4n) { border-right: 0; }
+    .fact:nth-child(-n+4) { border-bottom: var(--rule-w) solid var(--rule); }
   }
   @media (max-width: 560px) {
     .fact:nth-child(2n) { border-right: 0; }
@@ -223,6 +228,12 @@ const facts = [
     .fact:nth-last-child(-n+2) { border-bottom: 0; }
   }
   .fact__k { color: var(--ink-faint); margin-bottom: 0.25rem; font-size: 0.58rem; }
+  .fact__link {
+    color: var(--ink);
+    border-bottom: var(--rule-w) solid var(--hot);
+    padding-bottom: 0.05em;
+  }
+  .fact__link:hover { color: var(--hot); }
   .fact__v { font-size: 1.15rem; color: var(--ink); }
 
   /* BODY */
