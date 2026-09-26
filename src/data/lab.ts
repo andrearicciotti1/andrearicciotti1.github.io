@@ -30,11 +30,11 @@ export const labGroups: LabGroup[] = [
     note: "Paste a video link, get the clip in your timeline. One build per NLE.",
     items: [
       {
-        title: "DropCut · Final Cut Pro",
-        blurb: "Paste any video link straight into your Final Cut library — no browser, no download folder, no manual import. Queues, playlists and batches, plus a built-in mini-browser.",
-        url: "https://andrearicciotti1.gumroad.com/l/rfvay",
+        title: "DropCut · DaVinci Resolve",
+        blurb: "Paste any video link straight into the Media Pool — no browser, no download folder, no manual import. Queues, playlists and batches, plus a built-in mini-browser.",
+        url: "https://andrearicciotti1.gumroad.com/l/qkheq",
         host: "Gumroad",
-        tags: ["Final Cut Pro 10.6+", "macOS 12+"],
+        tags: ["Resolve 18+", "macOS 12+"],
       },
       {
         title: "DropCut · Adobe Premiere Pro",
@@ -44,11 +44,11 @@ export const labGroups: LabGroup[] = [
         tags: ["Premiere Pro 2023+", "macOS 12+"],
       },
       {
-        title: "DropCut · DaVinci Resolve",
-        blurb: "And for the Media Pool. YouTube, Reels, TikTok, Vimeo, X, Facebook and hundreds more sources.",
-        url: "https://andrearicciotti1.gumroad.com/l/qkheq",
+        title: "DropCut · Final Cut Pro",
+        blurb: "And for the Final Cut library. YouTube, Reels, TikTok, Vimeo, X, Facebook and hundreds more sources.",
+        url: "https://andrearicciotti1.gumroad.com/l/rfvay",
         host: "Gumroad",
-        tags: ["Resolve 18+", "macOS 12+"],
+        tags: ["Final Cut Pro 10.6+", "macOS 12+"],
       },
     ],
   },
