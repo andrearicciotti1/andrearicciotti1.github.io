@@ -548,13 +548,10 @@ const PROSE_IT: Dict = {
   "Teaser": "Teaser",
 
   // --- lab groups and items ---
+  "Plugins": "Plugin",
+  "For the cutting room. Paid, with lifetime updates.": "Per la sala di montaggio. A pagamento, con aggiornamenti a vita.",
+  "Lifetime updates": "Aggiornamenti a vita",
   "One plugin, three builds — one per editing suite. Paste a video link and the clip lands in your project: no browser, no download folder, no manual import. Queues, playlists, batches and a built-in mini-browser, from YouTube, Reels, TikTok, Vimeo, X, Facebook and hundreds more.": "Un solo plugin, tre versioni — una per ogni programma di montaggio. Incolli un link video e la clip finisce dritta nel progetto: niente browser, niente cartella download, niente import manuale. Code, playlist intere, download in batch e un mini-browser integrato, da YouTube, Reels, TikTok, Vimeo, X, Facebook e centinaia di altre fonti.",
-  "for DaVinci Resolve": "per DaVinci Resolve",
-  "for Adobe Premiere Pro": "per Adobe Premiere Pro",
-  "for Final Cut Pro": "per Final Cut Pro",
-  "The clip lands straight in the Media Pool.": "La clip finisce dritta nel Media Pool.",
-  "The clip lands straight in the Project panel.": "La clip finisce dritta nel pannello Progetto.",
-  "The clip lands straight in your Final Cut library.": "La clip finisce dritta nella libreria di Final Cut.",
   "Built for fun. Both run in the browser — nothing to install.": "Fatti per divertimento. Girano nel browser, non c'è niente da installare.",
   "Tinder-style swiping to settle what to watch tonight. Two to four people in a room, pick your streaming services, swipe on films, and stop when everyone matches.": "Swipe alla Tinder per decidere che film guardare stasera. Da due a quattro persone in una stanza, scegliete le piattaforme che avete, swipate sui film e vi fermate quando arriva il match.",
   "2–4 people": "2–4 persone",
