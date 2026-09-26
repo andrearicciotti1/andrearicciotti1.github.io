@@ -2,7 +2,7 @@
 import { useTranslations, localize, depath, LANGS, LANG_META, type Lang } from "../i18n/ui";
 
 export interface Props {
-  active?: "index" | "works" | "bio" | "contact" | "more";
+  active?: "index" | "works" | "bio" | "lab" | "contact" | "more";
   lang: Lang;
 }
 const { active = "index", lang } = Astro.props;
@@ -13,7 +13,8 @@ const links = [
   { key: "index",   label: t("nav.index"),   href: localize(lang, "/"),        n: "00" },
   { key: "works",   label: t("nav.works"),   href: localize(lang, "/works"),   n: "01" },
   { key: "bio",     label: t("nav.bio"),     href: localize(lang, "/bio"),     n: "02" },
-  { key: "contact", label: t("nav.contact"), href: localize(lang, "/contact"), n: "03" },
+  { key: "lab",     label: t("nav.lab"),     href: localize(lang, "/lab"),     n: "03" },
+  { key: "contact", label: t("nav.contact"), href: localize(lang, "/contact"), n: "04" },
 ];
 
 // keep the reader on the same page when they switch language

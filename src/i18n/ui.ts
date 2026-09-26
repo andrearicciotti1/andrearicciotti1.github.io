@@ -26,6 +26,7 @@ const en: Dict = {
   "nav.index": "Index",
   "nav.works": "Works",
   "nav.bio": "Bio",
+  "nav.lab": "Lab",
   "nav.contact": "Contact",
   "nav.home_aria": "Andrea Ricciotti — Home",
   "nav.role_tag": "Dir · Ed",
@@ -94,6 +95,17 @@ const en: Dict = {
   "proj.next": "Next →",
   "proj.nav_aria": "Project navigation",
 
+  // lab
+  "lab.title": "Lab — Andrea Ricciotti",
+  "lab.desc": "Plugins, small Mac apps and side projects built by Andrea Ricciotti — editor and director, Rome.",
+  "lab.section": "§ 05 — Lab",
+  "lab.h1": "Things I",
+  "lab.h1_it": "also built.",
+  "lab.lede": "Not films. Plugins for the cutting room, small apps for the menu bar, and a few things made purely out of stubbornness. Most of it is free.",
+  "lab.open": "Open",
+  "lab.close": "Want to build",
+  "lab.close_it": "something together?",
+
   // bio
   "bio.title": "Bio — Andrea Ricciotti",
   "bio.desc": "Andrea Ricciotti — editor and director, born in Rome in 1995. Career, credits and CV.",
@@ -158,6 +170,7 @@ const it: Dict = {
   "nav.index": "Indice",
   "nav.works": "Lavori",
   "nav.bio": "Bio",
+  "nav.lab": "Lab",
   "nav.contact": "Contatti",
   "nav.home_aria": "Andrea Ricciotti — Home",
   "nav.role_tag": "Reg · Mont",
@@ -222,6 +235,16 @@ const it: Dict = {
   "proj.prev": "← Prec",
   "proj.next": "Succ →",
   "proj.nav_aria": "Navigazione progetti",
+
+  "lab.title": "Lab — Andrea Ricciotti",
+  "lab.desc": "Plugin, piccole app per Mac e progetti collaterali di Andrea Ricciotti — montatore e regista, Roma.",
+  "lab.section": "§ 05 — Lab",
+  "lab.h1": "Le altre",
+  "lab.h1_it": "cose che faccio.",
+  "lab.lede": "Non film. Plugin per la sala di montaggio, piccole app per la menu bar, e qualche cosa nata solo per testardaggine. Quasi tutto è gratis.",
+  "lab.open": "Apri",
+  "lab.close": "Costruiamo",
+  "lab.close_it": "qualcosa?",
 
   "bio.title": "Bio — Andrea Ricciotti",
   "bio.desc": "Andrea Ricciotti — montatore e regista, nato a Roma nel 1995. Percorso, crediti e CV.",
@@ -521,6 +544,31 @@ const PROSE_IT: Dict = {
   // --- call-to-action labels and player captions ---
   "Watch the short film": "Guarda il cortometraggio",
   "Teaser": "Teaser",
+
+  // --- lab groups and items ---
+  "Editing plugins": "Plugin per il montaggio",
+  "Paste a video link, get the clip in your timeline. One build per NLE.": "Incolli un link, la clip è già nel montaggio. Una versione per ogni programma.",
+  "Paste any video link straight into your Final Cut library — no browser, no download folder, no manual import. Queues, playlists and batches, plus a built-in mini-browser.": "Incolli qualsiasi link video direttamente nella libreria di Final Cut — niente browser, niente cartella download, niente import manuale. Code, playlist intere e download in batch, più un mini-browser integrato.",
+  "The same thing for the Project panel: paste a link, pick a quality, the clip is already in the project.": "La stessa cosa per il pannello Progetto: incolli il link, scegli la qualità, la clip è già nel progetto.",
+  "And for the Media Pool. YouTube, Reels, TikTok, Vimeo, X, Facebook and hundreds more sources.": "E per il Media Pool. YouTube, Reels, TikTok, Vimeo, X, Facebook e centinaia di altre fonti.",
+
+  "Menu bar apps": "App per la menu bar",
+  "Free, open source, about 100 KB. No Electron, no Python, no dock icon.": "Gratis, open source, circa 100 KB. Niente Electron, niente Python, niente icona nel Dock.",
+  "Roman one-liners a keystroke away, from the menu bar — a fan tribute to Zerocalcare. Nine clips on global shortcuts, your own sounds, and an armadillo that turns up every ten minutes to say something.": "Battute romane a portata di scorciatoia, dalla menu bar — un omaggio da fan a Zerocalcare. Nove clip su shortcut globali, i tuoi suoni, e un armadillo che ogni dieci minuti spunta per dire la sua.",
+  "The same idea, for Boris. Iconic clips on ⌥⌘1 … ⌥⌘9, a goldfish in the menu bar, and room for your own audio.": "La stessa idea, per Boris. Clip iconiche su ⌥⌘1 … ⌥⌘9, un pesce rosso nella menu bar, e spazio per i tuoi audio.",
+  "Download the .dmg": "Scarica il .dmg",
+
+  "Play": "Giochi",
+  "Built for fun. Runs in the browser, works offline.": "Fatto per divertimento. Gira nel browser e funziona anche offline.",
+  "735 questions across five levels, from Easy to MANIAC. Every answer comes back with the line and the episode it came from, plus reactions and the original music.": "735 domande su cinque livelli, da Easy a MANIAC. Ogni risposta torna con la battuta e l'episodio da cui viene, più le reaction e la musica originale.",
+  "735 questions": "735 domande",
+
+  "Invites": "Inviti",
+  "Services I actually use. Both links give you something for signing up.": "Servizi che uso davvero. Con questi link ci guadagni qualcosa anche tu.",
+  "The festival for trailers, on FilmFreeway. Submit yours.": "Il festival dedicato ai trailer, su FilmFreeway. Manda il tuo.",
+  "Accountants for the Italian flat-rate regime — what a freelance editor actually needs. The invite takes a chunk off the first year.": "Commercialisti per il regime forfettario — quello che serve davvero a un montatore freelance. Con l'invito il primo anno costa meno.",
+  "Free": "Gratis",
+  "Browser": "Browser",
 
   // --- home-page press highlights ---
   "The review": "La recensione",
