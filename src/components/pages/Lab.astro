@@ -1,0 +1,253 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import NavBar from "../NavBar.astro";
+import Marquee from "../Marquee.astro";
+import { labGroups } from "../../data/lab";
+import { useTranslations, localize, tProse, type Lang } from "../../i18n/ui";
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const L = (p: string) => localize(lang, p);
+const count = labGroups.reduce((n, g) => n + g.items.length, 0);
+---
+
+<BaseLayout title={t("lab.title")} description={t("lab.desc")} lang={lang}>
+  <NavBar active="lab" lang={lang} />
+
+  <!-- HEAD -->
+  <section class="head">
+    <div class="head__top">
+      <span class="mono">{t("lab.section")}</span>
+      <span class="mono head__count">{String(count).padStart(2, "0")}</span>
+    </div>
+    <h1 class="head__title display">
+      {t("lab.h1")} <span class="serif-italic hot">{t("lab.h1_it")}</span>
+    </h1>
+    <p class="head__lede">{t("lab.lede")}</p>
+  </section>
+
+  <!-- GROUPS -->
+  {labGroups.map((g) => (
+    <section class="grp">
+      <header class="grp__head">
+        <div class="grp__title">
+          <span class="mono grp__n">{g.n}</span>
+          <h2 class="display grp__label">{tProse(g.label, lang)}</h2>
+        </div>
+        <p class="grp__note mono">{tProse(g.note, lang)}</p>
+      </header>
+
+      <ul class="cards">
+        {g.items.map((it) => (
+          <li class="card">
+            <a href={it.url} target="_blank" rel="noopener" class="card__main">
+              <span class="mono card__host">{it.host}</span>
+              <h3 class="display card__title">{it.title}</h3>
+              <p class="card__blurb">{tProse(it.blurb, lang)}</p>
+              <span class="mono card__open">{t("lab.open")} <span aria-hidden="true">↗</span></span>
+            </a>
+            {(it.tags || it.alt) && (
+              <div class="card__foot">
+                {it.tags && (
+                  <ul class="tags">
+                    {it.tags.map((x) => <li class="mono tag">{tProse(x, lang)}</li>)}
+                  </ul>
+                )}
+                {it.alt && (
+                  <a href={it.alt.url} target="_blank" rel="noopener" class="mono card__alt">
+                    {tProse(it.alt.label, lang)} <span aria-hidden="true">↓</span>
+                  </a>
+                )}
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+
+  <Marquee
+    items={["DropCut", "Armadillo Bar", "Boris Bar", "Friends Trivia", "Open source"]}
+    speed={50}
+    invert={true}
+    separator="/"
+  />
+
+  <!-- CLOSE -->
+  <section class="close">
+    <h2 class="close__t display">
+      {t("lab.close")} <span class="serif-italic hot">{t("lab.close_it")}</span>
+    </h2>
+    <a href={L("/contact")} class="btn btn--hot">
+      <span>{t("home.cta_brief")}</span>
+      <span aria-hidden="true">→</span>
+    </a>
+  </section>
+</BaseLayout>
+
+<style>
+  /* HEAD */
+  .head {
+    padding: clamp(2rem, 4vw, 3rem) var(--gutter) clamp(1.5rem, 3vw, 2.5rem);
+    border-bottom: var(--rule-w) solid var(--rule);
+  }
+  .head__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px dashed var(--rule-soft);
+    margin-bottom: 1.5rem;
+    color: var(--ink-faint);
+    font-size: 0.65rem;
+  }
+  .head__title {
+    font-size: clamp(2.5rem, 8vw, 7rem);
+    line-height: 0.88;
+    margin-bottom: 1.25rem;
+  }
+  .head__lede {
+    max-width: 58ch;
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--ink-mute);
+  }
+
+  /* GROUP */
+  .grp {
+    padding: clamp(2rem, 4vw, 3.25rem) var(--gutter);
+    border-bottom: var(--rule-w) solid var(--rule);
+  }
+  .grp__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem 2rem;
+    flex-wrap: wrap;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px dashed var(--rule-soft);
+    margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+  }
+  .grp__title { display: flex; align-items: baseline; gap: 0.85rem; }
+  .grp__n { color: var(--hot); font-size: 0.7rem; }
+  .grp__label {
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .grp__note {
+    color: var(--ink-faint);
+    font-size: 0.68rem;
+    max-width: 52ch;
+    line-height: 1.5;
+  }
+
+  /* CARDS */
+  .cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(clamp(16rem, 24vw, 21rem), 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    border: var(--rule-w) solid var(--rule);
+    background: var(--paper);
+    transition: border-color var(--dur-fast) var(--ease);
+  }
+  .card:hover { border-color: var(--ink); }
+  .card__main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 1;
+    padding: clamp(1.1rem, 2vw, 1.5rem);
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .card__host {
+    color: var(--ink-faint);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .card__title {
+    font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .card:hover .card__title { color: var(--hot); }
+  .card__blurb {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--ink-mute);
+    flex: 1;
+  }
+  .card__open {
+    font-size: 0.65rem;
+    color: var(--hot);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 0.35rem;
+  }
+  .card__foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem 1rem;
+    flex-wrap: wrap;
+    padding: 0.7rem clamp(1.1rem, 2vw, 1.5rem);
+    border-top: 1px dashed var(--rule-soft);
+  }
+  .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0; padding: 0; }
+  .tag {
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-mute);
+    border: 1px solid var(--rule);
+    padding: 0.2rem 0.45rem;
+  }
+  .card__alt {
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    border-bottom: 1px solid var(--hot);
+    padding-bottom: 0.1rem;
+  }
+  .card__alt:hover { color: var(--hot); }
+
+  /* CLOSE */
+  .close {
+    padding: clamp(2.5rem, 6vw, 5rem) var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem 2rem;
+    flex-wrap: wrap;
+  }
+  .close__t {
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    line-height: 0.95;
+  }
+  .close__t .hot { text-transform: none; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.5rem;
+    border: var(--rule-w) solid var(--ink);
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 1.05rem;
+    transition: all var(--dur-fast) var(--ease);
+  }
+  .btn--hot { background: var(--hot); color: var(--ink); }
+  .btn--hot:hover { background: var(--ink); color: var(--hot); }
+</style>
