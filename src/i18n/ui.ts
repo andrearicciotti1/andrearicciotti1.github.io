@@ -135,8 +135,9 @@ const en: Dict = {
   "bio.fact_exp": "Experience",
   "bio.fact_exp_v": "10+ years",
   "bio.fact_tools": "Tools",
-  "bio.fact_rep": "Rep.",
-  "bio.fact_rep_v": "Self-represented",
+  "bio.fact_rep_dir": "Rep. · Directing",
+  "bio.fact_rep_dir_v": "Self-represented",
+  "bio.fact_rep_cre": "Rep. · Creator",
   "bio.fact_status": "Status",
   "bio.fact_status_v": "Open to commissions",
 
@@ -274,8 +275,9 @@ const it: Dict = {
   "bio.fact_exp": "Esperienza",
   "bio.fact_exp_v": "10+ anni",
   "bio.fact_tools": "Software",
-  "bio.fact_rep": "Agenzia",
-  "bio.fact_rep_v": "Nessuna",
+  "bio.fact_rep_dir": "Agenzia · Regia",
+  "bio.fact_rep_dir_v": "Nessuna",
+  "bio.fact_rep_cre": "Agenzia · Creator",
   "bio.fact_status": "Stato",
   "bio.fact_status_v": "Disponibile per incarichi",
 
